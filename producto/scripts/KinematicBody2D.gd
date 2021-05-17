@@ -1,11 +1,9 @@
 extends KinematicBody2D
 
-var distance = Vector2()
-var velocity = Vector2()
-var direction_x = 0
+var motion = Vector2()
 
-export var speed = 150
-export var jump_speed = 50
+export var speed = 200
+export var jump_speed = -550
 export var gravity = 50
 
 func _ready():
@@ -16,19 +14,22 @@ func _physics_process(delta):
 
 func _move(delta):
 	
-	direction_x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+	motion = Vector2(0,0)
+	$CollisionSprite/Sprite.flip_h = false
+	$CollisionSprite/Sprite.play("walk")	
 	
-	distance.x = speed*delta
-	velocity.x = (direction_x*distance.x)/delta
-	#velocity.y += gravity*delta
+	if Input.is_action_pressed("ui_right"):
+		motion.x += speed
+	if Input.is_action_pressed("ui_left"):
+		motion.x -= speed
+		$CollisionSprite/Sprite.flip_h = true
+	if Input.is_action_pressed("ui_up"):
+		motion.y = jump_speed
+	if Input.is_action_pressed("ui_down"):
+		motion.y -= jump_speed
 	
-	move_and_slide(velocity,Vector2(0,-1))
+	move_and_slide(motion,Vector2(0,-1))
 	
-	"""
-	if is_on_floor():
+	if (motion.x == 0 && motion.y == 0):
+		$CollisionSprite/Sprite.play("idle")	
 		
-		velocity.y = 0
-		
-		if Input.is_action_pressed("ui_up"):
-			velocity.y = -jump_speed
-	"""
