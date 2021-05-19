@@ -37,36 +37,38 @@ func _physics_process(delta):
 
 func _in_state_idle_process():
 	
-	if $CollisionSprite/Sprite.animation != "idle":
-		$CollisionSprite/Sprite.play("idle")
+	if $Robot.animation != "idle":
+		$Robot.play("idle")
 	if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
 		myState = state.WALK
 
 func _in_state_walk_process(delta):
 	
-	if $CollisionSprite/Sprite.animation != "walk":
-		$CollisionSprite/Sprite.play("walk")
-	if is_on_floor():	
+	if $Robot.animation != "walk":
+		$Robot.play("walk")
+	if is_on_floor():
+		#print(true)	
 		velocity.x = 0
 		# Movimientos caminar
 		if Input.is_action_pressed("ui_right"):
 			velocity.x = WALK_SPEED
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= WALK_SPEED
-			$CollisionSprite/Sprite.flip_h = true
+			$Robot.flip_h = true
 		if Input.is_action_pressed("ui_accept") && (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
 			myState = state.RUN
 		if velocity.x == 0:
 			myState = state.IDLE
 			return
 	else:
+		#print(false)	
 		myState = state.JUMP
 	move_and_slide(velocity,Vector2(0,-1))
 
 func _in_state_run_process(delta):
 	
-	if $CollisionSprite/Sprite.animation != "run":
-		$CollisionSprite/Sprite.play("run") 
+	if $Robot.animation != "run":
+		$Robot.play("run") 
 	if is_on_floor():	
 		velocity.x = 0
 		# Movimientos correr
@@ -75,7 +77,7 @@ func _in_state_run_process(delta):
 					velocity.x = RUN_SPEED
 			if Input.is_action_pressed("ui_left"):
 				velocity.x -= RUN_SPEED
-				$CollisionSprite/Sprite.flip_h = true
+				$Robot.flip_h = true
 		if velocity.x == 0:
 			myState = state.IDLE
 		else:
@@ -83,7 +85,7 @@ func _in_state_run_process(delta):
 		return
 	else:
 		myState = state.JUMP
-	move_and_slide(velocity,Vector2(0,-1))
+	move_and_slide(velocity,Vector2(0,-1)	)
 
 func _in_state_jump_process(delta):
 	
