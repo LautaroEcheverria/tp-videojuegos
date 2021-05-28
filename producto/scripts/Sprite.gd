@@ -7,12 +7,12 @@ enum State {
 	JUMP
 }
 
-const GRAVITY = 50
-const WALK_SPEED = 300
-const JUMP_SPEED = 200
-export (int) var speed = 0  
-var on_ladder = false
+const GRAVITY = 800
+const WALK_SPEED = 350
+const JUMP_SPEED = -600
+
 onready var is_right = !$CollisionSprite/Sprite.flip_h
+
 var mystate = State.IDLE
 var velocity = Vector2()
 
@@ -30,14 +30,15 @@ func _in_state_idle_process():
 	if $CollisionSprite/Sprite.animation != "idle":
 		$CollisionSprite/Sprite.play("idle")
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
-			mystate = State.WALK
-			if Input.is_action_just_pressed("ui_accept"):
-				mystate = State.RUN
+		mystate = State.WALK
+		if Input.is_action_just_pressed("ui_accept"):
+			mystate = State.RUN
+	elif Input.is_action_just_pressed("ui_up"):
+		mystate = State.JUMP
 		
 func _in_state_walk_process(delta):
 	if $CollisionSprite/Sprite.animation !="walk":
 		$CollisionSprite/Sprite.play("walk")
-	velocity.y += delta * GRAVITY
 	if is_on_floor():
 		velocity.x = 0
 		if Input.is_action_pressed("ui_left"):
@@ -47,19 +48,20 @@ func _in_state_walk_process(delta):
 			velocity.x =  WALK_SPEED
 			is_right = true
 		_flip_character()
+		if Input.is_action_pressed("ui_accept"):
+			mystate = State.RUN
+		if Input.is_action_just_pressed("ui_up"):
+			mystate = State.JUMP
 		if velocity.x == 0:
 			mystate = State.IDLE
 			return
-		if Input.is_action_pressed("ui_accept"):
-			mystate = State.RUN
-	elif Input.is_action_pressed("ui_up"):
-		mystate = State.JUMP
+	else:
+		velocity.y += delta * GRAVITY
 	move_and_slide(velocity, Vector2(0, -1))
 	
 func _in_state_run_process(delta):
 	if $CollisionSprite/Sprite.animation !="run":
 		$CollisionSprite/Sprite.play("run")
-	velocity.y += delta * GRAVITY
 	if is_on_floor():
 		velocity.x = 0
 		if Input.is_action_pressed("ui_left"):
@@ -69,14 +71,16 @@ func _in_state_run_process(delta):
 			velocity.x =  WALK_SPEED*2
 			is_right = true
 		_flip_character()
+		if Input.is_action_just_pressed("ui_up"):
+			mystate = State.JUMP
 		if velocity.x == 0 or not Input.is_action_pressed("ui_accept"):
-			if velocity.x ==0:
+			if velocity.x == 0:
 				mystate = State.IDLE
 			else:
 				mystate = State.WALK
 			return
 	else:
-		mystate = State.JUMP
+		velocity.y += delta * GRAVITY
 	move_and_slide(velocity, Vector2(0, -1))
 
 func _flip_character():
@@ -87,19 +91,17 @@ func _flip_character():
 		$CollisionSprite/Sprite.position.x = 0
 
 func _in_state_jump_process(delta):
-	if $CollisionSprite/Sprite.animation !="run":
-		$CollisionSprite/Sprite.play("run")
-	move_and_slide(velocity, Vector2(0, -1))
 	if is_on_floor():
-		velocity.y -= delta * GRAVITY
+		if Input.is_action_pressed("ui_up"):
+			velocity.y = JUMP_SPEED
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			mystate = State.WALK
+			if Input.is_action_just_pressed("ui_accept"):
+				mystate = State.RUN
+		if velocity.x == 0 and not Input.is_action_pressed("ui_up"):
+			mystate = State.IDLE
+			return
 	else:
-		velocity.y += delta * GRAVITY
-		if !Input.is_action_pressed("ui_up"):
-			if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-				if Input.is_action_pressed("ui_accept"):
-					mystate = State.RUN
-				else:
-					mystate = State.WALK
-			else:
-				mystate = State.IDLE
+		 velocity.y += delta * GRAVITY
+	move_and_slide(velocity, Vector2(0, -1))
 	
