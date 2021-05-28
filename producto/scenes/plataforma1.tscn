@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://producto/recursos/Tiles/Tile-31.png" type="Texture" id=1]
 [ext_resource path="res://producto/recursos/Tiles/Tile-27.png" type="Texture" id=2]
@@ -41,7 +41,6 @@
 [ext_resource path="res://producto/recursos/Tiles/Tile-28.png" type="Texture" id=39]
 [ext_resource path="res://producto/recursos/Tiles/Tree-Trunk-02.png" type="Texture" id=40]
 [ext_resource path="res://producto/recursos/Objects/Obj-Chest-Closed-24x24.png" type="Texture" id=41]
-[ext_resource path="res://producto/recursos/Player/daxbotsheet.png" type="Texture" id=42]
 [ext_resource path="res://producto/recursos/Backgrounds/merged-full-background.png" type="Texture" id=43]
 [ext_resource path="res://producto/recursos/Backgrounds/parallax-background-mountains.png" type="Texture" id=44]
 [ext_resource path="res://producto/scripts/Sprite.gd" type="Script" id=45]
@@ -823,139 +822,98 @@ points = PoolVector2Array( 24, 24, 0, 24, 0, 0, 24, 0 )
 radius = 30.8911
 height = 130.306
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 48 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 48 )
-region = Rect2( 0, 0, 64, 64 )
-
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 48 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 48 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 48 )
-region = Rect2( 256, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 48 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 0, 204, 64, 68 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 64, 204, 64, 68 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 128, 204, 64, 68 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 192, 204, 64, 68 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 48 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 48 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 48 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 48 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 48 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 48 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 48 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 48 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 48 )
 region = Rect2( 320, 0, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 48 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 48 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 48 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 48 )
+region = Rect2( 192, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 64, 68, 64, 68 )
+atlas = ExtResource( 48 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=32]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 128, 68, 64, 68 )
+atlas = ExtResource( 48 )
+region = Rect2( 320, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=33]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 192, 68, 64, 68 )
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 48 )
+region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=34]
-flags = 4
-atlas = ExtResource( 42 )
-region = Rect2( 128, 68, 64, 68 )
-
-[sub_resource type="SpriteFrames" id=35]
+[sub_resource type="SpriteFrames" id=37]
 animations = [ {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 17 ) ],
 "loop": true,
 "name": "idle",
 "speed": 1.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 38 ) ],
+"loop": true,
+"name": "collect",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 39 ) ],
 "loop": true,
 "name": "climb",
 "speed": 8.0
-}, {
-"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
-"loop": true,
-"name": "walk",
-"speed": 2.0
-}, {
-"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
 } ]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 1, 0 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
-motion_offset = Vector2( 1, 1 )
-motion_mirroring = Vector2( 480, 0 )
-
-[node name="merged-full-background" type="Sprite" parent="Node2D/ParallaxBackground/ParallaxLayer"]
-position = Vector2( 732.237, 253.28 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 43 )
-
-[node name="parallax-background-mountains" type="Sprite" parent="Node2D/ParallaxBackground/ParallaxLayer"]
-modulate = Color( 0.886275, 0.760784, 0.760784, 1 )
-position = Vector2( -381.858, 1139.12 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 44 )
-flip_h = true
 
 [node name="Plataformas Base1" type="TileMap" parent="Node2D"]
 scale = Vector2( 3, 3 )
@@ -969,7 +927,7 @@ scale = Vector2( 3, 3 )
 tile_set = SubResource( 11 )
 cell_size = Vector2( 12, 12 )
 format = 1
-tile_data = PoolIntArray( 983093, 44, 0, 2621509, 1073741824, 0, 2621516, 1610612736, 0, 2621523, 1073741824, 0, 2621530, 1610612736, 0, 2621537, 1073741824, 0, 2621544, 1610612736, 0, 2818110, -1610612733, 0, 2818112, -1610612733, 0, 2818114, -1610612733, 0, 2818116, -1610612733, 0, 3407900, -536870889, 0, 3407924, 1073741847, 0, 3473438, -2147483625, 0, 3473458, 536870935, 0, 3473459, 536870935, 0, 3669911, 13, 0, 3669916, 16, 0, 3735445, 13, 0, 3800985, 22, 0, 3800987, 22, 0, 3800988, -1610612720, 0, 3866518, 22, 0, 3866519, 22, 0, 3866652, -536870897, 0, 3997578, 536870925, 0, 3997712, 536870938, 0, 3997714, 1073741842, 0, 3997716, 1073741842, 0, 3997718, 1073741842, 0, 3997720, 1073741842, 0, 3997722, 1073741846, 0, 3997724, -2147483611, 0, 4128652, 22, 0, 4128654, 536870926, 0, 4128750, -1610612736, 0, 4194192, 536870925, 0, 4259724, 7, 0, 4259726, 22, 0, 4325264, 22, 0, 4587502, -536870912, 0, 4652977, 40, 0, 4915232, 1610612778, 0, 4915245, 1610612778, 0, 5046254, -1610612736, 0, 5505006, -536870912, 0, 5963759, -2147483646, 0 )
+tile_data = PoolIntArray( 983093, 44, 0, 2424796, 0, 0, 2424797, 0, 0, 2424798, 0, 0, 2424799, 0, 0, 2424800, 0, 0, 2424801, 0, 0, 2424802, 0, 0, 2424803, 0, 0, 2424804, 0, 0, 2424805, 0, 0, 2424806, 0, 0, 2424807, 0, 0, 2424808, 0, 0, 2424809, 0, 0, 2424810, 0, 0, 2424811, 0, 0, 2424812, 0, 0, 2424813, 0, 0, 2424814, 0, 0, 2424815, 0, 0, 2621509, 1073741824, 0, 2621516, 1610612736, 0, 2621523, 1073741824, 0, 2621530, 1610612736, 0, 2621537, 1073741824, 0, 2621544, 1610612736, 0, 2818110, -1610612733, 0, 2818112, -1610612733, 0, 2818114, -1610612733, 0, 2818116, -1610612733, 0, 3407900, -536870889, 0, 3407924, 1073741847, 0, 3473438, -2147483625, 0, 3473458, 536870935, 0, 3473459, 536870935, 0, 3669911, 13, 0, 3669916, 16, 0, 3735445, 13, 0, 3800985, 22, 0, 3800987, 22, 0, 3800988, -1610612720, 0, 3866518, 22, 0, 3866519, 22, 0, 3866652, -536870897, 0, 3997578, 536870925, 0, 3997712, 536870938, 0, 3997714, 1073741842, 0, 3997716, 1073741842, 0, 3997718, 1073741842, 0, 3997720, 1073741842, 0, 3997722, 1073741846, 0, 3997724, -2147483611, 0, 4128652, 22, 0, 4128654, 536870926, 0, 4128750, -1610612736, 0, 4194192, 536870925, 0, 4259724, 7, 0, 4259726, 22, 0, 4325264, 22, 0, 4587502, -536870912, 0, 4652977, 40, 0, 4915232, 1610612778, 0, 4915245, 1610612778, 0, 5046254, -1610612736, 0, 5505006, -536870912, 0, 5963759, -2147483646, 0 )
 
 [node name="Sombra de descubrimiento" type="TileMap" parent="Node2D"]
 scale = Vector2( 3, 3 )
@@ -987,21 +945,45 @@ cell_size = Vector2( 24, 24 )
 format = 1
 tile_data = PoolIntArray( 720904, 536870912, 0, 720905, 536870912, 0, 786436, 536870912, 0, 786437, 536870912, 0, 786438, 536870912, 0, 786439, 536870912, 0, 786440, 536870912, 0, 786441, 536870912, 0, 786442, 536870912, 0, 851972, 536870912, 0, 851973, 536870912, 0, 851974, 536870912, 0, 851975, 536870912, 0, 851976, 536870912, 0, 851977, 536870912, 0, 851978, 536870912, 0, 917507, 536870912, 0, 917508, 536870912, 0, 917509, 536870912, 0, 917510, 536870912, 0, 917511, 536870912, 0, 917512, 536870912, 0, 917513, 536870912, 0, 917514, 536870912, 0, 1376260, 0, 0 )
 
-[node name="Robot" type="KinematicBody2D" parent="Node2D"]
-position = Vector2( 215.203, 480.203 )
+[node name="Robot" type="KinematicBody2D" parent="."]
+position = Vector2( 268.528, 480.206 )
 script = ExtResource( 45 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionSprite" type="CollisionShape2D" parent="Node2D/Robot"]
+[node name="CollisionSprite" type="CollisionShape2D" parent="Robot"]
 position = Vector2( 0.033, 0 )
 shape = SubResource( 14 )
 
-[node name="Sprite" type="AnimatedSprite" parent="Node2D/Robot/CollisionSprite"]
+[node name="Sprite" type="AnimatedSprite" parent="Robot/CollisionSprite"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 35 )
-animation = "idle"
+frames = SubResource( 37 )
+animation = "collect"
 
-[node name="Camara" type="Camera2D" parent="Node2D/Robot"]
+[node name="Camara" type="Camera2D" parent="Robot"]
 current = true
+drag_margin_h_enabled = true
+smoothing_speed = 15.0
+drag_margin_top = 1.0
+drag_margin_bottom = 0.5
+editor_draw_drag_margin = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Robot/Camara"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Robot/Camara/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_offset = Vector2( 1, 1 )
+motion_mirroring = Vector2( 2000, 1000 )
+
+[node name="merged-full-background" type="Sprite" parent="Robot/Camara/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -150.266, 253.28 )
+scale = Vector2( 11.1912, 6 )
+texture = ExtResource( 43 )
+
+[node name="parallax-background-mountains" type="Sprite" parent="Robot/Camara/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.886275, 0.760784, 0.760784, 1 )
+position = Vector2( -381.858, 1139.12 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 44 )
+flip_h = true
