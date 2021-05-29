@@ -12,4 +12,4 @@ func _on_Salir_pressed():
 	get_tree().quit()
 
 func _on_Jugar_pressed():
-	get_tree().change_scene("res://producto/scenes/Plataforma1.tscn")
+	get_tree().change_scene("res://producto/scenes/nivelPlataforma.tscn")
