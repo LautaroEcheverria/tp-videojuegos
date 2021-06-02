@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://producto/scripts/Inicio.gd" type="Script" id=1]
-[ext_resource path="res://producto/assets/img/Oblivion.jpg" type="Texture" id=2]
+[ext_resource path="res://producto/assets/img/UI_portada/Oblivion.jpg" type="Texture" id=2]
 [ext_resource path="res://producto/assets/fonts/FontInicio.tres" type="DynamicFont" id=3]
 [ext_resource path="res://producto/assets/music/Oblivion.mp3" type="AudioStream" id=4]
 

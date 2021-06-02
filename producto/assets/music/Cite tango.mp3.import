@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Cite tango.mp3-c1ed66660e3eb4700fb692f0c1d5fafe.mp3str"
+
+[deps]
+
+source_file="res://producto/assets/music/Cite tango.mp3"
+dest_files=[ "res://.import/Cite tango.mp3-c1ed66660e3eb4700fb692f0c1d5fafe.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

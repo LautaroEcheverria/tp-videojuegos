@@ -22,9 +22,10 @@ func _ready():
 	var window_size = OS.get_window_size()
 	var centered_pos = (screen_size - window_size) / 2
 	OS.set_window_position(centered_pos)
-
+	
 
 func _physics_process(delta):
+	# Estados Robot
 	if mystate == State.IDLE:
 		_in_state_idle_process()
 	elif mystate == State.WALK:
@@ -33,6 +34,14 @@ func _physics_process(delta):
 		_in_state_run_process(delta)
 	elif mystate == State.JUMP:
 		_in_state_jump_process(delta)
+	
+	# Guardar y cargar partida		
+	if Input.is_action_just_pressed("save"):
+		GameHandler.save_game()
+		print("Partida guardada")
+	elif Input.is_action_just_pressed("load"):
+		GameHandler.load_game()
+		print("Partida cargada")
 		
 		
 func _in_state_idle_process():
@@ -49,12 +58,12 @@ func _in_state_walk_process(delta):
 		$CollisionSprite/Sprite.play("walk")
 	if is_on_floor():
 		velocity.x = 0
-		if Input.is_action_pressed("ui_left"):
-			velocity.x = -WALK_SPEED
-			$CollisionSprite/Sprite.flip_h = true
-		elif Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_right"):
 			velocity.x =  WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = false
+		elif Input.is_action_pressed("ui_left"):
+			velocity.x = -WALK_SPEED
+			$CollisionSprite/Sprite.flip_h = true
 		if Input.is_action_pressed("ui_accept"):
 			mystate = State.RUN
 		if Input.is_action_just_pressed("ui_up"):
@@ -72,12 +81,12 @@ func _in_state_run_process(delta):
 		$CollisionSprite/Sprite.play("run")
 	if is_on_floor():
 		velocity.x = 0
-		if Input.is_action_pressed("ui_left"):
-			velocity.x = -WALK_SPEED*2
-			$CollisionSprite/Sprite.flip_h = true
-		elif Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_right"):
 			velocity.x =  WALK_SPEED*2
 			$CollisionSprite/Sprite.flip_h = false
+		elif Input.is_action_pressed("ui_left"):
+			velocity.x = -WALK_SPEED*2
+			$CollisionSprite/Sprite.flip_h = true
 		if Input.is_action_just_pressed("ui_up"):
 			mystate = State.JUMP
 		if velocity.x == 0 or not Input.is_action_pressed("ui_accept"):
@@ -101,5 +110,24 @@ func _in_state_jump_process(delta):
 			mystate = State.IDLE
 			return
 	else:
-		 velocity.y += delta * GRAVITY
+		velocity.y += delta * GRAVITY
+		if Input.is_action_pressed("ui_right"):
+			velocity.x =  WALK_SPEED
+			$CollisionSprite/Sprite.flip_h = false
+		elif Input.is_action_pressed("ui_left"):
+			velocity.x = -WALK_SPEED
+			$CollisionSprite/Sprite.flip_h = true
 	move_and_slide(velocity, Vector2(0, -1))
+
+
+func save():
+	var save_dict = {
+		"filename" : get_owner().get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"vel_x" : velocity.x,
+		"state" : mystate,
+	}
+	return save_dict
+	
