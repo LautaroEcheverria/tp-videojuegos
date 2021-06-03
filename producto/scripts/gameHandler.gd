@@ -3,7 +3,6 @@ extends Node
 func _ready():
 	pass
 
-
 func save_game():
 	var save_game = File.new()
 	save_game.open("res://producto/assets/other/Save/savegame.save", File.WRITE)
@@ -12,8 +11,7 @@ func save_game():
 		var node_data = node.call("save")
 		save_game.store_line(to_json(node_data))
 	save_game.close()
-	
-	
+
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists("res://producto/assets/other/Save/savegame.save"):
@@ -46,8 +44,6 @@ func load_game():
 			new_object.set(i, node_data[i])
 
 	save_game.close()
-
-
 
 func _on_Sombra_Secretos_settings_changed():
 	if $"Sombra Secretos".visible == true:

@@ -27,6 +27,7 @@ func _ready():
 
 func _physics_process(delta):
 	# Estados Robot
+	#sprint(mystate)
 	if mystate == State.IDLE:
 		_in_state_idle_process()
 	elif mystate == State.WALK:
@@ -132,9 +133,7 @@ func save():
 		"filename" : get_owner().get_filename(),
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x,
-		"pos_y" : position.y,
-		"vel_x" : velocity.x,
-		"state" : mystate
+		"pos_y" : position.y
 	}
 	return save_dict
 	

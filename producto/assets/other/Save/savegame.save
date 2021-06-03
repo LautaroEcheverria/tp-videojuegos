@@ -1,0 +1,2 @@
+{"filename":"res://producto/scenes/nivelPlataforma.tscn","parent":"/root/Game","pos_x":150.399002,"pos_y":480.457001}
+{"filename":"res://producto/scenes/nivelPlataforma.tscn","frame":0,"parent":"/root/Game/Robot/CollisionSprite","pos_x":0,"pos_y":0,"sprite_frames":"[SpriteFrames:1600]"}
