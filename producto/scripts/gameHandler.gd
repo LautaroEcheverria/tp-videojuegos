@@ -46,3 +46,9 @@ func load_game():
 			new_object.set(i, node_data[i])
 
 	save_game.close()
+
+
+
+func _on_Sombra_Secretos_settings_changed():
+	if $"Sombra Secretos".visible == true:
+		$"Sombra Secretos".visible = false
