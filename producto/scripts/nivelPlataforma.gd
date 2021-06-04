@@ -5,7 +5,8 @@ enum State {
 	WALK,
 	RUN,
 	JUMP,
-	FLY,
+	FLY1, # WALK -> JUMP -> FLY
+	FLY2, # RUN -> JUMP -> FLY
 	COLLECT,
 	PULL
 }
@@ -33,6 +34,8 @@ func _ready():
 
 func _physics_process(delta):
 	# Estados Robot
+	print(mystate)
+	print(velocity.x)
 	if mystate == State.IDLE:
 		_in_state_idle_process()
 	elif mystate == State.WALK:
@@ -41,8 +44,10 @@ func _physics_process(delta):
 		_in_state_run_process(delta)
 	elif mystate == State.JUMP:
 		_in_state_jump_process(delta)
-	elif mystate == State.FLY:
+	elif mystate == State.FLY1:
 		_in_state_fly_process(delta)
+	elif mystate == State.FLY2:
+		_in_state_fly2_process(delta)
 		# Guardar y cargar partida		
 	if Input.is_action_just_pressed("save"):
 		GameHandler.save_game()
@@ -110,15 +115,17 @@ func _in_state_jump_process(delta):
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up") or touch_up:
 			velocity.y = JUMP_SPEED
-		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right:
+		elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right:
 			mystate = State.WALK
 		if velocity.x == 0 and not (Input.is_action_pressed("ui_up") or touch_up):
 			mystate = State.IDLE
 			return
 	else:
 		velocity.y += delta * GRAVITY
-		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right:
-			mystate = State.FLY
+		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2):
+			mystate = State.FLY1
+		elif (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and (Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2):
+			mystate = State.FLY2
 	move_and_slide(velocity, Vector2(0, -1))
 
 func _in_state_fly_process(delta):
@@ -132,6 +139,20 @@ func _in_state_fly_process(delta):
 			$CollisionSprite/Sprite.flip_h = false
 		elif Input.is_action_pressed("ui_left") or touch_left:
 			velocity.x = -WALK_SPEED
+			$CollisionSprite/Sprite.flip_h = true
+	move_and_slide(velocity, Vector2(0, -1))
+
+func _in_state_fly2_process(delta):
+	if is_on_floor():
+		velocity.x = 0
+		mystate = State.IDLE
+	else:
+		velocity.y += delta * GRAVITY
+		if Input.is_action_pressed("ui_right") or touch_right:
+			velocity.x =  WALK_SPEED*2
+			$CollisionSprite/Sprite.flip_h = false
+		elif Input.is_action_pressed("ui_left") or touch_left:
+			velocity.x = -WALK_SPEED*2
 			$CollisionSprite/Sprite.flip_h = true
 	move_and_slide(velocity, Vector2(0, -1))
 
