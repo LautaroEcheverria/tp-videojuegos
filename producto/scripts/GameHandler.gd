@@ -48,3 +48,6 @@ func load_game():
 func _on_Sombra_Secretos_settings_changed():
 	if $"Sombra Secretos".visible == true:
 		$"Sombra Secretos".visible = false
+
+func _on_Area2D_Game_Over_body_entered(body):
+	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")

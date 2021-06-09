@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=2]
+[gd_scene load_steps=119 format=2]
 
 [ext_resource path="res://producto/scripts/GameHandler.gd" type="Script" id=1]
 [ext_resource path="res://producto/scripts/NivelPlataforma.gd" type="Script" id=2]
@@ -42,21 +42,21 @@
 [ext_resource path="res://producto/assets/other/Tiles/Tile-23.png" type="Texture" id=40]
 [ext_resource path="res://producto/assets/other/Tiles/Tile-18.png" type="Texture" id=41]
 [ext_resource path="res://producto/assets/other/Tiles/Tile-32.png" type="Texture" id=42]
-[ext_resource path="res://producto/assets/img/Plataformas/z0.png" type="Texture" id=43]
+[ext_resource path="res://producto/assets/img/Plataformas/z-1.png" type="Texture" id=43]
 [ext_resource path="res://producto/assets/other/tiles/Tree-Trunk-02.png" type="Texture" id=44]
 [ext_resource path="res://producto/assets/other/Tiles/Tile-36.png" type="Texture" id=45]
 [ext_resource path="res://producto/assets/other/tiles/Tree-Trunk-01.png" type="Texture" id=46]
 [ext_resource path="res://producto/assets/other/Tiles/Tile-01.png" type="Texture" id=47]
 [ext_resource path="res://producto/assets/other/Tiles/Tile-07.png" type="Texture" id=48]
 [ext_resource path="res://producto/assets/other/Tiles/Tile-03.png" type="Texture" id=49]
-[ext_resource path="res://producto/assets/img/Plataformas/z-1.png" type="Texture" id=50]
+[ext_resource path="res://producto/assets/img/Plataformas/refugio.png" type="Texture" id=50]
 [ext_resource path="res://producto/assets/img/Plataformas/z1.png" type="Texture" id=51]
 [ext_resource path="res://producto/assets/img/Plataformas/z-2.png" type="Texture" id=52]
-[ext_resource path="res://producto/assets/img/Plataformas/refugio.png" type="Texture" id=53]
+[ext_resource path="res://producto/assets/img/Plataformas/z0.png" type="Texture" id=53]
 
 [sub_resource type="TileSet" id=1]
 0/name = "refugio.png 0"
-0/texture = ExtResource( 53 )
+0/texture = ExtResource( 50 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 8, 64, 200, 152 )
@@ -1092,7 +1092,7 @@ points = PoolVector2Array( 24, 24, 0, 24, 0, 0, 24, 0 )
 44/shapes = [  ]
 44/z_index = 0
 45/name = "refugio.png 45"
-45/texture = ExtResource( 53 )
+45/texture = ExtResource( 50 )
 45/tex_offset = Vector2( 0, 0 )
 45/modulate = Color( 1, 1, 1, 1 )
 45/region = Rect2( 0, 64, 208, 152 )
@@ -1194,35 +1194,35 @@ region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=57]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=58]
 atlas = ExtResource( 4 )
-region = Rect2( 256, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=59]
 atlas = ExtResource( 4 )
-region = Rect2( 320, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=60]
 animations = [ {
@@ -1233,22 +1233,22 @@ animations = [ {
 }, {
 "frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"loop": true,
 "name": "run",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 52 ) ],
+"frames": [ SubResource( 58 ) ],
 "loop": true,
 "name": "climb",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 53 ) ],
+"frames": [ SubResource( 59 ) ],
 "loop": true,
 "name": "collect",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
-"loop": true,
-"name": "walk",
 "speed": 5.0
 } ]
 
@@ -1278,6 +1278,9 @@ extents = Vector2( 242.14, 243.106 )
 
 [sub_resource type="RectangleShape2D" id=64]
 extents = Vector2( 145.316, 169.814 )
+
+[sub_resource type="RectangleShape2D" id=65]
+extents = Vector2( 9273.3, 13.9429 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -1399,7 +1402,7 @@ texture = ExtResource( 52 )
 
 [node name="z0" type="Sprite" parent="Parallax fondo/fondo ciudad"]
 visible = false
-texture = ExtResource( 43 )
+texture = ExtResource( 53 )
 
 [node name="z1" type="Sprite" parent="Parallax fondo/fondo ciudad"]
 visible = false
@@ -1411,7 +1414,7 @@ motion_offset = Vector2( 1, 1 )
 motion_mirroring = Vector2( 2359, 0 )
 
 [node name="z-1" type="Sprite" parent="Parallax fondo/fondo montañas"]
-texture = ExtResource( 50 )
+texture = ExtResource( 43 )
 
 [node name="Parallax camino" type="ParallaxBackground" parent="."]
 layer = -1
@@ -1425,7 +1428,7 @@ motion_offset = Vector2( 1, 1 )
 motion_mirroring = Vector2( 2359, 0 )
 
 [node name="z0" type="Sprite" parent="Parallax camino/camino"]
-texture = ExtResource( 43 )
+texture = ExtResource( 53 )
 centered = false
 
 [node name="Parallax frente" type="ParallaxBackground" parent="."]
@@ -1470,10 +1473,10 @@ shape = SubResource( 64 )
 layer = 3
 
 [node name="Control" type="Control" parent="Controles"]
-margin_left = 50.0
-margin_top = 580.0
-margin_right = 154.0
-margin_bottom = 666.0
+margin_left = 52.8284
+margin_top = 301.4
+margin_right = 156.828
+margin_bottom = 387.4
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1501,6 +1504,12 @@ position = Vector2( 73.4158, -2.35974 )
 rotation = 1.5708
 normal = ExtResource( 34 )
 
+[node name="Area2D Game Over" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Game Over"]
+position = Vector2( 1408.48, 5679.63 )
+shape = SubResource( 65 )
+
 [connection signal="settings_changed" from="Sombra Secretos" to="Area2D" method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="settings_changed" from="Sombra Secretos" to="." method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
@@ -1514,3 +1523,4 @@ normal = ExtResource( 34 )
 [connection signal="released" from="Controles/Control/RightButton2" to="Robot" method="_on_RightButton2_released"]
 [connection signal="pressed" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_pressed"]
 [connection signal="released" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_released"]
+[connection signal="body_entered" from="Area2D Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
