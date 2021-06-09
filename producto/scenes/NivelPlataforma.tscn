@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=2]
+[gd_scene load_steps=120 format=2]
 
 [ext_resource path="res://producto/scripts/GameHandler.gd" type="Script" id=1]
 [ext_resource path="res://producto/scripts/NivelPlataforma.gd" type="Script" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://producto/assets/img/Plataformas/z1.png" type="Texture" id=51]
 [ext_resource path="res://producto/assets/img/Plataformas/z-2.png" type="Texture" id=52]
 [ext_resource path="res://producto/assets/img/Plataformas/z0.png" type="Texture" id=53]
+[ext_resource path="res://producto/scenes/Discos.tscn" type="PackedScene" id=54]
 
 [sub_resource type="TileSet" id=1]
 0/name = "refugio.png 0"
@@ -1194,31 +1195,31 @@ region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 4 )
-region = Rect2( 256, 0, 64, 64 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=57]
 atlas = ExtResource( 4 )
-region = Rect2( 320, 0, 64, 64 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=58]
 atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=59]
 atlas = ExtResource( 4 )
@@ -1233,18 +1234,18 @@ animations = [ {
 }, {
 "frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
-"loop": true,
 "name": "run",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 58 ) ],
+"frames": [ SubResource( 52 ) ],
 "loop": true,
 "name": "climb",
 "speed": 8.0
+}, {
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 59 ) ],
 "loop": true,
@@ -1510,8 +1511,16 @@ normal = ExtResource( 34 )
 position = Vector2( 1408.48, 5679.63 )
 shape = SubResource( 65 )
 
-[connection signal="settings_changed" from="Sombra Secretos" to="Area2D" method="_on_Sombra_Secretos_settings_changed"]
+[node name="Area2D2" parent="." instance=ExtResource( 54 )]
+position = Vector2( 1549.54, 530 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Area2D3" parent="." instance=ExtResource( 54 )]
+position = Vector2( 1845.92, 530 )
+scale = Vector2( 0.3, 0.3 )
+
 [connection signal="settings_changed" from="Sombra Secretos" to="." method="_on_Sombra_Secretos_settings_changed"]
+[connection signal="settings_changed" from="Sombra Secretos" to="Area2D" method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 [connection signal="pressed" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_pressed"]
 [connection signal="released" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_released"]

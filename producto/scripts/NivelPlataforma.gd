@@ -24,6 +24,9 @@ var touch_right = false # walk
 var touch_right2 = false # run
 var touch_up = false # jump
 
+# DISCOS
+var contadorDiscos = 0
+
 func _ready():
 	
 	# Posicion ventana reproduccion
