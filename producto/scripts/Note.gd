@@ -4,9 +4,9 @@ const TARGET_Y = 550
 const SPAWN_Y = -50
 const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
 
-const LEFT_LANE_SPAWN = Vector2(212, SPAWN_Y)
-const CENTRE_LANE_SPAWN = Vector2(512, SPAWN_Y)
-const RIGHT_LANE_SPAWN = Vector2(812, SPAWN_Y)
+const LEFT_LANE_SPAWN = Vector2(340, SPAWN_Y)
+const CENTRE_LANE_SPAWN = Vector2(640, SPAWN_Y)
+const RIGHT_LANE_SPAWN = Vector2(940, SPAWN_Y)
 
 var speed = 100
 var hit = false

@@ -30,18 +30,20 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+margin_right = 1280.0
+margin_bottom = 720.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Text Frame" type="TextureRect" parent="."]
-margin_left = 152.0
-margin_top = -131.059
-margin_right = 2552.0
-margin_bottom = 2268.94
+margin_left = 288.0
+margin_top = -64.0
+margin_right = 2688.0
+margin_bottom = 2336.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -66,11 +68,12 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-margin_left = 412.356
-margin_top = 395.497
-margin_right = 612.356
-margin_bottom = 495.497
+margin_left = 544.0
+margin_top = 472.0
+margin_right = 744.0
+margin_bottom = 572.0
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 

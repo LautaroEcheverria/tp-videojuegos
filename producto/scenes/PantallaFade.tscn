@@ -42,8 +42,8 @@ anims/Fade_Out = SubResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = -2.37842
-margin_right = 1024.0
-margin_bottom = 597.622
+margin_right = 1280.0
+margin_bottom = 717.622
 __meta__ = {
 "_edit_use_anchors_": false
 }

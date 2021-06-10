@@ -13,13 +13,13 @@ extents = Vector2( 10.0474, 10 )
 script = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 514.67, 300 )
-scale = Vector2( 3.0157, 1.5 )
+position = Vector2( 641.48, 358.733 )
+scale = Vector2( 3.76164, 1.80034 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 512, 586 )
-scale = Vector2( 43, 1 )
+position = Vector2( 642.329, 705.635 )
+scale = Vector2( 53.36, 1.06952 )
 texture = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="Sprite"]

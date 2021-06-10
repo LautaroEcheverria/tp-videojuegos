@@ -12,7 +12,7 @@ enum State {
 }
 
 const GRAVITY = 800
-const WALK_SPEED = 350
+const WALK_SPEED = 450
 const JUMP_SPEED = -550
 
 var mystate = State.IDLE
@@ -26,6 +26,7 @@ var touch_up = false # jump
 
 # DISCOS
 var contadorDiscos = 0
+var changedScene = false
 
 func _ready():
 	
@@ -36,6 +37,7 @@ func _ready():
 	OS.set_window_position(centered_pos)
 
 func _physics_process(delta):
+	
 	# Estados Robot
 	if mystate == State.IDLE:
 		_in_state_idle_process()
@@ -44,18 +46,33 @@ func _physics_process(delta):
 	elif mystate == State.RUN:
 		_in_state_run_process(delta)
 	elif mystate == State.JUMP:
-		_in_state_jump_process(delta)
+		if contadorDiscos >= 1:
+			_in_state_jump_process(delta)
+		else:
+			_in_state_idle_process()
 	elif mystate == State.FLY1:
-		_in_state_fly_process(delta)
+		if contadorDiscos >= 1:
+			_in_state_fly_process(delta)
+		else:
+			_in_state_idle_process()
 	elif mystate == State.FLY2:
-		_in_state_fly2_process(delta)
-		# Guardar y cargar partida		
+		if contadorDiscos >= 1:
+			_in_state_fly2_process(delta)
+		else:
+			_in_state_idle_process()
+	
+	# Guardar y cargar partida		
 	if Input.is_action_just_pressed("save"):
 		GameHandler.save_game()
 		print("Partida guardada")
 	elif Input.is_action_just_pressed("load"):
 		GameHandler.load_game()
 		print("Partida cargada")
+		
+	# Juego ritmico
+	if contadorDiscos == 1 and !changedScene:
+		PantallaFade.change_scene("res://producto/scenes/PantallaTransicion.tscn")
+		changedScene = true
 		
 func _in_state_idle_process():
 	if $CollisionSprite/Sprite.animation != "idle":
@@ -191,7 +208,5 @@ func save():
 	var save_dict = {
 		"filename" : get_owner().get_filename(),
 		"parent" : get_parent().get_path(),
-		"pos_x" : position.x,
-		"pos_y" : position.y
 	}
 	return save_dict
