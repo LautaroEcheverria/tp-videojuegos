@@ -44,11 +44,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameHandler="*res://producto/scripts/gameHandler.gd"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+PantallaFade="*res://producto/scenes/PantallaFade.tscn"
+GameHandler="*res://producto/scripts/GameHandler.gd"
 
 [display]
 
