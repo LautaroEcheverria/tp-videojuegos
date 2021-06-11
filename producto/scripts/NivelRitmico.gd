@@ -28,12 +28,12 @@ var instance
 
 func _ready():
 	randomize()
-	$Conductor.play_with_beat_offset(8)
-
+	$Conductor.play_with_beat_offset(2)
+	
 func _input(event):
 	if event.is_action("ui_cancel"):
 		get_tree().change_scene("res://producto/scenes/NivelPlataforma.tscn")
-
+		
 func _on_Conductor_measure(position):
 	if position == 1:
 		_spawn_notes(spawn_1_beat)
@@ -46,7 +46,7 @@ func _on_Conductor_measure(position):
 
 func _on_Conductor_beat(position):
 	song_position_in_beats = position
-	print(position)
+	#print(position)
 	if song_position_in_beats > 36:
 		spawn_1_beat = 1
 		spawn_2_beat = 1
@@ -126,8 +126,12 @@ func _spawn_notes(to_spawn):
 		instance = note.instance()
 		instance.initialize(lane)
 		add_child(instance)
-	print("LANE: "+str(lane))
-		
+
+func set_score(value):
+	score += value
+	$Label.text = "Score: " + str(score)
+
+"""		
 func increment_score(by):
 	if by > 0:
 		combo += 1
@@ -155,6 +159,4 @@ func increment_score(by):
 func reset_combo():
 	combo = 0
 	#$Combo.text = ""
-
-func _on_Area2D_area_entered(area):
-	print(true)
+"""		

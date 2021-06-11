@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 const TARGET_Y = 550
 const SPAWN_Y = -50
@@ -8,18 +8,19 @@ const LEFT_LANE_SPAWN = Vector2(340, SPAWN_Y)
 const CENTRE_LANE_SPAWN = Vector2(640, SPAWN_Y)
 const RIGHT_LANE_SPAWN = Vector2(940, SPAWN_Y)
 
-var speed = 100
+var speed = 50
 var hit = false
+var score = 0
 
 func _ready():
 	pass
-
+			
 func _physics_process(delta):
 	if !hit:
 		position.y += speed * delta
-		if position.y > 700:
+		if position.y > 720:
 			queue_free()
-			get_parent().reset_combo()
+			#get_parent().reset_combo()
 	else:
 		$Node2D.position.y -= speed * delta
 
@@ -38,3 +39,16 @@ func destroy(score):
 
 func _on_Timer_timeout():
 	queue_free()
+
+func _on_TouchScreenButton_pressed():
+	if position.y >= 670 and score == 0:
+		if position.y < 685:
+			print("OK")
+			score = 1
+		elif position.y >= 685 and position.y < 700:
+			print("GOOD")
+			score = 2
+		elif position.y >= 700 and position.y <= 715:
+			print("PERFECT")
+			score = 3
+		get_parent().set_score(score)
