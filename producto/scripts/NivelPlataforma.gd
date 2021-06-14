@@ -12,7 +12,7 @@ enum State {
 }
 
 const GRAVITY = 800
-const WALK_SPEED = 450
+const WALK_SPEED = 150
 const JUMP_SPEED = -550
 
 var mystate = State.IDLE
@@ -70,10 +70,12 @@ func _physics_process(delta):
 		print("Partida cargada")
 		
 	# Juego ritmico
+	"""
 	if contadorDiscos == 1 and !changedScene:
 		PantallaFade.change_scene("res://producto/scenes/PantallaTransicion.tscn")
 		changedScene = true
-		
+	"""
+	
 func _in_state_idle_process():
 	if $CollisionSprite/Sprite.animation != "idle":
 		$CollisionSprite/Sprite.play("idle")
@@ -130,6 +132,8 @@ func _in_state_run_process(delta):
 	move_and_slide(velocity, Vector2(0, -1))
 
 func _in_state_jump_process(delta):
+	if $CollisionSprite/Sprite.animation !="jump":
+		$CollisionSprite/Sprite.play("jump")
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up") or touch_up:
 			velocity.y = JUMP_SPEED
@@ -147,6 +151,8 @@ func _in_state_jump_process(delta):
 	move_and_slide(velocity, Vector2(0, -1))
 
 func _in_state_fly_process(delta):
+	if $CollisionSprite/Sprite.animation !="jump":
+		$CollisionSprite/Sprite.play("jump")
 	if is_on_floor():
 		velocity.x = 0
 		mystate = State.IDLE
@@ -161,6 +167,8 @@ func _in_state_fly_process(delta):
 	move_and_slide(velocity, Vector2(0, -1))
 
 func _in_state_fly2_process(delta):
+	if $CollisionSprite/Sprite.animation !="jump":
+		$CollisionSprite/Sprite.play("jump")
 	if is_on_floor():
 		velocity.x = 0
 		mystate = State.IDLE

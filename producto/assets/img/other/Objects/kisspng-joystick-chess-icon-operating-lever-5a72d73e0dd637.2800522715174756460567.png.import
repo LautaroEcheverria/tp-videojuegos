@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/kisspng-joystick-chess-icon-operating-lever-5a72d73e0dd637.2800522715174756460567.png-680cd4441272860a80d22ef6f28303e3.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://producto/assets/img/other/Objects/kisspng-joystick-chess-icon-operating-lever-5a72d73e0dd637.2800522715174756460567.png"
+dest_files=[ "res://.import/kisspng-joystick-chess-icon-operating-lever-5a72d73e0dd637.2800522715174756460567.png-680cd4441272860a80d22ef6f28303e3.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

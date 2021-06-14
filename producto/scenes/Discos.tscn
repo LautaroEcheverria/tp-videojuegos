@@ -37,4 +37,5 @@ playback_speed = 2.0
 anims/Idle = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 2 )

@@ -48,6 +48,8 @@ func load_game():
 func _on_Area2D_Game_Over_body_entered(body):
 	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
 
-#func _on_Palanca_body_entered(body):
-#	if $Robot.contadorDiscos == 2:
-#		$"Sombra Secretos".visible = false
+func _on_Palanca_body_entered(body):
+	if $Robot.contadorDiscos == 2:
+		$"Sombra Secretos".visible = false
+		
+
