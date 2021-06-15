@@ -16,6 +16,7 @@ var JUMP_SPEED = -550
 var mystate = State.IDLE
 var velocity = Vector2()
 
+# BOTONES
 var touch_left = false # walk
 var touch_right = false # walk
 var touch_up = false # jump
@@ -24,6 +25,9 @@ var touch_up = false # jump
 var contadorDiscos = 0
 var changedScene = false
 
+# PERSISTENCIA
+var saveGame = false # Arranco en true pero se hizo asi para probar
+
 func _ready():
 	
 	# Posicion ventana reproduccion
@@ -31,6 +35,7 @@ func _ready():
 	var window_size = OS.get_window_size()
 	var centered_pos = (screen_size - window_size) / 2
 	OS.set_window_position(centered_pos)
+	GameHandler.load_game()
 
 func _physics_process(delta):
 	
@@ -49,17 +54,16 @@ func _physics_process(delta):
 			_in_state_fly_process(delta)
 		else:
 			_in_state_idle_process()
-			
+	
+	# Movimientos desbloqueados
 	if contadorDiscos >= 1:
 		WALK_SPEED = 300
 	
-	# Guardar y cargar partida		
-	if Input.is_action_just_pressed("save"):
+	# Guardar y cargar partida con checkpoints
+	if saveGame == false and contadorDiscos >= 1: # solo va saveGame ya que lo otro se cambia por funcion new_checkpoint() cuando encuentra disco nuevo
 		GameHandler.save_game()
+		saveGame = true
 		print("Partida guardada")
-	elif Input.is_action_just_pressed("load"):
-		GameHandler.load_game()
-		print("Partida cargada")
 		
 	# Juego ritmico
 	"""
@@ -151,5 +155,9 @@ func save():
 	var save_dict = {
 		"filename" : get_owner().get_filename(),
 		"parent" : get_parent().get_path(),
+		"contadorDiscos" : contadorDiscos
 	}
 	return save_dict
+	
+func new_checkpoint(): # Funcion para guardar cuando aumente contadorDiscos
+	saveGame = false
