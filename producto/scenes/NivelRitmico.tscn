@@ -1,32 +1,45 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://producto/scenes/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://producto/scripts/NivelRitmico.gd" type="Script" id=2]
-[ext_resource path="res://producto/assets/img/backgrounds/parallax-background-sky.png" type="Texture" id=3]
-[ext_resource path="res://producto/assets/music/Violentango.mp3" type="AudioStream" id=4]
-[ext_resource path="res://producto/assets/other/Rhythm/b.png" type="Texture" id=5]
+[ext_resource path="res://producto/assets/img/Ritmo/Background.jpg" type="Texture" id=3]
+[ext_resource path="res://producto/assets/music/Oblivion.mp3" type="AudioStream" id=4]
+[ext_resource path="res://producto/assets/img/Ritmo/Note.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.0474, 10 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 231.481
+height = 125.926
 
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://producto/assets/fonts/AmberTastePro-Bold.ttf"
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10.0474, 161.111 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = SubResource( 2 )
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 38
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 36
+font_data = SubResource( 5 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 641.48, 358.733 )
-scale = Vector2( 3.76164, 1.80034 )
+modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
+position = Vector2( 640.13, 360.112 )
+scale = Vector2( 0.249447, 0.210193 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 642.329, 705.635 )
-scale = Vector2( 53.36, 1.06952 )
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 440, 608 )
+scale = Vector2( 0.18, 0.18 )
 texture = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="Sprite"]
@@ -34,20 +47,59 @@ visible = false
 scale = Vector2( 1.2, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
-visible = false
+position = Vector2( 4.62976, 5.55566 )
 shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 640, 608 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="Sprite2"]
+visible = false
+scale = Vector2( 1.2, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Area2D"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 840, 608 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="Sprite3"]
+visible = false
+scale = Vector2( 1.2, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/Area2D"]
+visible = false
+shape = SubResource( 2 )
 
 [node name="Conductor" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 4 )
-bpm = 147
+bpm = 80
 
-[node name="Label" type="Label" parent="."]
-margin_left = 56.0
-margin_top = 64.0
-margin_right = 152.0
-margin_bottom = 112.0
-custom_fonts/font = SubResource( 3 )
+[node name="Score" type="Label" parent="."]
+margin_left = 76.1587
+margin_top = 79.3195
+margin_right = 223.159
+margin_bottom = 134.32
+custom_fonts/font = SubResource( 4 )
 text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score2" type="Label" parent="."]
+margin_left = 79.5118
+margin_top = 134.512
+margin_right = 216.512
+margin_bottom = 175.512
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

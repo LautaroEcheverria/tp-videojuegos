@@ -1,13 +1,12 @@
 extends Node2D
 
 var score = 0
-var combo = 0
+var combo = 1
 
-var max_combo = 0
-var great = 0
+var ok = 0
 var good = 0
-var okay = 0
-var missed = 0
+var perfect = 0
+var value_last_note = 0
 
 var bpm = 112
 
@@ -27,6 +26,12 @@ var note = load("res://producto/scenes/Note.tscn")
 var instance
 
 func _ready():
+	# Posicion ventana reproduccion
+	var screen_size = OS.get_screen_size(OS.get_current_screen())
+	var window_size = OS.get_window_size()
+	var centered_pos = (screen_size - window_size) / 2
+	OS.set_window_position(centered_pos)
+	
 	randomize()
 	$Conductor.play_with_beat_offset(2)
 	
@@ -46,51 +51,50 @@ func _on_Conductor_measure(position):
 
 func _on_Conductor_beat(position):
 	song_position_in_beats = position
-	#print(position)
 	if song_position_in_beats > 36:
 		spawn_1_beat = 1
 		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
+		spawn_3_beat = 0
+		spawn_4_beat = 0
 	if song_position_in_beats > 98:
-		spawn_1_beat = 2
+		spawn_1_beat = 1
 		spawn_2_beat = 0
 		spawn_3_beat = 1
 		spawn_4_beat = 0
 	if song_position_in_beats > 132:
 		spawn_1_beat = 0
-		spawn_2_beat = 2
+		spawn_2_beat = 1
 		spawn_3_beat = 0
-		spawn_4_beat = 2
+		spawn_4_beat = 1
 	if song_position_in_beats > 162:
-		spawn_1_beat = 2
-		spawn_2_beat = 2
-		spawn_3_beat = 1
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 0
 		spawn_4_beat = 1
 	if song_position_in_beats > 194:
-		spawn_1_beat = 2
-		spawn_2_beat = 2
+		spawn_1_beat = 0
+		spawn_2_beat = 0
 		spawn_3_beat = 1
-		spawn_4_beat = 2
+		spawn_4_beat = 1
 	if song_position_in_beats > 228:
 		spawn_1_beat = 0
-		spawn_2_beat = 2
-		spawn_3_beat = 1
-		spawn_4_beat = 2
+		spawn_2_beat = 1
+		spawn_3_beat = 0
+		spawn_4_beat = 1
 	if song_position_in_beats > 258:
 		spawn_1_beat = 1
-		spawn_2_beat = 2
+		spawn_2_beat = 0
 		spawn_3_beat = 1
-		spawn_4_beat = 2
+		spawn_4_beat = 1
 	if song_position_in_beats > 288:
 		spawn_1_beat = 0
-		spawn_2_beat = 2
+		spawn_2_beat = 1
 		spawn_3_beat = 0
-		spawn_4_beat = 2
+		spawn_4_beat = 1
 	if song_position_in_beats > 322:
-		spawn_1_beat = 3
-		spawn_2_beat = 2
-		spawn_3_beat = 2
+		spawn_1_beat = 1
+		spawn_2_beat = 1
+		spawn_3_beat = 1
 		spawn_4_beat = 1
 	if song_position_in_beats > 388:
 		spawn_1_beat = 1
@@ -104,59 +108,52 @@ func _on_Conductor_beat(position):
 		spawn_4_beat = 0
 	if song_position_in_beats > 404:
 		pass
-	#	Global.set_score(score)
-	#	Global.combo = max_combo
-	#	Global.great = great
-	#	Global.good = good
-	#	Global.okay = okay
-	#	Global.missed = missed
-	#	if get_tree().change_scene("res://Scenes/End.tscn") != OK:
-	#		print ("Error changing scene to End")
+	#	Pantalla finalización y volver a plataforma
+	# 	Mostrar variables ok, good, perfect, score total
 
 func _spawn_notes(to_spawn):
 	if to_spawn > 0:
 		lane = randi() % 3 + 1
 		instance = note.instance()
-		instance.initialize(lane)
+		instance.initialize(lane,2) # Setear speed nivel
 		add_child(instance)
 	if to_spawn > 1:
 		while rand == lane:
 			rand = randi() % 3 + 1
 		lane = rand
 		instance = note.instance()
-		instance.initialize(lane)
-		add_child(instance)
+		instance.initialize(lane,2) # Setear speed nivel
+		add_child(instance) 
 
 func set_score(value):
-	score += value
-	$Label.text = "Score: " + str(score)
-
-"""		
-func increment_score(by):
-	if by > 0:
-		combo += 1
+	if combo >= 20:
+		score += value*4
+		$Score.text = "Score: " + str(score) + " (x4)"
+	elif combo >= 10 and combo < 20:
+		score += value*2
+		$Score.text = "Score: " + str(score) + " (x2)"
 	else:
-		combo = 0
-	
-	if by == 3:
-		great += 1
-	elif by == 2:
+		score += value
+		$Score.text = "Score: " + str(score)
+	if value == 1:
+		ok += 1
+		$Score2.text = "OK"
+		$Score2.modulate = Color(227,21,21) # No anda
+		$Score2.add_color_override("font_color",Color(227,21,21)) # No anda
+		value_last_note = 1
+		combo = 1
+	elif value == 2:
 		good += 1
-	elif by == 1:
-		okay += 1
-	else:
-		missed += 1
-	
-	score += by * combo
-	$Label.text = str(score)
-	if combo > 0:
-		$Combo.text = str(combo) + " combo!"
-		if combo > max_combo:
-			max_combo = combo
-	else:
-		$Combo.text = ""
-
-func reset_combo():
-	combo = 0
-	#$Combo.text = ""
-"""		
+		$Score2.text = "GOOD"
+		$Score2.modulate = Color(238,234,3) # No anda
+		$Score2.add_color_override("font_color",Color(238,234,3)) # No anda
+		value_last_note = 2
+		combo = 1
+	elif value == 3:
+		perfect += 1
+		$Score2.text = "PERFECT!"
+		$Score2.modulate = Color(15,238,3) # No anda
+		$Score2.add_color_override("font_color",Color(15,238,3)) # No anda
+		if value_last_note == 3:
+			combo += 1
+		value_last_note = 3

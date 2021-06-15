@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-export var bpm := 112
+export var bpm := 60
 export var measures := 4
 
 # Tracking the beat and song position

@@ -19,9 +19,7 @@ var mystate = State.IDLE
 var velocity = Vector2()
 
 var touch_left = false # walk
-var touch_left2 = false # run
 var touch_right = false # walk
-var touch_right2 = false # run
 var touch_up = false # jump
 
 # DISCOS
@@ -81,7 +79,7 @@ func _in_state_idle_process():
 		$CollisionSprite/Sprite.play("idle")
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right") or touch_left or touch_right:
 		mystate = State.WALK
-	elif Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2:
+	elif Input.is_action_pressed("ui_accept"):
 			mystate = State.RUN
 	elif Input.is_action_just_pressed("ui_up") or touch_up:
 		mystate = State.JUMP
@@ -97,7 +95,7 @@ func _in_state_walk_process(delta):
 		elif Input.is_action_pressed("ui_left")  or touch_left:
 			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
-		if Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2:
+		if Input.is_action_pressed("ui_accept"):
 			mystate = State.RUN
 		if Input.is_action_just_pressed("ui_up") or touch_up:
 			mystate = State.JUMP
@@ -113,15 +111,15 @@ func _in_state_run_process(delta):
 		$CollisionSprite/Sprite.play("run")
 	if is_on_floor():
 		velocity.x = 0
-		if Input.is_action_pressed("ui_right") or touch_right2:
+		if Input.is_action_pressed("ui_right"):
 			velocity.x =  WALK_SPEED*2
 			$CollisionSprite/Sprite.flip_h = false
-		elif Input.is_action_pressed("ui_left") or touch_left2:
+		elif Input.is_action_pressed("ui_left"):
 			velocity.x = -WALK_SPEED*2
 			$CollisionSprite/Sprite.flip_h = true
 		if Input.is_action_just_pressed("ui_up") or touch_up:
 			mystate = State.JUMP
-		if velocity.x == 0 or not (Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2):
+		if velocity.x == 0 or not Input.is_action_pressed("ui_accept"):
 			if velocity.x == 0:
 				mystate = State.IDLE
 			else:
@@ -144,9 +142,9 @@ func _in_state_jump_process(delta):
 			return
 	else:
 		velocity.y += delta * GRAVITY
-		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2):
+		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
 			mystate = State.FLY1
-		elif (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and (Input.is_action_pressed("ui_accept") or touch_left2 or touch_right2):
+		elif (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and (Input.is_action_pressed("ui_accept")):
 			mystate = State.FLY2
 	move_and_slide(velocity, Vector2(0, -1))
 
@@ -187,24 +185,12 @@ func _on_LeftButton_pressed():
 	
 func _on_LeftButton_released():
 	touch_left = false
-	
-func _on_LeftButton2_pressed():
-	touch_left2 = true
-
-func _on_LeftButton2_released():
-	touch_left2 = false
 
 func _on_RightButton_pressed():
 	touch_right = true
 
 func _on_RightButton_released():
 	touch_right = false
-
-func _on_RightButton2_pressed():
-	touch_right2 = true
-
-func _on_RightButton2_released():
-	touch_right2 = false
 
 func _on_UpButton_pressed():
 	touch_up = true
