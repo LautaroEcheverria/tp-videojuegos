@@ -1,12 +1,12 @@
 extends Node2D
 
 var score = 0
-var combo = 1
+var combo = 0
 
 var ok = 0
 var good = 0
 var perfect = 0
-var value_last_note = 0
+var missed = 0
 
 var bpm = 112
 
@@ -20,10 +20,12 @@ var spawn_2_beat = 0
 var spawn_3_beat = 1
 var spawn_4_beat = 0
 
+var note = load("res://producto/scenes/Note.tscn")
 var lane = 0
 var rand = 0
-var note = load("res://producto/scenes/Note.tscn")
 var instance
+export var speed = 3
+export var color = 3
 
 func _ready():
 	# Posicion ventana reproduccion
@@ -34,6 +36,7 @@ func _ready():
 	
 	randomize()
 	$Conductor.play_with_beat_offset(2)
+	change_sprite_color(color)
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
@@ -115,45 +118,114 @@ func _spawn_notes(to_spawn):
 	if to_spawn > 0:
 		lane = randi() % 3 + 1
 		instance = note.instance()
-		instance.initialize(lane,2) # Setear speed nivel
+		instance.initialize(lane) 
+		instance.set_speed(speed)
+		instance.set_color(color,lane)
 		add_child(instance)
-	if to_spawn > 1:
-		while rand == lane:
-			rand = randi() % 3 + 1
-		lane = rand
-		instance = note.instance()
-		instance.initialize(lane,2) # Setear speed nivel
-		add_child(instance) 
 
 func set_score(value):
-	if combo >= 20:
-		score += value*4
-		$Score.text = "Score: " + str(score) + " (x4)"
-	elif combo >= 10 and combo < 20:
-		score += value*2
-		$Score.text = "Score: " + str(score) + " (x2)"
-	else:
-		score += value
-		$Score.text = "Score: " + str(score)
+	if value == 0:
+		missed += 1
+		$Score2.text = "..MISSED.."
+		$Score2.modulate = Color.red
+		combo = 0
 	if value == 1:
 		ok += 1
-		$Score2.text = "OK"
-		$Score2.modulate = Color(227,21,21) # No anda
-		$Score2.add_color_override("font_color",Color(227,21,21)) # No anda
-		value_last_note = 1
-		combo = 1
+		$Score2.text = "..OK.."
+		$Score2.modulate = Color.yellow
+		combo = 0
 	elif value == 2:
 		good += 1
-		$Score2.text = "GOOD"
-		$Score2.modulate = Color(238,234,3) # No anda
-		$Score2.add_color_override("font_color",Color(238,234,3)) # No anda
-		value_last_note = 2
-		combo = 1
+		$Score2.text = "..GOOD.."
+		$Score2.modulate = Color.orange
+		combo = 0
 	elif value == 3:
 		perfect += 1
-		$Score2.text = "PERFECT!"
-		$Score2.modulate = Color(15,238,3) # No anda
-		$Score2.add_color_override("font_color",Color(15,238,3)) # No anda
-		if value_last_note == 3:
-			combo += 1
-		value_last_note = 3
+		$Score2.text = "..PERFECT!.."
+		$Score2.modulate = Color.green
+		combo += 1
+	if combo >= 10:
+		score += value*4
+		$Score.text = "Score: " + str(score)
+		$ComboLabel.text = "Tango master!"
+		$ComboMultiplicador.text = "(x4)"
+		$CPUParticles2D.amount *= 1.7
+		$CPUParticles2D2.amount *= 1.7
+		$CPUParticles2D3.amount *= 1.7
+		$CPUParticles2D4.amount *= 1.7
+	elif combo >= 5 and combo < 10:
+		score += value*2
+		$Score.text = "Score: " + str(score)
+		$CPUParticles2D.emitting = true
+		$CPUParticles2D2.emitting = true
+		$CPUParticles2D3.emitting = true
+		$CPUParticles2D4.emitting = true
+		$ComboLabel.text = "Combo time!"
+		$ComboMultiplicador.text = "(x2)"
+	else:
+		score += value
+		if score != 0:
+			$Score.text = "Score: " + str(score)
+		$CPUParticles2D.emitting = false
+		$CPUParticles2D2.emitting = false
+		$CPUParticles2D3.emitting = false
+		$CPUParticles2D4.emitting = false
+		$ComboLabel.text = ""
+		$ComboMultiplicador.text = ""
+
+func change_sprite_color(value):
+	if value == 1:
+		$Sprite.modulate = Color("#80ffffff")
+		$Sprite2.modulate = Color("#80ffffff")
+		$Sprite3.modulate = Color("#80ffffff")
+	elif value == 2:
+		$Sprite.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+		$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+		$Sprite3.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+		$Sprite.modulate = Color("#7bffffff")
+		$Sprite2.modulate = Color("#7bffffff")
+		$Sprite3.modulate = Color("#7bffffff")
+		$Sprite.scale.x = 0.198
+		$Sprite.scale.y = 0.208
+		$Sprite2.scale.x = 0.198
+		$Sprite2.scale.y = 0.208
+		$Sprite3.scale.x = 0.198
+		$Sprite3.scale.y = 0.208
+	elif value == 3:
+		$Sprite.modulate = Color("#8600ff00")
+		$Sprite2.modulate = Color("#8600ff00")
+		$Sprite3.modulate = Color("#8600ff00")
+	elif value == 4:
+		$Sprite.modulate = Color("#80ffffff")
+		$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+		$Sprite2.modulate = Color("#7bffffff")
+		$Sprite2.scale.x = 0.198
+		$Sprite2.scale.y = 0.208
+		$Sprite3.modulate = Color("#8600ff00")
+
+func _button_entered(value,pos_x):
+	if value:
+		if pos_x == 440:
+			if color == 1 or color == 2:
+				$Sprite.modulate = Color("#ffffff")
+			elif color == 3 or color == 4:
+				$Sprite.modulate = Color("#00ff0a") 
+		elif pos_x == 640:
+			if color == 1 or color == 2:
+				$Sprite2.modulate = Color("#ffffff")
+			elif color == 3 or color == 4:
+				$Sprite2.modulate = Color("#00ff0a") 
+		elif pos_x == 840:
+			if color == 1 or color == 2:
+				$Sprite3.modulate = Color("#ffffff")
+			elif color == 3 or color == 4:
+				$Sprite3.modulate = Color("#00ff0a")
+
+func _on_Area2D_area_exited(area):
+	change_sprite_color(color)
+
+func _on_Area2D2_area_exited(area):
+	change_sprite_color(color)
+
+func _on_Area2D3_area_exited(area):
+	change_sprite_color(color)

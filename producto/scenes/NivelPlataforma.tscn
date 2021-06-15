@@ -1311,122 +1311,122 @@ radius = 30.8911
 height = 130.306
 
 [sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 58 )
+atlas = ExtResource( 60 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 58 )
+atlas = ExtResource( 60 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 58 )
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 58 )
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 58 )
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 58 )
+atlas = ExtResource( 60 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 59 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 59 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 59 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 59 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 59 )
-region = Rect2( 256, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 59 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 60 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 60 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 60 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 60 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=69]
-atlas = ExtResource( 60 )
-region = Rect2( 256, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=70]
-atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=71]
 atlas = ExtResource( 60 )
 region = Rect2( 384, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=72]
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 59 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 59 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 59 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 59 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 59 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 59 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=66]
 atlas = ExtResource( 61 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=73]
+[sub_resource type="AtlasTexture" id=67]
 atlas = ExtResource( 61 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=74]
+[sub_resource type="AtlasTexture" id=68]
 atlas = ExtResource( 61 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=75]
+[sub_resource type="AtlasTexture" id=69]
 atlas = ExtResource( 61 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=70]
 atlas = ExtResource( 61 )
 region = Rect2( 256, 0, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 58 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 58 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 58 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 58 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 58 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 58 )
+region = Rect2( 320, 0, 64, 64 )
+
 [sub_resource type="SpriteFrames" id=77]
 animations = [ {
-"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
-"loop": true,
-"name": "idle",
-"speed": 2.0
-}, {
-"frames": [ SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ) ],
-"loop": true,
-"name": "walk",
-"speed": 6.0
-}, {
-"frames": [ SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ) ],
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ) ],
+"loop": true,
+"name": "walk",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ) ],
 "loop": false,
 "name": "jump",
 "speed": 8.0
+}, {
+"frames": [ SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
 } ]
 
 [sub_resource type="GDScript" id=78]
@@ -1839,7 +1839,7 @@ z_as_relative = false
 normal = ExtResource( 62 )
 
 [node name="UpButton" type="TouchScreenButton" parent="Controles/Control"]
-position = Vector2( 933.942, 377 )
+position = Vector2( 914.942, 377 )
 rotation = 4.71239
 scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 62 )
@@ -1920,7 +1920,5 @@ color = Color( 0.666667, 0.713726, 0.882353, 1 )
 [connection signal="released" from="Controles/Control/RightButton" to="Robot" method="_on_RightButton_released"]
 [connection signal="pressed" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_pressed"]
 [connection signal="released" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_released"]
-[connection signal="pressed" from="Controles/Control/InventoryButton" to="Robot" method="_on_UpButton_pressed"]
-[connection signal="released" from="Controles/Control/InventoryButton" to="Robot" method="_on_UpButton_released"]
 [connection signal="body_entered" from="Area2D Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
 [connection signal="body_entered" from="Palanca" to="." method="_on_Palanca_body_entered"]

@@ -1,42 +1,46 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://producto/scenes/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://producto/scripts/NivelRitmico.gd" type="Script" id=2]
 [ext_resource path="res://producto/assets/img/Ritmo/Background.jpg" type="Texture" id=3]
 [ext_resource path="res://producto/assets/music/Oblivion.mp3" type="AudioStream" id=4]
 [ext_resource path="res://producto/assets/img/Ritmo/Note.png" type="Texture" id=5]
-[ext_resource path="res://producto/assets/img/backgrounds/Vintage Esquina.png" type="Texture" id=6]
+[ext_resource path="res://producto/assets/img/Ritmo/VintageEsquina.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 231.481
 height = 125.926
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10.0474, 161.111 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 211.162
+height = 143.204
 
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 207.361
+height = 144.919
+
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 38
-font_data = SubResource( 3 )
+font_data = SubResource( 4 )
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=6]
 font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
 
-[sub_resource type="DynamicFont" id=6]
-size = 36
-font_data = SubResource( 5 )
+[sub_resource type="DynamicFont" id=7]
+size = 38
+font_data = SubResource( 6 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
 modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
-position = Vector2( 377.54, 268.418 )
+position = Vector2( 640.13, 360.112 )
 scale = Vector2( 0.249447, 0.210193 )
 texture = ExtResource( 3 )
-offset = Vector2( 1052.69, 445.22 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
@@ -58,12 +62,11 @@ position = Vector2( 640, 608 )
 scale = Vector2( 0.18, 0.18 )
 texture = ExtResource( 5 )
 
-[node name="Area2D" type="Area2D" parent="Sprite2"]
+[node name="Area2D2" type="Area2D" parent="Sprite2"]
 visible = false
 scale = Vector2( 1.2, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Area2D"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Area2D2"]
 shape = SubResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="."]
@@ -72,67 +75,164 @@ position = Vector2( 840, 608 )
 scale = Vector2( 0.18, 0.18 )
 texture = ExtResource( 5 )
 
-[node name="Area2D" type="Area2D" parent="Sprite3"]
+[node name="Area2D3" type="Area2D" parent="Sprite3"]
 visible = false
 scale = Vector2( 1.2, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/Area2D"]
-visible = false
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/Area2D3"]
+shape = SubResource( 3 )
 
 [node name="Conductor" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 4 )
 bpm = 80
 
 [node name="Score" type="Label" parent="."]
-margin_left = 76.1587
-margin_top = 79.3195
-margin_right = 223.159
-margin_bottom = 134.32
-custom_fonts/font = SubResource( 4 )
+margin_left = 100.0
+margin_top = 360.0
+margin_right = 247.0
+margin_bottom = 415.0
+custom_fonts/font = SubResource( 5 )
 text = "Score:"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ComboMultiplicador" type="Label" parent="."]
+margin_left = 104.0
+margin_top = 400.0
+margin_right = 251.0
+margin_bottom = 455.0
+custom_fonts/font = SubResource( 5 )
+align = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score2" type="Label" parent="."]
-margin_left = 79.5118
-margin_top = 134.512
-margin_right = 216.512
-margin_bottom = 175.512
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 976.0
+margin_top = 360.0
+margin_right = 1191.0
+margin_bottom = 407.0
+custom_fonts/font = SubResource( 7 )
+text = "lets go!"
+align = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Esquina1" type="Sprite" parent="."]
-position = Vector2( 161.511, 241.989 )
-scale = Vector2( 0.373553, 0.377238 )
-texture = ExtResource( 6 )
-offset = Vector2( -224.5, -400.331 )
+[node name="ComboLabel" type="Label" parent="."]
+margin_left = 938.0
+margin_top = 400.0
+margin_right = 1231.0
+margin_bottom = 447.0
+custom_fonts/font = SubResource( 7 )
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Esquina2" type="Sprite" parent="."]
-position = Vector2( 1288.5, 234.438 )
-scale = Vector2( 0.373553, 0.377238 )
+[node name="Detalle_Vintage1" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = -32.0
+margin_top = 16.0
+margin_right = 417.0
+margin_bottom = 404.0
+rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
-offset = Vector2( -224.5, -400.331 )
-flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Esquina3" type="Sprite" parent="."]
-position = Vector2( 1288.5, 781.885 )
-scale = Vector2( 0.373553, 0.377238 )
+[node name="Detalle_Vintage2" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = 1264.0
+margin_top = -32.0
+margin_right = 1713.0
+margin_bottom = 356.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
-offset = Vector2( -224.5, -400.331 )
-flip_h = true
-flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Esquina4" type="Sprite" parent="."]
-position = Vector2( 163.399, 778.11 )
-scale = Vector2( 0.373553, 0.377238 )
+[node name="Detalle_Vintage3" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = 1312.0
+margin_top = 704.0
+margin_right = 1761.0
+margin_bottom = 1092.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
-offset = Vector2( -224.5, -400.331 )
-flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
+[node name="Detalle_Vintage4" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = 16.0
+margin_top = 752.0
+margin_right = 465.0
+margin_bottom = 1140.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 160, 192 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 1120, 192 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2( 160, 576 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+position = Vector2( 1120, 576 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[connection signal="area_exited" from="Sprite/Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="area_exited" from="Sprite2/Area2D2" to="." method="_on_Area2D2_area_exited"]
+[connection signal="area_exited" from="Sprite3/Area2D3" to="." method="_on_Area2D3_area_exited"]
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
