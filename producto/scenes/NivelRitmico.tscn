@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://producto/scenes/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://producto/scripts/NivelRitmico.gd" type="Script" id=2]
 [ext_resource path="res://producto/assets/img/Ritmo/Background.jpg" type="Texture" id=3]
 [ext_resource path="res://producto/assets/music/Oblivion.mp3" type="AudioStream" id=4]
 [ext_resource path="res://producto/assets/img/Ritmo/Note.png" type="Texture" id=5]
+[ext_resource path="res://producto/assets/img/backgrounds/Vintage Esquina.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 231.481
@@ -32,9 +33,10 @@ script = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
 modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
-position = Vector2( 640.13, 360.112 )
+position = Vector2( 377.54, 268.418 )
 scale = Vector2( 0.249447, 0.210193 )
 texture = ExtResource( 3 )
+offset = Vector2( 1052.69, 445.22 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
@@ -103,6 +105,34 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Esquina1" type="Sprite" parent="."]
+position = Vector2( 161.511, 241.989 )
+scale = Vector2( 0.373553, 0.377238 )
+texture = ExtResource( 6 )
+offset = Vector2( -224.5, -400.331 )
+
+[node name="Esquina2" type="Sprite" parent="."]
+position = Vector2( 1288.5, 234.438 )
+scale = Vector2( 0.373553, 0.377238 )
+texture = ExtResource( 6 )
+offset = Vector2( -224.5, -400.331 )
+flip_h = true
+
+[node name="Esquina3" type="Sprite" parent="."]
+position = Vector2( 1288.5, 781.885 )
+scale = Vector2( 0.373553, 0.377238 )
+texture = ExtResource( 6 )
+offset = Vector2( -224.5, -400.331 )
+flip_h = true
+flip_v = true
+
+[node name="Esquina4" type="Sprite" parent="."]
+position = Vector2( 163.399, 778.11 )
+scale = Vector2( 0.373553, 0.377238 )
+texture = ExtResource( 6 )
+offset = Vector2( -224.5, -400.331 )
+flip_v = true
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
