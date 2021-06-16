@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://producto/assets/img/Plataformas/d_rojo.png" type="Texture" id=1]
+[ext_resource path="res://producto/assets/img/Plataformas/Discos/d_rojo.png" type="Texture" id=1]
 [ext_resource path="res://producto/scripts/Discos.gd" type="Script" id=2]
+[ext_resource path="res://producto/assets/img/Plataformas/Discos/fil_top.png" type="Texture" id=3]
+[ext_resource path="res://producto/assets/img/Plataformas/Discos/fil_bot.png" type="Texture" id=4]
+[ext_resource path="res://producto/assets/img/Plataformas/Discos/d1_text.png" type="Texture" id=5]
+[ext_resource path="res://producto/assets/img/Plataformas/Discos/jugar.png" type="Texture" id=6]
+[ext_resource path="res://producto/assets/img/Plataformas/Discos/discoHover.tres" type="Animation" id=7]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Idle"
+resource_name = "disco"
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -20,22 +25,379 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 116.289
+[sub_resource type="Animation" id=2]
+resource_name = "Activo"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cartel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cartel/fil_bot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 3.41844 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("cartel/d1_text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 3.41846 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("cartel/fil_top:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 3.41846 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("cartel/jugar:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 3.41846 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("cartel/fil_top:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("cartel/jugar:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("cartel/d1_text:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("cartel/fil_bot:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("cartel/fil_bot:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("cartel/d1_text:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("cartel/fil_top:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("cartel/jugar:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Inactivo"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cartel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cartel/fil_bot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.176777 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 71.9899 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("cartel/d1_text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.170755 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 107.704 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("cartel/fil_top:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.125 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 186.276 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("cartel/jugar:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.164939 ),
+"update": 0,
+"values": [ Vector2( -35.5817, 23.4185 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("cartel/fil_top:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("cartel/jugar:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("cartel/d1_text:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("cartel/fil_bot:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("cartel/fil_bot:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("cartel/d1_text:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("cartel/fil_top:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("cartel/jugar:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 265.611, 254.848 )
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 2 )
 
+[node name="cartel" type="Sprite" parent="."]
+position = Vector2( 28.7288, -142.492 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="fil_bot" type="Sprite" parent="cartel"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -35.5817, 71.9899 )
+texture = ExtResource( 4 )
+
+[node name="d1_text" type="Sprite" parent="cartel"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -35.5817, 107.704 )
+texture = ExtResource( 5 )
+
+[node name="fil_top" type="Sprite" parent="cartel"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -35.5817, 186.276 )
+texture = ExtResource( 3 )
+
+[node name="jugar" type="Sprite" parent="cartel"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -35.5817, 23.4185 )
+texture = ExtResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 hframes = 4
 frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationDisco" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Idle = SubResource( 1 )
+anims/disco = SubResource( 1 )
+
+[node name="AnimationCartel" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Activo = SubResource( 2 )
+anims/Hover = ExtResource( 7 )
+anims/Inactivo = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 2 )
+position = Vector2( 2.37842, -122.488 )
+scale = Vector2( 1.25586, 0.673868 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Area2D_body_exited"]
+[connection signal="animation_finished" from="AnimationCartel" to="." method="_on_AnimationCartel_animation_finished"]

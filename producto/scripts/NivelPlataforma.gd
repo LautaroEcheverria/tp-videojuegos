@@ -81,8 +81,12 @@ func _in_state_idle_process():
 		mystate = State.JUMP
 		
 func _in_state_walk_process(delta):
-	if $CollisionSprite/Sprite.animation !="walk":
-		$CollisionSprite/Sprite.play("walk")
+	if contadorDiscos <1 :
+		if $CollisionSprite/Sprite.animation !="walk":
+			$CollisionSprite/Sprite.play("walk")
+	else:
+		if $CollisionSprite/Sprite.animation !="run":
+			$CollisionSprite/Sprite.play("run")
 	if is_on_floor():
 		velocity.x = 0
 		if Input.is_action_pressed("ui_right") or touch_right:
@@ -161,3 +165,17 @@ func save():
 	
 func new_checkpoint(): # Funcion para guardar cuando aumente contadorDiscos
 	saveGame = false
+
+
+
+# Funcion para cambiar los colores
+func color():
+	if contadorDiscos == 1: # activo colores azules
+		print("azul")
+	elif contadorDiscos == 2: #activo colores rojos
+		print("rojo")
+	elif contadorDiscos == 3: #activo colores verdes
+		print("verde")
+	elif contadorDiscos == 4: #full color
+		print("full color")	
+		
