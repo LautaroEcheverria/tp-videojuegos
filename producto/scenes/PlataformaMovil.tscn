@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://producto/scripts/PlataformaMovil.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 112.346, 11.2672 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Plataforma" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionPlataforma" type="CollisionShape2D" parent="Plataforma"]
+position = Vector2( 407.898, 246.166 )
+shape = SubResource( 1 )
+
+[node name="SpritePlataforma" type="Sprite" parent="Plataforma/CollisionPlataforma"]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="Button"]
+margin_left = 186.0
+margin_top = 183.0
+margin_right = 262.0
+margin_bottom = 223.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="Button" to="Plataforma" method="_on_Button_button_down"]
+[connection signal="button_up" from="Button" to="Plataforma" method="_on_Button_button_up"]
