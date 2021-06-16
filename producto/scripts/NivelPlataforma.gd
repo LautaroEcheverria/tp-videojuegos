@@ -81,7 +81,7 @@ func _in_state_idle_process():
 		mystate = State.JUMP
 		
 func _in_state_walk_process(delta):
-	if contadorDiscos <1 :
+	if contadorDiscos < 1 :
 		if $CollisionSprite/Sprite.animation !="walk":
 			$CollisionSprite/Sprite.play("walk")
 	else:
@@ -163,10 +163,9 @@ func save():
 	}
 	return save_dict
 	
-func new_checkpoint(): # Funcion para guardar cuando aumente contadorDiscos
+# Funcion para guardar cuando aumente contadorDiscos
+func new_checkpoint(): 
 	saveGame = false
-
-
 
 # Funcion para cambiar los colores
 func color():

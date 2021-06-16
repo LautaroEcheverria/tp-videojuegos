@@ -1,6 +1,5 @@
 extends Area2D
 
-
 export var nroDisco = 0
 
 var disco1 = preload("res://producto/assets/img/Plataformas/Discos/d_azul.png")
@@ -18,7 +17,6 @@ func _ready():
 func _physics_process(delta):
 	$AnimationDisco.play("disco")	
 
-
 func _on_Area2D_body_entered(body):
 	if body.name == "Robot":
 		print("entra robot")
@@ -29,13 +27,11 @@ func _on_Area2D_body_entered(body):
 		#get_parent().remove_child(self) # elimina disco de la escena
 		print(body.contadorDiscos)
 
-
 func _on_Area2D_body_exited(body):
 	if body.name == "Robot":
 		print("sale robot")
 		$AnimationCartel.rename_animation("Hover","Hover_inv")
 		$AnimationCartel.play("Hover_inv",1,-2,true)	
-
 
 func _on_AnimationCartel_animation_finished(anim_name):
 	if anim_name == "Hover":
@@ -43,8 +39,6 @@ func _on_AnimationCartel_animation_finished(anim_name):
 	elif anim_name == "Hover_inv":
 		$AnimationCartel.rename_animation("Hover_inv","Hover")
 		$AnimationCartel.play("Inactivo")	
-		
-
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://producto/scenes/NivelRitmico.tscn")

@@ -25,7 +25,7 @@ var lane = 0
 var rand = 0
 var instance
 export var speed = 3
-export var color = 3
+export var color = 4
 
 func _ready():
 	# Posicion ventana reproduccion
@@ -35,6 +35,14 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
+	if color == 1:
+		$Conductor.stream = load("res://producto/assets/music/Oblivion.mp3")
+	elif color == 2:
+		$Conductor.stream = load("res://producto/assets/music/Violentango.mp3")
+	elif color == 3:
+		$Conductor.stream = load("res://producto/assets/music/Libertango.mp3")
+	elif color == 4:
+		$Conductor.stream = load("res://producto/assets/music/Adios_Nonino.mp3")
 	$Conductor.play_with_beat_offset(2)
 	change_sprite_color(color)
 	
@@ -206,14 +214,14 @@ func change_sprite_color(value):
 func _button_entered(value,pos_x):
 	if value:
 		if pos_x == 440:
-			if color == 1 or color == 2:
+			if color == 1 or color == 2 or color == 4:
 				$Sprite.modulate = Color("#ffffff")
-			elif color == 3 or color == 4:
+			elif color == 3:
 				$Sprite.modulate = Color("#00ff0a") 
 		elif pos_x == 640:
-			if color == 1 or color == 2:
+			if color == 1 or color == 2 or color == 4:
 				$Sprite2.modulate = Color("#ffffff")
-			elif color == 3 or color == 4:
+			elif color == 3:
 				$Sprite2.modulate = Color("#00ff0a") 
 		elif pos_x == 840:
 			if color == 1 or color == 2:
