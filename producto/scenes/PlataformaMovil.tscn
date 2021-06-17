@@ -1,36 +1,74 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://producto/assets/img/Plataformas/Objects/Obj-Moving-Platform-Idle-48x28.png" type="Texture" id=1]
 [ext_resource path="res://producto/scripts/PlataformaMovil.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 112.346, 11.2672 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 72.5498, 10 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 56, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 28, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 28, 48, 28 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Move_right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "Move_left",
+"speed": 5.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Plataforma" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="CollisionPlataforma" type="CollisionShape2D" parent="Plataforma"]
-position = Vector2( 407.898, 246.166 )
-shape = SubResource( 1 )
+[node name="ColisionPlataforma" type="CollisionShape2D" parent="Plataforma"]
+position = Vector2( 409.087, 173.624 )
+shape = SubResource( 8 )
 
-[node name="SpritePlataforma" type="Sprite" parent="Plataforma/CollisionPlataforma"]
+[node name="SpritePlataforma" type="AnimatedSprite" parent="Plataforma/ColisionPlataforma"]
+position = Vector2( 0, 2.37842 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 7 )
+animation = "Idle"
 
 [node name="Button" type="Button" parent="."]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_left = 32.2978
+margin_top = 25.2398
+margin_right = 387.298
+margin_bottom = 143.24
+rect_scale = Vector2( 0.33, 0.33 )
+text = "Boton"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckButton" type="CheckButton" parent="Button"]
-margin_left = 186.0
-margin_top = 183.0
-margin_right = 262.0
-margin_bottom = 223.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="button_down" from="Button" to="Plataforma" method="_on_Button_button_down"]
-[connection signal="button_up" from="Button" to="Plataforma" method="_on_Button_button_up"]
+[connection signal="pressed" from="Button" to="Plataforma" method="_on_Button_pressed"]

@@ -14,7 +14,7 @@ enum State{
 }
 
 func _ready():
-	original_position_x = $CollisionPlataforma/SpritePlataforma.position.x
+	original_position_x = $ColisionPlataforma.position.x
 	direccion = 1
 
 func _physics_process(delta):
@@ -24,36 +24,29 @@ func _physics_process(delta):
 		_in_state_move_process(delta)
 
 func _in_state_idle_process():
-	""" Buscar srite, modificar la animación
-	if $CollisionPlataforma/SpritePlataforma != "idle":
-		$CollisionPlataforma/SpritePlataforma.play("idle")
-	"""
+	if $ColisionPlataforma/SpritePlataforma.animation != "Idle":
+		$ColisionPlataforma/SpritePlataforma.play("Idle")
 	if activo == true:
 		myState = State.MOVE
 
 func _in_state_move_process(delta):
-	""" Buscar srite, modificar la animación
-	if $CollisionPlataforma/SpritePlataforma != "move":
-		$CollisionPlataforma/SpritePlataforma.play("move")
-	"""
 	if activo == true:
-		if original_position_x + 20 >= $CollisionPlataforma/SpritePlataforma.position.x && direccion ==1:
+		if original_position_x + 200 >= $CollisionPlataforma.position.x && direccion ==1:
 			velocity.x =  move_speed
+			if $SpritePlataforma.animation != "Move_right":
+				$SpritePlataforma.play("Move_right")
 		else:
 			direccion == -1
-		if original_position_x - 20 < $CollisionPlataforma/SpritePlataforma.position.x && direccion ==-1: 
+		if original_position_x - 200 < $CollisionPlataforma.position.x && direccion ==-1: 
 			velocity.x =  -move_speed
+			if $SpritePlataforma.animation != "Move_left":
+				$SpritePlataforma.play("Move_left")
 		else:
 			direccion == 1
 	else:
 		myState = State.IDLE
-	move_and_slide(velocity, Vector2(0, 0))
+	move_and_slide(velocity, Vector2(0, -1))
 
-func _change_activo_value(valor):
-	activo = valor
-
-func _on_Button_button_down():
-	_change_activo_value(true)
-
-func _on_Button_button_up():
-	_change_activo_value(false)
+func _on_Button_pressed():	
+	activo = !activo
+	print("hola")
