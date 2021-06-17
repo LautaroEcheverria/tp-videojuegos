@@ -1,6 +1,7 @@
 extends Node
 
-export var contadorDiscos = 1
+export var contadorDiscos = 0
+var speedNivelRitmico
 
 func _ready():
 	pass
@@ -42,6 +43,9 @@ func addDisco():
 	
 func getDisco():
 	return contadorDiscos
-
-func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
-	pass # Replace with function body.
+	
+func set_speed_nivel_ritmico(value):
+	speedNivelRitmico = value
+	
+func get_speed_nivel_ritmico():
+	return speedNivelRitmico

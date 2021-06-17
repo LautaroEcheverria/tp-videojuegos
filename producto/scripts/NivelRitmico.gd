@@ -25,7 +25,7 @@ var note = load("res://producto/scenes/Note.tscn")
 var lane = 0
 var rand = 0
 var instance
-export var speed = 3
+var speed
 var nivel
 
 func _ready():
@@ -36,8 +36,10 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
-	nivel = GameHandler.getDisco()
-	#nivel = 1
+	
+	nivel = 1
+	#nivel = GameHandler.getDisco()
+	speed = GameHandler.get_speed_nivel_ritmico()
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")

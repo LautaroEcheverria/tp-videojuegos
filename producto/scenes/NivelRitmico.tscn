@@ -232,11 +232,11 @@ initial_velocity = 120.0
 color = Color( 1, 0, 0.913725, 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 6.0
 one_shot = true
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 one_shot = true
 
 [node name="GameOver" type="VBoxContainer" parent="."]
