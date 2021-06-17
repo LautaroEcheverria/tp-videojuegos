@@ -11,7 +11,7 @@ enum State {
 
 const GRAVITY = 800
 var WALK_SPEED = 150
-var JUMP_SPEED = -550
+var JUMP_SPEED = -600
 
 var mystate = State.IDLE
 var velocity = Vector2()
@@ -185,3 +185,11 @@ func color():
 		get_parent().get_node("Verde/plataformas").material.set_shader_param ("byn",1)
 	if contadorDiscos >= 4: #full color
 		print("full color")	
+
+
+func _on_Trampolines_body_entered(body):
+	JUMP_SPEED = -600 * 2
+	
+
+func _on_Trampolines_body_exited(body):
+	JUMP_SPEED = -600

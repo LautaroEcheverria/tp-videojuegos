@@ -1,6 +1,6 @@
 extends Node
 
-export var contadorDiscos = 0
+export var contadorDiscos = 1
 
 func _ready():
 	pass
@@ -42,3 +42,6 @@ func addDisco():
 	
 func getDisco():
 	return contadorDiscos
+
+func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
+	pass # Replace with function body.
