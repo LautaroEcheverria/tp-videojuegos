@@ -8,9 +8,9 @@ const LEFT_LANE_SPAWN = Vector2(440, SPAWN_Y)
 const CENTRE_LANE_SPAWN = Vector2(640, SPAWN_Y)
 const RIGHT_LANE_SPAWN = Vector2(840, SPAWN_Y)
 
-const SPEED_LEVEL_1 = 100
-const SPEED_LEVEL_2 = 125
-const SPEED_LEVEL_3 = 150
+const SPEED_LEVEL_1 = 150
+const SPEED_LEVEL_2 = 200
+const SPEED_LEVEL_3 = 250
 
 var speed = SPEED_LEVEL_2
 var score = 0

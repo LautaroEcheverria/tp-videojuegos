@@ -2,11 +2,12 @@ extends Node2D
 
 var score = 0
 var combo = 0
+var maxCombo = -9999
 
-var ok = 0
-var good = 0
-var perfect = 0
-var missed = 0
+var bien = 0
+var muyBien = 0
+var excelente = 0
+var fallada = 0
 
 var bpm = 112
 
@@ -25,10 +26,9 @@ var lane = 0
 var rand = 0
 var instance
 export var speed = 3
-export var nivel = 4
+var nivel
 
 func _ready():
-	nivel = GameHandler.getDisco()
 	# Posicion ventana reproduccion
 	var screen_size = OS.get_screen_size(OS.get_current_screen())
 	var window_size = OS.get_window_size()
@@ -36,24 +36,30 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
+	nivel = GameHandler.getDisco()
+	#nivel = 1
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
+		$NombreCancion.text = "Oblivion - Astor Piazzolla (Nivel 1)"
 	elif nivel == 2:
 		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
+		$NombreCancion.text = "Violentango - Astor Piazzolla (Nivel 2)"
 	elif nivel == 3:
 		$Conductor.stream = load("res://producto/assets/music/3_libertango.mp3")
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
+		$NombreCancion.text = "Libertango - Astor Piazzolla (Nivel 3)"
 	elif nivel == 4:
 		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
+		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
 	$Conductor.play_with_beat_offset(2)
 	change_sprite_color(nivel)
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
-		get_tree().change_scene("res://producto/scenes/NivelPlataforma.tscn")
+		PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
 		
 func _on_Conductor_measure(position):
 	if position == 1:
@@ -124,8 +130,6 @@ func _on_Conductor_beat(position):
 		spawn_4_beat = 0
 	if song_position_in_beats > 404:
 		pass
-	#	Pantalla finalización y volver a plataforma
-	# 	Mostrar variables ok, good, perfect, score total
 
 func _spawn_notes(to_spawn):
 	if to_spawn > 0:
@@ -136,55 +140,56 @@ func _spawn_notes(to_spawn):
 		instance.set_color(nivel,lane)
 		add_child(instance)
 
+func get_score():
+	return score
+
 func set_score(value):
 	if value == 0:
-		missed += 1
-		$Score2.text = "..MISSED.."
+		fallada += 1
+		$Score2.text = "..FALLADA.."
 		$Score2.modulate = Color.red
 		combo = 0
 	if value == 1:
-		ok += 1
-		$Score2.text = "..OK.."
+		bien += 1
+		$Score2.text = "..BIEN.."
 		$Score2.modulate = Color.yellow
 		combo = 0
 	elif value == 2:
-		good += 1
-		$Score2.text = "..GOOD.."
+		muyBien += 1
+		$Score2.text = "..MUY BIEN.."
 		$Score2.modulate = Color.orange
 		combo = 0
 	elif value == 3:
-		perfect += 1
-		$Score2.text = "..PERFECT!.."
+		excelente += 1
+		$Score2.text = "..EXCELENTE!.."
 		$Score2.modulate = Color.green
 		combo += 1
 	if combo >= 10:
 		score += value*4
-		$Score.text = "Score: " + str(score)
-		$ComboLabel.text = "Tango master!"
+		$Score.text = "Puntaje: " + str(score)
+		$ComboLabel.text = "Rey del Tango!"
 		$ComboMultiplicador.text = "(x4)"
-		$CPUParticles2D.amount *= 1.7
-		$CPUParticles2D2.amount *= 1.7
-		$CPUParticles2D3.amount *= 1.7
-		$CPUParticles2D4.amount *= 1.7
 	elif combo >= 5 and combo < 10:
 		score += value*2
-		$Score.text = "Score: " + str(score)
+		$Score.text = "Puntaje: " + str(score)
 		$CPUParticles2D.emitting = true
 		$CPUParticles2D2.emitting = true
 		$CPUParticles2D3.emitting = true
 		$CPUParticles2D4.emitting = true
-		$ComboLabel.text = "Combo time!"
+		$ComboLabel.text = "Hora Combo!"
 		$ComboMultiplicador.text = "(x2)"
 	else:
 		score += value
 		if score != 0:
-			$Score.text = "Score: " + str(score)
+			$Score.text = "Puntaje: " + str(score)
 		$CPUParticles2D.emitting = false
 		$CPUParticles2D2.emitting = false
 		$CPUParticles2D3.emitting = false
 		$CPUParticles2D4.emitting = false
 		$ComboLabel.text = ""
 		$ComboMultiplicador.text = ""
+	if combo > maxCombo:
+		maxCombo = combo
 
 func change_sprite_color(value):
 	if value == 1:
@@ -243,7 +248,36 @@ func _on_Area2D2_area_exited(area):
 func _on_Area2D3_area_exited(area):
 	change_sprite_color(nivel)
 
-
+# Fin del nivel
 func _on_Conductor_finished():
-	#Fin del nivel
+	$Timer.start()
+
+# Espera 5 seg hasta terminar
+func _on_Timer_timeout():
+	$Score.visible = false
+	$Score2.visible = false
+	$ComboLabel.visible = false
+	$ComboMultiplicador.visible = false
+	$CPUParticles2D.emitting = false
+	$CPUParticles2D2.emitting = false
+	$CPUParticles2D3.emitting = false
+	$CPUParticles2D4.emitting = false
+	$Sprite.visible = false
+	$Sprite2.visible = false
+	$Sprite3.visible = false
+	$GameOver/Ok.modulate = Color.yellow
+	$GameOver/Good.modulate = Color.orange
+	$GameOver/Perfect.modulate = Color.green
+	$GameOver/Missed.modulate = Color.red
+	$GameOver/ScoreTotal.text += str(score)
+	$GameOver/Ok.text += str(bien)
+	$GameOver/Good.text += str(muyBien)
+	$GameOver/Perfect.text += str(excelente)
+	$GameOver/Missed.text += str(fallada)
+	$GameOver/MaxCombo.text += str(maxCombo)
+	$GameOver.visible = true
+	$NombreCancion.visible = true
+	$Timer2.start()
+
+func _on_Timer2_timeout():
 	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
