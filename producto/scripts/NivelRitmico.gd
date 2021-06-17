@@ -28,6 +28,7 @@ export var speed = 3
 export var nivel = 4
 
 func _ready():
+	nivel = GameHandler.getDisco()
 	# Posicion ventana reproduccion
 	var screen_size = OS.get_screen_size(OS.get_current_screen())
 	var window_size = OS.get_window_size()
@@ -37,12 +38,16 @@ func _ready():
 	randomize()
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 	elif nivel == 2:
 		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 	elif nivel == 3:
 		$Conductor.stream = load("res://producto/assets/music/3_libertango.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 	elif nivel == 4:
 		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 	$Conductor.play_with_beat_offset(2)
 	change_sprite_color(nivel)
 	
@@ -237,3 +242,8 @@ func _on_Area2D2_area_exited(area):
 
 func _on_Area2D3_area_exited(area):
 	change_sprite_color(nivel)
+
+
+func _on_Conductor_finished():
+	#Fin del nivel
+	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")

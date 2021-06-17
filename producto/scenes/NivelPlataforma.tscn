@@ -73,7 +73,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="CapsuleShape2D" id=2]
 height = 45.4681
@@ -89,15 +89,15 @@ shader_param/detail = 1.0
 shader_param/distortion = null
 shader_param/heightOffset = null
 shader_param/offset = 0.0
-shader_param/color_activado = 0
+shader_param/byn = 0
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=102]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 88, 0, 87.9127, 40, 76.2843, 34.6159, 76.1228, 29.6092, 61.5873, 24.6026, 48.6669, 22.6645, 43.0142, 26.8636, 29.6092, 26.8636, 22.6645, 31.5473, 9.42104, 26.7021, 9.09803, 23.6335, 6.35243, 25.2486, 0, 25.7331 )
@@ -1227,7 +1227,7 @@ polygon = PoolVector2Array( 294.011, 169.26, 265.082, 168.548, 265.019, 191.887,
 
 [sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=54]
 points = PoolVector2Array( 24, 24, 0, 24, 0, 0, 24, 0 )
@@ -1285,7 +1285,7 @@ points = PoolVector2Array( 24, 24, 0, 24, 0, 0, 24, 0 )
 
 [sub_resource type="ShaderMaterial" id=56]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="CapsuleShape2D" id=57]
 radius = 30.8911
@@ -1316,76 +1316,76 @@ atlas = ExtResource( 58 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=69]
-atlas = ExtResource( 60 )
-region = Rect2( 0, 0, 64, 64 )
+atlas = ExtResource( 59 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=70]
 atlas = ExtResource( 60 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=71]
 atlas = ExtResource( 60 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=72]
 atlas = ExtResource( 60 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=73]
 atlas = ExtResource( 60 )
-region = Rect2( 256, 0, 64, 64 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=74]
 atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=75]
 atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=76]
-atlas = ExtResource( 59 )
-region = Rect2( 0, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=77]
-atlas = ExtResource( 59 )
-region = Rect2( 64, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=78]
-atlas = ExtResource( 59 )
-region = Rect2( 128, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=79]
-atlas = ExtResource( 59 )
-region = Rect2( 192, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 59 )
-region = Rect2( 256, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=81]
-atlas = ExtResource( 59 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=82]
 animations = [ {
@@ -1394,20 +1394,20 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
+"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ) ],
+"loop": true,
+"name": "walk",
+"speed": 6.0
 }, {
-"frames": [ SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ) ],
+"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
-"loop": true,
-"name": "walk",
-"speed": 6.0
+"frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
 } ]
 
 [sub_resource type="GDScript" id=83]
@@ -1481,11 +1481,11 @@ shader = SubResource( 88 )
 
 [sub_resource type="ShaderMaterial" id=90]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="ShaderMaterial" id=91]
 shader = ExtResource( 70 )
-shader_param/color_activado = 0
+shader_param/byn = 0
 
 [sub_resource type="TileSet" id=92]
 0/name = "Tile-03.png 0"
@@ -1568,7 +1568,8 @@ format = 1
 tile_data = PoolIntArray( 524285, 8, 0, 524287, 536870916, 0, 458757, 7, 0, 458770, 9, 0, 458772, 4, 0, 458774, 536870921, 0, 458775, 8, 0, 458776, 9, 0, 458782, 536870916, 0, 1507377, 6, 0 )
 
 [node name="plataformas" type="TileMap" parent="Verde"]
-material = SubResource( 4 )
+visible = false
+material = SubResource( 102 )
 z_index = 1
 tile_set = ExtResource( 63 )
 cell_size = Vector2( 24, 24 )
@@ -1908,6 +1909,7 @@ z_as_relative = false
 
 [node name="Disco2" parent="." instance=ExtResource( 54 )]
 position = Vector2( 8134.08, 47.9407 )
+nroDisco = 1
 
 [node name="Disco3" parent="." instance=ExtResource( 54 )]
 position = Vector2( 4636.97, 3798.98 )
@@ -1929,8 +1931,8 @@ position = Vector2( 8590.11, -624.719 )
 shape = SubResource( 101 )
 
 [connection signal="body_entered" from="Rojo" to="." method="_on_Palanca_body_entered"]
-[connection signal="settings_changed" from="Sombra Secretos" to="Zonas Secretas" method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="settings_changed" from="Sombra Secretos" to="." method="_on_Sombra_Secretos_settings_changed"]
+[connection signal="settings_changed" from="Sombra Secretos" to="Zonas Secretas" method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="body_entered" from="Zonas Secretas" to="Zonas Secretas" method="_on_Area2D_body_entered"]
 [connection signal="pressed" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_pressed"]
 [connection signal="released" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_released"]

@@ -36,6 +36,7 @@ func _ready():
 	var centered_pos = (screen_size - window_size) / 2
 	OS.set_window_position(centered_pos)
 	GameHandler.load_game()
+	cambiarEstado()
 
 func _physics_process(delta):
 	
@@ -64,13 +65,6 @@ func _physics_process(delta):
 		GameHandler.save_game()
 		saveGame = true
 		print("Partida guardada")
-		
-	# Juego ritmico
-	"""
-	if contadorDiscos == 1 and !changedScene:
-		PantallaFade.change_scene("res://producto/scenes/PantallaTransicion.tscn")
-		changedScene = true
-	"""
 	
 func _in_state_idle_process():
 	if $CollisionSprite/Sprite.animation != "idle":
@@ -167,14 +161,27 @@ func save():
 func new_checkpoint(): 
 	saveGame = false
 
+
+func cambiarEstado():
+	contadorDiscos = GameHandler.getDisco()
+	color()
+	
 # Funcion para cambiar los colores
 func color():
-	if contadorDiscos == 1: # activo colores azules
+	if contadorDiscos >= 1: # activo colores azules
 		print("azul")
-	elif contadorDiscos == 2: #activo colores rojos
+		get_parent().get_node("Azul").material.set_shader_param ("byn",1)
+		get_parent().get_node("Sombra Secretos").material.set_shader_param ("byn",1)
+		get_parent().get_node("Parallax frente/frente").material.set_shader_param ("byn",1)
+		get_parent().get_node("Parallax camino/camino").material.set_shader_param ("byn",1)
+		material.set_shader_param ("byn",1)
+	if contadorDiscos >= 2: #activo colores rojos
 		print("rojo")
-	elif contadorDiscos == 3: #activo colores verdes
+		get_parent().get_node("Rojo").material.set_shader_param ("byn",1)
+	if contadorDiscos >= 3: #activo colores verdes
 		print("verde")
-	elif contadorDiscos == 4: #full color
+		get_parent().get_node("Verde/arbustos").material.set_shader_param ("byn",1)
+		get_parent().get_node("Verde/plataformas").visible = true
+		get_parent().get_node("Verde/plataformas").material.set_shader_param ("byn",1)
+	if contadorDiscos >= 4: #full color
 		print("full color")	
-		

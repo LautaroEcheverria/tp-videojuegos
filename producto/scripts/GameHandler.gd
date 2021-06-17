@@ -1,5 +1,7 @@
 extends Node
 
+export var contadorDiscos = 0
+
 func _ready():
 	pass
 
@@ -26,7 +28,6 @@ func load_game():
 			if i == "filename" or i == "parent":
 				continue
 			new_object.set(i, node_data[i])
-	print(true)
 	save_game.close()
 
 func _on_Area2D_Game_Over_body_entered(body):
@@ -35,5 +36,9 @@ func _on_Area2D_Game_Over_body_entered(body):
 func _on_Palanca_body_entered(body):
 	if $Robot.contadorDiscos == 2:
 		$"Sombra Secretos".visible = false
-		
 
+func addDisco():
+	contadorDiscos+=1
+	
+func getDisco():
+	return contadorDiscos

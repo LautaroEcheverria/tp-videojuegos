@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/d_rojo.png" type="Texture" id=1]
 [ext_resource path="res://producto/scripts/Discos.gd" type="Script" id=2]
@@ -350,6 +350,9 @@ tracks/12/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 265.611, 254.848 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 200, 100 )
+
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 2 )
 
@@ -398,6 +401,11 @@ position = Vector2( 2.37842, -122.488 )
 scale = Vector2( 1.25586, 0.673868 )
 shape = SubResource( 4 )
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( -197.145, -245.421 )
+shape = SubResource( 5 )
+
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Area2D_body_exited"]
 [connection signal="animation_finished" from="AnimationCartel" to="." method="_on_AnimationCartel_animation_finished"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
