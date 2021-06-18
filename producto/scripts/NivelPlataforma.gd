@@ -188,9 +188,9 @@ func color():
 
 
 func _on_Trampolines_body_entered(body):
-	if contadorDiscos >= 3
+	if contadorDiscos >= 3:
 		JUMP_SPEED = -600 * 2
-	else 
+	else: 
 		JUMP_SPEED = -600
 
 func _on_Trampolines_body_exited(body):
