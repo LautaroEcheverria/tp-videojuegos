@@ -35,11 +35,10 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 17.5266
-margin_top = 4.77875
-margin_right = 433.527
-margin_bottom = 193.779
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 145.976
+margin_top = -13.9865
+margin_right = 561.976
+margin_bottom = 175.014
 custom_constants/separation = 18
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,29 +46,29 @@ __meta__ = {
 
 [node name="Jugar" type="Button" parent="CanvasLayer/VBoxContainer"]
 margin_right = 416.0
-margin_bottom = 69.0
+margin_bottom = 57.0
 custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.101961, 0.12549, 0.168627, 1 )
-custom_colors/font_color_hover = Color( 0.337255, 0.341176, 0.352941, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.0705882, 0.105882, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.12549, 0.168627, 1 )
 action_mode = 0
-text = "Jugar"
+text = "~continuar~"
 flat = true
 
-[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 87.0
+[node name="Nueva Partida" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 75.0
 margin_right = 416.0
-margin_bottom = 156.0
+margin_bottom = 132.0
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.101961, 0.12549, 0.168627, 1 )
-custom_colors/font_color_hover = Color( 0.337255, 0.341176, 0.352941, 1 )
+custom_colors/font_color_hover = Color( 0.0509804, 0.0705882, 0.105882, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.12549, 0.168627, 1 )
 action_mode = 0
-text = "Salir"
+text = "~nueva partida~"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,4 +80,4 @@ volume_db = -10.0
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_Jugar_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_Salir_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Nueva Partida" to="." method="_on_NuevaPartida_pressed"]

@@ -35,8 +35,12 @@ func _ready():
 	var window_size = OS.get_window_size()
 	var centered_pos = (screen_size - window_size) / 2
 	OS.set_window_position(centered_pos)
-	GameHandler.load_game()
 	cambiarEstado()
+	if contadorDiscos >= 1:
+		GameHandler.load_game()
+		position.x = GameHandler.player_data.pos_x
+		position.y = GameHandler.player_data.pos_y
+		print("Partida cargada")
 
 func _physics_process(delta):
 	
@@ -96,6 +100,7 @@ func _in_state_walk_process(delta):
 			return
 	else:
 		velocity.y += delta * GRAVITY
+		$CollisionSprite/Sprite.play("jump",true)
 	move_and_slide(velocity, Vector2(0, -1))
 	
 func _in_state_jump_process(delta):
@@ -149,19 +154,6 @@ func _on_UpButton_pressed():
 func _on_UpButton_released():
 	touch_up = false
 
-func save():
-	var save_dict = {
-		"filename" : get_owner().get_filename(),
-		"parent" : get_parent().get_path(),
-		"contadorDiscos" : contadorDiscos
-	}
-	return save_dict
-	
-# Funcion para guardar cuando aumente contadorDiscos
-func new_checkpoint(): 
-	saveGame = false
-
-
 func cambiarEstado():
 	contadorDiscos = GameHandler.getDisco()
 	color()
@@ -175,23 +167,35 @@ func color():
 		get_parent().get_node("Parallax frente/frente").material.set_shader_param ("byn",1)
 		get_parent().get_node("Parallax camino/camino").material.set_shader_param ("byn",1)
 		material.set_shader_param ("byn",1)
+		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/2_cielo.jpg")
+		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/2_mont.png")
+		$Camara/filtro/ColorRect.color = Color("145865ad")
 	if contadorDiscos >= 2: #activo colores rojos
 		print("rojo")
 		get_parent().get_node("Rojo").material.set_shader_param ("byn",1)
+		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/3_cielo.jpg")
+		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/3_mont.png")
+		$Camara/filtro/ColorRect.color = Color("14ad5858")
 	if contadorDiscos >= 3: #activo colores verdes
 		print("verde")
 		get_parent().get_node("Verde/arbustos").material.set_shader_param ("byn",1)
 		get_parent().get_node("Verde/plataformas").visible = true
 		get_parent().get_node("Verde/plataformas").material.set_shader_param ("byn",1)
+		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/4_cielo.jpg")
+		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/4_mont.png")
+		$Camara/filtro/ColorRect.color = Color("1458ad83")
 	if contadorDiscos >= 4: #full color
 		print("full color")	
-
+		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/4_cielo.jpg")
+		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/4_mont.png")
+		$Camara/filtro/ColorRect.color = Color("00ffffff")
 
 func _on_Trampolines_body_entered(body):
 	if contadorDiscos >= 3:
 		JUMP_SPEED = -600 * 2
-	else: 
+	else :
 		JUMP_SPEED = -600
 
 func _on_Trampolines_body_exited(body):
 	JUMP_SPEED = -600
+

@@ -18,7 +18,7 @@ func _ready():
 func _physics_process(delta):
 	$AnimationDisco.play("disco")	
 	if GameHandler.getDisco() > nroDisco:
-		get_parent().remove_child(self) 
+		get_parent().remove_child(self)
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Robot":
@@ -40,4 +40,4 @@ func _on_AnimationCartel_animation_finished(anim_name):
 func _on_TouchScreenButton_pressed():
 	GameHandler.addDisco()
 	get_parent().get_node("Robot").cambiarEstado()
-	PantallaFade.change_scene("res://producto/scenes/NivelRitmico.tscn")
+	PantallaFade.change_scene("res://producto/scenes/NivelRitmicoInicio.tscn")

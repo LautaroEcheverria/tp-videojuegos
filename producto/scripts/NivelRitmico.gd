@@ -2,7 +2,7 @@ extends Node2D
 
 var score = 0
 var combo = 0
-var maxCombo = -9999
+var maxCombo = 0
 
 var bien = 0
 var muyBien = 0
@@ -28,6 +28,8 @@ var instance
 var speed
 var nivel
 
+var gameOverScreen = false
+
 func _ready():
 	# Posicion ventana reproduccion
 	var screen_size = OS.get_screen_size(OS.get_current_screen())
@@ -36,9 +38,8 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
-	
-	nivel = 1
-	#nivel = GameHandler.getDisco()
+	#nivel = 1
+	nivel = GameHandler.getDisco()
 	speed = GameHandler.get_speed_nivel_ritmico()
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
@@ -61,6 +62,8 @@ func _ready():
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
+		PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
+	if event.is_action("mouse") and gameOverScreen:
 		PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
 		
 func _on_Conductor_measure(position):
@@ -190,7 +193,7 @@ func set_score(value):
 		$CPUParticles2D4.emitting = false
 		$ComboLabel.text = ""
 		$ComboMultiplicador.text = ""
-	if combo > maxCombo:
+	if combo > maxCombo and combo >= 5:
 		maxCombo = combo
 
 func change_sprite_color(value):
@@ -222,6 +225,32 @@ func change_sprite_color(value):
 		$Sprite2.scale.x = 0.198
 		$Sprite2.scale.y = 0.208
 		$Sprite3.modulate = Color("#8600ff00")
+
+func change_screen_game_over():
+	$Score.visible = false
+	$Score2.visible = false
+	$ComboLabel.visible = false
+	$ComboMultiplicador.visible = false
+	$CPUParticles2D.emitting = false
+	$CPUParticles2D2.emitting = false
+	$CPUParticles2D3.emitting = false
+	$CPUParticles2D4.emitting = false
+	$Sprite.visible = false
+	$Sprite2.visible = false
+	$Sprite3.visible = false
+	$GameOver/Ok.modulate = Color.yellow
+	$GameOver/Good.modulate = Color.orange
+	$GameOver/Perfect.modulate = Color.green
+	$GameOver/Missed.modulate = Color.red
+	$GameOver/ScoreTotal.text += str(score)
+	$GameOver/Ok.text += str(bien)
+	$GameOver/Good.text += str(muyBien)
+	$GameOver/Perfect.text += str(excelente)
+	$GameOver/Missed.text += str(fallada)
+	$GameOver/MaxCombo.text += str(maxCombo)
+	$GameOver.visible = true
+	$NombreCancion.visible = true
+	gameOverScreen = true
 
 func _button_entered(value,pos_x):
 	if value:
@@ -256,29 +285,10 @@ func _on_Conductor_finished():
 
 # Espera 5 seg hasta terminar
 func _on_Timer_timeout():
-	$Score.visible = false
-	$Score2.visible = false
-	$ComboLabel.visible = false
-	$ComboMultiplicador.visible = false
-	$CPUParticles2D.emitting = false
-	$CPUParticles2D2.emitting = false
-	$CPUParticles2D3.emitting = false
-	$CPUParticles2D4.emitting = false
-	$Sprite.visible = false
-	$Sprite2.visible = false
-	$Sprite3.visible = false
-	$GameOver/Ok.modulate = Color.yellow
-	$GameOver/Good.modulate = Color.orange
-	$GameOver/Perfect.modulate = Color.green
-	$GameOver/Missed.modulate = Color.red
-	$GameOver/ScoreTotal.text += str(score)
-	$GameOver/Ok.text += str(bien)
-	$GameOver/Good.text += str(muyBien)
-	$GameOver/Perfect.text += str(excelente)
-	$GameOver/Missed.text += str(fallada)
-	$GameOver/MaxCombo.text += str(maxCombo)
-	$GameOver.visible = true
-	$NombreCancion.visible = true
+	change_screen_game_over()
+	GameHandler.set_score_nivel_ritmico(score,nivel)
+	GameHandler.save_game()
+	print("Nivel " + str(nivel) + ": guardado")
 	$Timer2.start()
 
 func _on_Timer2_timeout():

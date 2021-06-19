@@ -7,9 +7,14 @@ func _ready():
 	var window_size = OS.get_window_size()
 	var centered_pos = (screen_size - window_size) / 2
 	OS.set_window_position(centered_pos)
+	GameHandler.load_game()
+	if GameHandler.getDisco() == 0:
+		$CanvasLayer/VBoxContainer/Jugar.visible = false
 
-func _on_Salir_pressed():
-	get_tree().quit()
 
 func _on_Jugar_pressed():
-	get_tree().change_scene("res://producto/scenes/NivelPlataforma.tscn")
+	PantallaFade.change_scene("res://producto/scenes/FraseTransicion.tscn")
+
+func _on_NuevaPartida_pressed():
+	GameHandler.nuevaPartida()
+	_on_Jugar_pressed()
