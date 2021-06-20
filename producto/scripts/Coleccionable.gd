@@ -31,11 +31,13 @@ func _physics_process(delta):
 	elif (state == State.Open):
 		if $ColeccionableArea/Coleccionable.animation != "Open":
 			$ColeccionableArea/Coleccionable.play("Open")
-		state = State.IdleOpen
+		if $ColeccionableArea/Coleccionable.frame == 03:
+			state = State.IdleOpen
 	elif (state == State.Close):
 		if $ColeccionableArea/Coleccionable.animation != "Close":
 			$ColeccionableArea/Coleccionable.play("Close")
-		state = State.IdleClose
+		if $ColeccionableArea/Coleccionable.frame == 03:
+			state = State.IdleClose
 func _open():
 	state = State.Open
 
