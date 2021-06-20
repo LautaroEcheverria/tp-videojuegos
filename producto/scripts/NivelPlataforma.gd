@@ -180,11 +180,9 @@ func cambiarEstado():
 	
 # Funcion para cambiar los colores
 func color():
-	get_parent().get_node("Azul/Plataformas").visible = false
 	if contadorDiscos >= 1: # activo colores azules
 		print("azul")
 		get_parent().get_node("Azul").material.set_shader_param ("byn",1)
-		get_parent().get_node("Azul/Plataformas").visible = true #Las plataformas iniciales solo aparecen una vez que haya obtenido el color necesario
 		get_parent().get_node("Sombra Secretos").material.set_shader_param ("byn",1)
 		get_parent().get_node("Parallax frente/frente").material.set_shader_param ("byn",1)
 		get_parent().get_node("Parallax camino/camino").material.set_shader_param ("byn",1)
