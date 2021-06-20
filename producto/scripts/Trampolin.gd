@@ -30,12 +30,12 @@ func _iniciar_tween():
 	move_a = move_a * cell_size
 	var duracion = move_a.length()/velocidad
 	#IDA
-	if (state == State.Move_down):
+	if (state == State.Move_up):
 		tween.interpolate_property(self, "follow", Vector2.ZERO, 
 								   move_a, duracion, Tween.TRANS_LINEAR,
 								   Tween.EASE_IN_OUT, idle_duration)
 	#VUELTA
-	if (state == State.Move_up):
+	if (state == State.Move_down):
 		tween.interpolate_property(self, "follow", move_a, Vector2.ZERO, 
 							   duracion, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 
 							   duracion + idle_duration * 2)

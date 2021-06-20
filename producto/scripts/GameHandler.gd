@@ -41,7 +41,6 @@ func _on_Area2D_Game_Over_body_entered(body):
 
 func _on_Palanca_body_entered(body):
 	if $Robot.contadorDiscos >= 2:
-		
 		$"Sombra Secretos/Sombra de descubrimiento Exterior".visible = false
 
 func addDisco():
@@ -104,4 +103,11 @@ func save_game_data():
 	return data
 
 func addColeccionable(id,nombre,texto):
-	pass
+	print(id,nombre,texto)
+
+func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
+	$Trampolines._down(local_shape)
+
+
+func _on_Trampolines_body_shape_exited(body_id, body, body_shape, local_shape):
+	$Trampolines._up(local_shape)
