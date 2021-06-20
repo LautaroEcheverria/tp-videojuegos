@@ -1,52 +1,64 @@
-extends KinematicBody2D
+extends Node2D
 
-var original_position_x
-var original_position_y
-var velocity = Vector2()
-var direccion
-var move_speed = 100
+#Variables de movimiento
+export var idle_duration = 2.0
+export var move_a = Vector2(24,0)
+export var cell_size = Vector2(24,24)
+export var velocidad  = 48.0
+export var ascensor = false
 
-var activo = false
-var myState = State.IDLE
-enum State{
-	MOVE,
-	IDLE
-}
+#"Propiedad" de seguimiento
+var follow = Vector2.ZERO
+var previous_follow = Vector2.ZERO
+#Guarda la posicion de la plataforma y del nodo Tween
+onready var plataforma = $Plataforma
+onready var spritePlataforma = $Plataforma/SpritePlataforma
+onready var tween = $Tween
 
 func _ready():
-	original_position_x = $ColisionPlataforma.position.x
-	direccion = 1
+	_iniciar_tween()
+
+func _iniciar_tween():
+	move_a = move_a * cell_size
+	var duracion = move_a.length()/velocidad
+	#IDA
+	
+	tween.interpolate_property(self, "follow", Vector2.ZERO, 
+							   move_a, duracion, Tween.TRANS_LINEAR,
+							   Tween.EASE_IN_OUT, idle_duration)
+	
+	#VUELTA
+	tween.interpolate_property(self, "follow", move_a, Vector2.ZERO, 
+							   duracion, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 
+							   duracion + idle_duration * 2)
+	
+	tween.start()
 
 func _physics_process(delta):
-	if myState == State.IDLE:
-		_in_state_idle_process()
-	elif myState == State.MOVE:
-		_in_state_move_process(delta)
-
-func _in_state_idle_process():
-	if $ColisionPlataforma/SpritePlataforma.animation != "Idle":
-		$ColisionPlataforma/SpritePlataforma.play("Idle")
-	if activo == true:
-		myState = State.MOVE
-
-func _in_state_move_process(delta):
-	if activo == true:
-		if original_position_x + 200 >= $CollisionPlataforma.position.x && direccion ==1:
-			velocity.x =  move_speed
-			if $SpritePlataforma.animation != "Move_right":
-				$SpritePlataforma.play("Move_right")
-		else:
-			direccion == -1
-		if original_position_x - 200 < $CollisionPlataforma.position.x && direccion ==-1: 
-			velocity.x =  -move_speed
-			if $SpritePlataforma.animation != "Move_left":
-				$SpritePlataforma.play("Move_left")
-		else:
-			direccion == 1
+	
+	#para el flip
+	if ascensor == true:
+		previous_follow.y = plataforma.position.y
 	else:
-		myState = State.IDLE
-	move_and_slide(velocity, Vector2(0, -1))
+		previous_follow.x = plataforma.position.x
 
-func _on_Button_pressed():	
-	activo = !activo
-	print("hola")
+	#seguimiento de posicion
+	plataforma.position = plataforma.position.linear_interpolate(follow, 0.075)
+	
+	#para el flip
+	if ascensor == true:
+		previous_follow.x = plataforma.position.x
+	else:
+		previous_follow.y = plataforma.position.y
+	
+	#flipeo
+	if previous_follow > follow:
+		spritePlataforma.flip_h = false
+	else:
+		spritePlataforma.flip_h = true
+		
+	#animacion
+	if (follow == Vector2.ZERO) or (follow == move_a):
+		$Plataforma/SpritePlataforma.play("Idle")
+	else:
+		$Plataforma/SpritePlataforma.play("Move")

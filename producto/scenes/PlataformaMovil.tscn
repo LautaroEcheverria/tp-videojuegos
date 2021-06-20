@@ -1,74 +1,63 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://producto/assets/img/Plataformas/Objects/Obj-Moving-Platform-Idle-48x28.png" type="Texture" id=1]
 [ext_resource path="res://producto/scripts/PlataformaMovil.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 72.5498, 10 )
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 72.5498, 6.46399 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 56, 48, 28 )
-
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 48, 28 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 48, 28 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 28, 48, 28 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 28, 48, 28 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 56, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 56, 48, 28 )
+
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [ SubResource( 2 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "Move",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 14 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "Move_right",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "Move_left",
-"speed": 5.0
 } ]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Plataforma" type="KinematicBody2D" parent="."]
+[node name="PlataformaMovil" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Plataforma" type="KinematicBody2D" parent="."]
+
 [node name="ColisionPlataforma" type="CollisionShape2D" parent="Plataforma"]
-position = Vector2( 409.087, 173.624 )
-shape = SubResource( 8 )
+shape = SubResource( 11 )
 
-[node name="SpritePlataforma" type="AnimatedSprite" parent="Plataforma/ColisionPlataforma"]
-position = Vector2( 0, 2.37842 )
+[node name="SpritePlataforma" type="AnimatedSprite" parent="Plataforma"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 7 )
-animation = "Idle"
+frames = SubResource( 15 )
+animation = "Move"
+playing = true
 
-[node name="Button" type="Button" parent="."]
-margin_left = 32.2978
-margin_top = 25.2398
-margin_right = 387.298
-margin_bottom = 143.24
-rect_scale = Vector2( 0.33, 0.33 )
-text = "Boton"
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="Button" to="Plataforma" method="_on_Button_pressed"]
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback_process_mode = 0
+playback/repeat = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=2]
+[gd_scene load_steps=173 format=2]
 
 [ext_resource path="res://producto/scripts/GameHandler.gd" type="Script" id=1]
 [ext_resource path="res://producto/scripts/NivelPlataforma.gd" type="Script" id=2]
@@ -70,6 +70,7 @@
 [ext_resource path="res://producto/assets/img/UI/exclamationwarningsigninacircleoutline_81096.png" type="Texture" id=68]
 [ext_resource path="res://producto/assets/shaders/arbustos.shader" type="Shader" id=69]
 [ext_resource path="res://producto/assets/shaders/blanco_y_negro.shader" type="Shader" id=70]
+[ext_resource path="res://producto/scenes/PlataformaMovil.tscn" type="PackedScene" id=71]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 70 )
@@ -1504,10 +1505,10 @@ extents = Vector2( 242.14, 243.106 )
 extents = Vector2( 145.316, 169.814 )
 
 [sub_resource type="RectangleShape2D" id=95]
-extents = Vector2( 439.042, 265.775 )
+extents = Vector2( 499.319, 321.095 )
 
 [sub_resource type="RectangleShape2D" id=96]
-extents = Vector2( 1897.27, 18.2095 )
+extents = Vector2( 2563.23, 18.2095 )
 
 [sub_resource type="RectangleShape2D" id=97]
 extents = Vector2( 381.044, 28.8508 )
@@ -1646,9 +1647,10 @@ z_index = 2
 tile_set = SubResource( 56 )
 cell_size = Vector2( 24, 24 )
 format = 1
-tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 1048591, -1610612734, 0, 1048592, -1610612734, 0, 1048593, -1610612734, 0, 1048594, -1610612734, 0, 1048595, -1610612734, 0, 1048596, -1610612734, 0, 1048597, -1610612734, 0, 1048598, -1610612734, 0, 1048599, -1610612734, 0, 1114126, -536870910, 0, 1114127, -1610612734, 0, 1114128, -1610612734, 0, 1114129, -1610612734, 0, 1114130, -536870910, 0, 1114131, -536870910, 0, 1114132, -536870910, 0, 1114133, -536870910, 0, 1114134, -536870910, 0, 1114135, -536870910, 0, 1179662, -536870910, 0, 1179663, -1610612733, 0, 1179664, -536870910, 0, 1179665, -536870910, 0, 1179666, -536870910, 0, 1179667, -536870910, 0, 1179668, -536870910, 0, 1179669, -536870910, 0, 1179670, -536870910, 0, 1179671, -536870910, 0, 1179672, -536870910, 0, 1245197, 2, 0, 1245198, 2, 0, 1245199, 2, 0, 1245200, 2, 0, 1245201, 2, 0, 1245202, 2, 0, 1245203, -536870909, 0, 1245204, 2, 0, 1245205, 2, 0, 1245206, 2, 0, 1245207, 2, 0, 1245208, 2, 0, 1310733, 2, 0, 1310734, 2, 0, 1310735, 2, 0, 1310736, 2, 0, 1310737, 2, 0, 1310738, 2, 0, 1310739, 2, 0, 1310740, 2, 0, 1310741, 2, 0, 1310742, 2, 0, 1310743, 2, 0, 1310744, 1073741827, 0, 1376260, 0, 0, 1376269, 2, 0, 1376270, 2, 0, 1376271, 2, 0, 1376272, 2, 0, 1376273, 2, 0, 1376274, 2, 0, 1376275, 2, 0, 1376276, 2, 0, 1376277, 2, 0, 1376278, 2, 0, 1376279, 2, 0, 1376280, 2, 0, 1441805, 2, 0, 1441806, 2, 0, 1441807, 2, 0, 1441808, 2, 0, 1441809, 2, 0, 1441810, 2, 0, 1441811, 2, 0, 1441812, -1610612734, 0, 1441813, -1610612734, 0, 1441814, -1610612734, 0, 1441815, -1610612734, 0, 1441816, -1610612734, 0, 1441817, -1610612734, 0, 1507341, 2, 0, 1507342, 2, 0, 1507343, 1610612739, 0, 1507344, 2, 0, 1507345, 2, 0, 1507346, 2, 0, 1507347, -1610612734, 0, 1507348, -1610612733, 0, 1572877, 2, 0, 1572878, 2, 0, 1572883, -1610612734, 0, 1638413, 2, 0, 1638414, 2, 0 )
+tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 1048591, -1610612734, 0, 1048592, -1610612734, 0, 1048593, -1610612734, 0, 1048594, -1610612734, 0, 1048595, -1610612734, 0, 1048596, -1610612734, 0, 1048597, -1610612734, 0, 1048598, -1610612734, 0, 1048599, -1610612734, 0, 1114126, -536870910, 0, 1114127, -1610612734, 0, 1114128, -1610612734, 0, 1114129, -1610612734, 0, 1114130, -536870910, 0, 1114131, -536870910, 0, 1114132, -536870910, 0, 1114133, -536870910, 0, 1114134, -536870910, 0, 1114135, -536870910, 0, 1179662, -536870910, 0, 1179663, -1610612733, 0, 1179664, -536870910, 0, 1179665, -536870910, 0, 1179666, -536870910, 0, 1179667, -536870910, 0, 1179668, -536870910, 0, 1179669, -536870910, 0, 1179670, -536870910, 0, 1179671, -536870910, 0, 1179672, -536870910, 0, 1245197, 2, 0, 1245198, 2, 0, 1245199, 2, 0, 1245200, 2, 0, 1245201, 2, 0, 1245202, 2, 0, 1245203, -536870909, 0, 1245204, 2, 0, 1245205, 2, 0, 1245206, 2, 0, 1245207, 2, 0, 1245208, 2, 0, 1310733, 2, 0, 1310734, 2, 0, 1310735, 2, 0, 1310736, 2, 0, 1310737, 2, 0, 1310738, 2, 0, 1310739, 2, 0, 1310740, 2, 0, 1310741, 2, 0, 1310742, 2, 0, 1310743, 2, 0, 1310744, 1073741827, 0, 1376260, 0, 0, 1376269, 2, 0, 1376270, 2, 0, 1376271, 2, 0, 1376272, 2, 0, 1376273, 2, 0, 1376274, 2, 0, 1376275, 2, 0, 1376276, 2, 0, 1376277, 2, 0, 1376278, 2, 0, 1376279, 2, 0, 1376280, 2, 0, 1441805, 2, 0, 1441806, 2, 0, 1441807, 2, 0, 1441808, 2, 0, 1441809, 2, 0, 1441810, 2, 0, 1441811, 2, 0, 1441812, -1610612734, 0, 1441813, -1610612734, 0, 1441814, -1610612734, 0, 1441815, -1610612734, 0, 1441816, -1610612734, 0, 1441817, -1610612734, 0, 1507341, 2, 0, 1507342, 2, 0, 1507343, 1610612739, 0, 1507344, 2, 0, 1507345, 2, 0, 1507346, 2, 0, 1507347, -1610612734, 0, 1507348, -1610612733, 0, 1572877, 2, 0, 1572883, -1610612734, 0, 1638413, 2, 0 )
 
 [node name="Sombra de descubrimiento Interior" type="TileMap" parent="Sombra Secretos"]
+visible = false
 use_parent_material = true
 position = Vector2( 0.333333, 0 )
 z_index = 2
@@ -1820,24 +1822,20 @@ visible = false
 script = ExtResource( 3 )
 
 [node name="Secreto1" type="CollisionShape2D" parent="Zonas Secretas"]
-visible = false
 position = Vector2( 603.396, 897.75 )
 shape = SubResource( 92 )
 one_way_collision_margin = 0.0
 
 [node name="Secreto2" type="CollisionShape2D" parent="Zonas Secretas"]
-visible = false
 position = Vector2( -620.951, 3689.87 )
 shape = SubResource( 93 )
 
 [node name="Descubrimiento" type="CollisionShape2D" parent="Zonas Secretas"]
-visible = false
 position = Vector2( 146.151, 821.469 )
 shape = SubResource( 94 )
 
 [node name="Secreto3" type="CollisionShape2D" parent="Zonas Secretas"]
-visible = false
-position = Vector2( 1428, 1628 )
+position = Vector2( 1504.11, 1447.24 )
 shape = SubResource( 95 )
 
 [node name="Controles" type="CanvasLayer" parent="."]
@@ -1882,11 +1880,11 @@ normal = ExtResource( 68 )
 position = Vector2( -37.3755, -8.00903 )
 
 [node name="Fin Inferior" type="CollisionShape2D" parent="Game Over"]
-position = Vector2( -2542.14, 3306.63 )
+position = Vector2( -3179.55, 3316.14 )
 shape = SubResource( 96 )
 
 [node name="Fin Inferior2" type="CollisionShape2D" parent="Game Over"]
-position = Vector2( 2306.72, 4751.29 )
+position = Vector2( 2335.26, 4770.32 )
 shape = SubResource( 96 )
 
 [node name="Fin Inferior3" type="CollisionShape2D" parent="Game Over"]
@@ -1898,7 +1896,7 @@ position = Vector2( -755.147, 2097.63 )
 shape = SubResource( 97 )
 
 [node name="Fin Izquierda" type="CollisionShape2D" parent="Game Over"]
-position = Vector2( -4505.01, 468.206 )
+position = Vector2( -4562.09, -920.788 )
 z_index = 1
 shape = SubResource( 98 )
 
@@ -1930,7 +1928,6 @@ color = Color( 0.666667, 0.713726, 0.882353, 1 )
 layer = 11
 
 [node name="Inventario" parent="CanvasLayer" instance=ExtResource( 20 )]
-visible = false
 
 [node name="Fin Sin Game Over" type="RigidBody2D" parent="."]
 mode = 1
@@ -1956,6 +1953,9 @@ shape = SubResource( 101 )
 [node name="Trampolin 4" type="CollisionShape2D" parent="Trampolines"]
 position = Vector2( 1733.12, 2648.57 )
 shape = SubResource( 101 )
+
+[node name="PlataformaMovil" parent="." instance=ExtResource( 71 )]
+position = Vector2( 272.45, 477.629 )
 
 [connection signal="body_entered" from="Rojo" to="." method="_on_Palanca_body_entered"]
 [connection signal="settings_changed" from="Sombra Secretos" to="Zonas Secretas" method="_on_Sombra_Secretos_settings_changed"]
