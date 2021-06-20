@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://producto/assets/img/Plataformas/Objects/Obj-Trampoline.png" type="Texture" id=1]
+[ext_resource path="res://producto/scripts/Trampolin.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 72.5498, 6.46399 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "Move",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "Idle_down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "Idle_up",
+"speed": 5.0
+} ]
+
+[node name="Trampolin" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TrampolinBody" type="KinematicBody2D" parent="."]
+
+[node name="ColisionTrampolin" type="CollisionShape2D" parent="TrampolinBody"]
+position = Vector2( 344.87, 280.653 )
+shape = SubResource( 1 )
+
+[node name="SpriteTrampolin" type="AnimatedSprite" parent="TrampolinBody"]
+position = Vector2( 344.87, 311.572 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 5 )
+animation = "Idle_up"
+playing = true
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback_process_mode = 0
+playback/repeat = true

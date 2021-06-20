@@ -4,7 +4,7 @@ extends Node2D
 export var idle_duration = 2.0
 export var move_a = Vector2(24,0)
 export var cell_size = Vector2(24,24)
-export var velocidad  = 48.0
+export var velocidad  = 64.0
 export var ascensor = false
 
 #"Propiedad" de seguimiento
@@ -12,7 +12,6 @@ var follow = Vector2.ZERO
 var previous_follow = Vector2.ZERO
 #Guarda la posicion de la plataforma y del nodo Tween
 onready var plataforma = $Plataforma
-onready var spritePlataforma = $Plataforma/SpritePlataforma
 onready var tween = $Tween
 
 func _ready():
@@ -53,9 +52,9 @@ func _physics_process(delta):
 	
 	#flipeo
 	if previous_follow > follow:
-		spritePlataforma.flip_h = false
+		$Plataforma/SpritePlataforma.flip_h = false
 	else:
-		spritePlataforma.flip_h = true
+		$Plataforma/SpritePlataforma.flip_h = true
 		
 	#animacion
 	if (follow == Vector2.ZERO) or (follow == move_a):
