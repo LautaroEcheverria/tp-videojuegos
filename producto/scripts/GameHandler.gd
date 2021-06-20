@@ -102,3 +102,6 @@ func save_game_data():
 		"scoreNivelRitmico_4" : scoreNivelRitmico_4
 	}
 	return data
+
+func addColeccionable(id,nombre,texto):
+	pass

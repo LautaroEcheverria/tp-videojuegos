@@ -15,6 +15,7 @@ enum State{
 var state = State.IdleClose
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$cartel/nombre.text = nombre
 	if flip:
 		$ColeccionableArea/Coleccionable.flip_h = true
 	else:
@@ -47,7 +48,25 @@ func _close():
 
 func _on_ColeccionableArea_body_entered(body):
 	_open()
-
+	if $AnimationCartel.current_animation != "Hover":
+		$AnimationCartel.play("Hover")	
+	$cartel/nombre.visible = true
+	$cartel/recoger.visible = true
 
 func _on_ColeccionableArea_body_exited(body):
 	_close()
+	$AnimationCartel.rename_animation("Hover","Hover_inv")
+	$AnimationCartel.play("Hover_inv",1,-2,true)	
+	$cartel/nombre.visible = false
+	$cartel/recoger.visible = false
+
+func _on_AnimationCartel_animation_finished(anim_name):
+	if anim_name == "Hover":
+		$AnimationCartel.play("Activo")	
+	elif anim_name == "Hover_inv":
+		$AnimationCartel.rename_animation("Hover_inv","Hover")
+		$AnimationCartel.play("Inactivo")	
+
+
+func _on_ConseguirColeccionable_pressed():
+	GameHandler.addColeccionable(id,nombre,texto)
