@@ -20,7 +20,6 @@ func _ready():
 		$ColeccionableArea/Coleccionable.flip_h = true
 	else:
 		$ColeccionableArea/Coleccionable.flip_h = false
-	pass
 
 func _physics_process(delta):
 	if (state == State.IdleOpen):
@@ -47,18 +46,20 @@ func _close():
 
 
 func _on_ColeccionableArea_body_entered(body):
-	_open()
-	if $AnimationCartel.current_animation != "Hover":
-		$AnimationCartel.play("Hover")	
-	$cartel/nombre.visible = true
-	$cartel/recoger.visible = true
+	if (body.name == "Robot"):
+		_open()
+		if $AnimationCartel.current_animation != "Hover":
+			$AnimationCartel.play("Hover")	
+		$cartel/nombre.visible = true
+		$cartel/recoger.visible = true
 
 func _on_ColeccionableArea_body_exited(body):
-	_close()
-	$AnimationCartel.rename_animation("Hover","Hover_inv")
-	$AnimationCartel.play("Hover_inv",1,-2,true)	
-	$cartel/nombre.visible = false
-	$cartel/recoger.visible = false
+	if (body.name == "Robot"):
+		_close()
+		$AnimationCartel.rename_animation("Hover","Hover_inv")
+		$AnimationCartel.play("Hover_inv",1,-2,true)	
+		$cartel/nombre.visible = false
+		$cartel/recoger.visible = false
 
 func _on_AnimationCartel_animation_finished(anim_name):
 	if anim_name == "Hover":
