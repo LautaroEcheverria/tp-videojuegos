@@ -55,6 +55,7 @@ shape = SubResource( 11 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 15 )
 animation = "Move"
+frame = 1
 playing = true
 
 [node name="Tween" type="Tween" parent="."]

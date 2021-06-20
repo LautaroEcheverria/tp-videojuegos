@@ -1956,10 +1956,12 @@ shape = SubResource( 101 )
 
 [node name="PlataformaMovil" parent="." instance=ExtResource( 71 )]
 position = Vector2( 272.45, 477.629 )
+move_a = Vector2( 0, 24 )
+ascensor = true
 
 [connection signal="body_entered" from="Rojo" to="." method="_on_Palanca_body_entered"]
-[connection signal="settings_changed" from="Sombra Secretos" to="Zonas Secretas" method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="settings_changed" from="Sombra Secretos" to="." method="_on_Sombra_Secretos_settings_changed"]
+[connection signal="settings_changed" from="Sombra Secretos" to="Zonas Secretas" method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="body_entered" from="Zonas Secretas" to="Zonas Secretas" method="_on_Area2D_body_entered"]
 [connection signal="pressed" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_pressed"]
 [connection signal="released" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_released"]

@@ -77,6 +77,12 @@ func _in_state_idle_process():
 		mystate = State.WALK
 	elif Input.is_action_just_pressed("ui_up") or touch_up:
 		mystate = State.JUMP
+	
+	var snap = 24
+	if velocity.y != 0:
+		snap = Vector2(0,0)
+	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
+	
 		
 func _in_state_walk_process(delta):
 	if contadorDiscos < 1 :
@@ -101,7 +107,11 @@ func _in_state_walk_process(delta):
 	else:
 		velocity.y += delta * GRAVITY
 		$CollisionSprite/Sprite.play("jump",true)
-	move_and_slide(velocity, Vector2(0, -1))
+	
+	var snap = 24
+	if velocity.y != 0:
+		snap = Vector2(0,0)
+	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
 func _in_state_jump_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
@@ -118,7 +128,12 @@ func _in_state_jump_process(delta):
 		velocity.y += delta * GRAVITY
 		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
 			mystate = State.FLY
-	move_and_slide(velocity, Vector2(0, -1))
+	
+	var snap = 24
+	if velocity.y != 0:
+		snap = Vector2(0,0)
+	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
+	
 
 func _in_state_fly_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
@@ -134,7 +149,12 @@ func _in_state_fly_process(delta):
 		elif Input.is_action_pressed("ui_left") or touch_left:
 			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
-	move_and_slide(velocity, Vector2(0, -1))
+	
+	var snap = 24
+	if velocity.y != 0:
+		snap = Vector2(0,0)
+	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
+	
 
 func _on_LeftButton_pressed():
 	touch_left = true
