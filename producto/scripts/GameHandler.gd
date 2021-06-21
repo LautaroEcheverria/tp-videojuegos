@@ -8,8 +8,18 @@ var scoreNivelRitmico_2 = 0
 var scoreNivelRitmico_3 = 0
 var scoreNivelRitmico_4 = 0
 
+var diccionario_coleccionables = {
+	0: ["Bandoneon","«Lo trajo envuelto en una caja, y yo me alegré: creía que eran los patines que le había pedido tantas veces. Fue una decepción, porque en lugar de los patines me encontré con un aparato que no había visto en mi vida» - Piazzolla"],
+	1: ["Muñeco de Nonino","«Astor va a llegar lejos. Vale mucho. Sé que cuando se propone hacer una cosa, la hace y bien.» - Nonino"],
+	2: ["Avion roto","«¡Qué noche, Charlie! Allí fue mi bautismo con el tango. Primer tango de mi vida y ¡acompañando a Gardel! Jamás lo olvidaré. Al poco tiempo te fuiste con Lepera y tus guitarristas a Hollywood. ¿Te acordás que me mandaste dos telegramas para que me uniera a ustedes con mi bandoneón? Era la primavera del 35 y yo cumplía 14 años. Los viejos no me dieron permiso y el sindicato tampoco. Charlie, ¡me salvé! En vez de tocar el bandoneón estaría tocando el arpa.» - Piazzolla"],
+	3: ["Libro de Partituras Parisino","«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era tan mala como yo creía. Yo pensaba que era una basura porque tocaba tangos en un cabaré, y resulta que yo tenía una cosa que se llama estilo.» - Piazzolla"]
+}
+
+var coleccionables = [false,false,false,false]
+
+
 const SAVE_DIR = "user://saves/"
-var save_path = "save.dat"
+var save_path = "save.txt"
 var saveGame = false
 var player_data
 
@@ -35,6 +45,7 @@ func load_game():
 			print(player_data)
 			file.close()
 			contadorDiscos = player_data.contadorDiscos
+			coleccionables = player_data.coleccionables
 
 func _on_Area2D_Game_Over_body_entered(body):
 	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
@@ -73,13 +84,13 @@ func set_score_nivel_ritmico(score,nivel):
 func get_score_nivel_ritmico(nivel):
 	var score
 	if nivel == 1:
-		score = scoreNivelRitmico_1
+		score = player_data.scoreNivelRitmico_1
 	elif nivel == 2:
-		score = scoreNivelRitmico_2
+		score = player_data.scoreNivelRitmico_2
 	elif nivel == 3:
-		score = scoreNivelRitmico_3
+		score = player_data.scoreNivelRitmico_3
 	elif nivel == 4:
-		score = scoreNivelRitmico_4
+		score = player_data.scoreNivelRitmico_4
 	return score
 
 func save_game_data():
@@ -98,12 +109,19 @@ func save_game_data():
 		"scoreNivelRitmico_1" : scoreNivelRitmico_1,
 		"scoreNivelRitmico_2" : scoreNivelRitmico_2,
 		"scoreNivelRitmico_3" : scoreNivelRitmico_3,
-		"scoreNivelRitmico_4" : scoreNivelRitmico_4
+		"scoreNivelRitmico_4" : scoreNivelRitmico_4,
+		"coleccionables" : coleccionables
 	}
 	return data
 
-func addColeccionable(id,nombre,texto):
-	print(id,nombre,texto)
+func addColeccionable(id):
+	coleccionables[id] = true
+	print(diccionario_coleccionables[id])
+	save_game()
+	
+	
+func get_diccionario_coleccionables():
+	return diccionario_coleccionables
 
 func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
 	$Trampolines._down(local_shape)

@@ -70,4 +70,5 @@ func _on_AnimationCartel_animation_finished(anim_name):
 
 
 func _on_ConseguirColeccionable_pressed():
-	GameHandler.addColeccionable(id,nombre,texto)
+	GameHandler.addColeccionable(id)
+	get_parent().get_node("Canvas_inventario/Inventario").agregarColeccionable(id,nombre,texto)

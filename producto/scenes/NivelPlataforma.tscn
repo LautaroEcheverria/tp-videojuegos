@@ -1313,56 +1313,56 @@ atlas = ExtResource( 58 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=69]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=70]
 atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=71]
-atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=72]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 60 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=73]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=74]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=75]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=76]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 60 )
 region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 60 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=77]
 atlas = ExtResource( 61 )
@@ -1391,15 +1391,15 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
+"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ) ],
 "loop": true,
 "name": "walk",
 "speed": 6.0
+}, {
+"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
 "loop": false,
@@ -1925,10 +1925,10 @@ nroDisco = 3
 visible = false
 color = Color( 0.666667, 0.713726, 0.882353, 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Canvas_inventario" type="CanvasLayer" parent="."]
 layer = 11
 
-[node name="Inventario" parent="CanvasLayer" instance=ExtResource( 20 )]
+[node name="Inventario" parent="Canvas_inventario" instance=ExtResource( 20 )]
 visible = false
 
 [node name="Fin Sin Game Over" type="RigidBody2D" parent="."]
@@ -2041,8 +2041,8 @@ texto = "«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era
 flip = true
 
 [connection signal="body_entered" from="Rojo" to="." method="_on_Palanca_body_entered"]
-[connection signal="settings_changed" from="Sombra Secretos" to="." method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="settings_changed" from="Sombra Secretos" to="Zonas Secretas" method="_on_Sombra_Secretos_settings_changed"]
+[connection signal="settings_changed" from="Sombra Secretos" to="." method="_on_Sombra_Secretos_settings_changed"]
 [connection signal="body_entered" from="Zonas Secretas" to="Zonas Secretas" method="_on_Area2D_body_entered"]
 [connection signal="pressed" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_pressed"]
 [connection signal="released" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_released"]
@@ -2050,7 +2050,7 @@ flip = true
 [connection signal="released" from="Controles/Control/RightButton" to="Robot" method="_on_RightButton_released"]
 [connection signal="pressed" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_pressed"]
 [connection signal="released" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_released"]
-[connection signal="pressed" from="Controles/Control/InventoryButton" to="CanvasLayer/Inventario" method="_on_InventoryButton_pressed"]
+[connection signal="pressed" from="Controles/Control/InventoryButton" to="Canvas_inventario/Inventario" method="_on_InventoryButton_pressed"]
 [connection signal="body_entered" from="Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
 [connection signal="body_entered" from="Trampolines" to="Robot" method="_on_Trampolines_body_entered"]
 [connection signal="body_exited" from="Trampolines" to="Robot" method="_on_Trampolines_body_exited"]

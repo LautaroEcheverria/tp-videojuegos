@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://producto/scripts/Inventario.gd" type="Script" id=1]
 [ext_resource path="res://producto/assets/img/UI/Inventario/top.png" type="Texture" id=2]
 [ext_resource path="res://producto/assets/img/UI/Inventario/bot.png" type="Texture" id=3]
+[ext_resource path="res://producto/assets/fonts/AmberTastePro-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://producto/assets/fonts/CENTURY.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://producto/assets/img/UI/Inventario/jugar.png" type="Texture" id=6]
+[ext_resource path="res://producto/assets/img/UI/Inventario/back.png" type="Texture" id=7]
+[ext_resource path="res://producto/assets/img/UI/Inventario/discoItem.png" type="Texture" id=8]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform int byn = 0;
@@ -20,21 +25,58 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/byn = 0
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 5
+font_data = ExtResource( 5 )
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="DynamicFont" id=4]
+size = 35
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 4
+font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.843137, 0.152941, 0.152941, 1 )
+[sub_resource type="StyleBoxEmpty" id=11]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StreamTexture" id=9]
 load_path = "res://.import/Obj-Chest-Closed-24x24.png-2ebdd87850daa62af525558d2dc0d867.stex"
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 5
+font_data = ExtResource( 5 )
 
 [node name="Inventario" type="Control"]
 anchor_right = 1.0
@@ -48,6 +90,8 @@ __meta__ = {
 light_mask = 31
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.840881
+margin_right = 0.84082
 color = Color( 0, 0, 0, 0.819608 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -63,7 +107,7 @@ __meta__ = {
 }
 
 [node name="blanco y negro" type="ColorRect" parent="Control"]
-material = SubResource( 5 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -78,31 +122,248 @@ texture = ExtResource( 3 )
 position = Vector2( 0, -200 )
 texture = ExtResource( 2 )
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
-margin_left = -290.604
-margin_top = -160.976
-margin_right = 209.396
-margin_bottom = 139.024
-custom_styles/panel = SubResource( 7 )
+[node name="Items" type="Control" parent="Control"]
+margin_left = -320.0
+margin_top = -162.0
+margin_right = 114.0
+margin_bottom = 90.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="ItemList" parent="Control/PanelContainer"]
-margin_right = 500.0
-margin_bottom = 300.0
-theme = SubResource( 6 )
-custom_styles/selected_focus = SubResource( 1 )
-custom_styles/bg = SubResource( 8 )
-custom_constants/icon_margin = 10
-items = [ "", SubResource( 2 ), false, "", SubResource( 2 ), false, "", SubResource( 2 ), false, "", SubResource( 2 ), false, "", SubResource( 2 ), false, "", SubResource( 2 ), false, "", SubResource( 2 ), false, "", SubResource( 2 ), false ]
-max_text_lines = 2
+[node name="InfoDisco" type="Control" parent="Control/Items"]
+visible = false
+margin_left = 425.839
+margin_top = 12.1599
+margin_right = 655.839
+margin_bottom = 262.16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextoItem" type="Label" parent="Control/Items/InfoDisco"]
+margin_top = 45.0
+margin_right = 230.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_constants/line_spacing = 4
+text = "texto"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NombreItem" type="Label" parent="Control/Items/InfoDisco"]
+margin_right = 230.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "disco"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugar" type="TouchScreenButton" parent="Control/Items/InfoDisco"]
+position = Vector2( 26, 149.245 )
+normal = ExtResource( 6 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Items"]
+margin_right = 476.0
+margin_bottom = 252.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="Control/Items/PanelContainer"]
+margin_right = 476.0
+margin_bottom = 252.0
+custom_styles/cursor = SubResource( 13 )
+custom_styles/selected_focus = SubResource( 14 )
+custom_styles/bg_focus = SubResource( 15 )
+custom_styles/cursor_unfocused = SubResource( 16 )
+custom_styles/selected = SubResource( 17 )
+custom_styles/bg = SubResource( 12 )
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_constants/vseparation = 0
+custom_constants/hseparation = 30
+items = [ "", ExtResource( 8 ), true, "", ExtResource( 8 ), true, "", ExtResource( 8 ), true, "", ExtResource( 8 ), true, "", SubResource( 9 ), true, "", SubResource( 9 ), true, "", SubResource( 9 ), true, "", SubResource( 9 ), true ]
 max_columns = 4
 same_column_width = true
-icon_mode = 0
-fixed_icon_size = Vector2( 100, 100 )
+fixed_icon_size = Vector2( 80, 80 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coleccionables" type="Control" parent="Control"]
+visible = false
+margin_left = -320.0
+margin_top = -162.0
+margin_right = -280.0
+margin_bottom = -122.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="volver" type="TouchScreenButton" parent="Control/Coleccionables"]
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 7 )
+
+[node name="Col4" type="Control" parent="Control/Coleccionables"]
+visible = false
+margin_right = 664.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NombreItem" type="Label" parent="Control/Coleccionables/Col4"]
+margin_right = 664.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Coleccionable #4"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextoItem" type="Label" parent="Control/Coleccionables/Col4"]
+margin_top = 50.0
+margin_right = 664.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_constants/line_spacing = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum eget nulla in viverra. Aliquam tempus elementum consectetur. Cras ac accumsan lorem. Quisque finibus iaculis arcu nec ullamcorper. Nunc ut consectetur nibh, nec sodales sem. Pellentesque accumsan nibh in enim semper pharetra. Proin sit amet ultricies dolor. Curabitur ultrices sagittis orci et tempor. Vivamus accumsan sagittis sapien nec cursus. Vivamus eget commodo sapien. "
+align = 3
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Col3" type="Control" parent="Control/Coleccionables"]
+visible = false
+margin_right = 664.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NombreItem" type="Label" parent="Control/Coleccionables/Col3"]
+margin_right = 664.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Coleccionable #3"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextoItem" type="Label" parent="Control/Coleccionables/Col3"]
+margin_top = 50.0
+margin_right = 664.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_constants/line_spacing = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum eget nulla in viverra. Aliquam tempus elementum consectetur. Cras ac accumsan lorem. Quisque finibus iaculis arcu nec ullamcorper. Nunc ut consectetur nibh, nec sodales sem. Pellentesque accumsan nibh in enim semper pharetra. Proin sit amet ultricies dolor. Curabitur ultrices sagittis orci et tempor. Vivamus accumsan sagittis sapien nec cursus. Vivamus eget commodo sapien. "
+align = 3
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Col2" type="Control" parent="Control/Coleccionables"]
+visible = false
+margin_right = 664.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NombreItem" type="Label" parent="Control/Coleccionables/Col2"]
+margin_right = 664.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Coleccionable #2"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextoItem" type="Label" parent="Control/Coleccionables/Col2"]
+margin_top = 50.0
+margin_right = 664.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_constants/line_spacing = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum eget nulla in viverra. Aliquam tempus elementum consectetur. Cras ac accumsan lorem. Quisque finibus iaculis arcu nec ullamcorper. Nunc ut consectetur nibh, nec sodales sem. Pellentesque accumsan nibh in enim semper pharetra. Proin sit amet ultricies dolor. Curabitur ultrices sagittis orci et tempor. Vivamus accumsan sagittis sapien nec cursus. Vivamus eget commodo sapien. "
+align = 3
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Col1" type="Control" parent="Control/Coleccionables"]
+visible = false
+margin_right = 664.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NombreItem" type="Label" parent="Control/Coleccionables/Col1"]
+margin_right = 664.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Coleccionable #1"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextoItem" type="Label" parent="Control/Coleccionables/Col1"]
+margin_top = 50.0
+margin_right = 664.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_constants/line_spacing = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum eget nulla in viverra. Aliquam tempus elementum consectetur. Cras ac accumsan lorem. Quisque finibus iaculis arcu nec ullamcorper. Nunc ut consectetur nibh, nec sodales sem. Pellentesque accumsan nibh in enim semper pharetra. Proin sit amet ultricies dolor. Curabitur ultrices sagittis orci et tempor. Vivamus accumsan sagittis sapien nec cursus. Vivamus eget commodo sapien. "
+align = 3
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+
+[connection signal="item_selected" from="Control/Items/PanelContainer/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="Control/Coleccionables/volver" to="." method="_on_volver_pressed"]
