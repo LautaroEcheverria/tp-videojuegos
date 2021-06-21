@@ -54,7 +54,7 @@
 [ext_resource path="res://producto/assets/img/Plataformas/fondo/1_cielo.png" type="Texture" id=52]
 [ext_resource path="res://producto/assets/img/Plataformas/z0.png" type="Texture" id=53]
 [ext_resource path="res://producto/scenes/Discos.tscn" type="PackedScene" id=54]
-[ext_resource path="res://producto/assets/img/Plataformas/Objects/kisspng-joystick-chess-icon-operating-lever-5a72d73e0dd637.2800522715174756460567.png" type="Texture" id=55]
+[ext_resource path="res://producto/assets/img/Plataformas/Objects/palanca.png" type="Texture" id=55]
 [ext_resource path="res://producto/assets/shaders/fog.shader" type="Shader" id=56]
 [ext_resource path="res://icon.png" type="Texture" id=57]
 [ext_resource path="res://producto/assets/img/sprites/robot_idle.png" type="Texture" id=58]
@@ -67,7 +67,7 @@
 [ext_resource path="res://producto/assets/img/Plataformas/Objects/Obj-Wood-Platform-02.png" type="Texture" id=65]
 [ext_resource path="res://producto/assets/img/Plataformas/Objects/Obj-Boxes.png" type="Texture" id=66]
 [ext_resource path="res://producto/assets/music/libertango plataformas.mp3" type="AudioStream" id=67]
-[ext_resource path="res://producto/assets/img/UI/exclamationwarningsigninacircleoutline_81096.png" type="Texture" id=68]
+[ext_resource path="res://producto/assets/img/UI/inventario_boton.png" type="Texture" id=68]
 [ext_resource path="res://producto/assets/shaders/arbustos.shader" type="Shader" id=69]
 [ext_resource path="res://producto/assets/shaders/blanco_y_negro.shader" type="Shader" id=70]
 [ext_resource path="res://producto/scenes/PlataformaMovil.tscn" type="PackedScene" id=71]
@@ -1285,9 +1285,8 @@ shader_param/byn = 0
 shader = ExtResource( 70 )
 shader_param/byn = 0
 
-[sub_resource type="CapsuleShape2D" id=57]
-radius = 30.8911
-height = 130.306
+[sub_resource type="RectangleShape2D" id=105]
+extents = Vector2( 32.3486, 95.9695 )
 
 [sub_resource type="AtlasTexture" id=58]
 atlas = ExtResource( 58 )
@@ -1338,52 +1337,52 @@ atlas = ExtResource( 59 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=70]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=71]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=72]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=73]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=74]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=75]
 atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=76]
 atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=77]
-atlas = ExtResource( 61 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=78]
-atlas = ExtResource( 61 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=79]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=81]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 60 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 60 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=82]
 animations = [ {
@@ -1397,15 +1396,15 @@ animations = [ {
 "name": "walk",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
+"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ) ],
 "loop": false,
 "name": "jump",
 "speed": 8.0
+}, {
+"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 } ]
 
 [sub_resource type="GDScript" id=83]
@@ -1495,40 +1494,40 @@ extents = Vector2( 310.2, 249.358 )
 [sub_resource type="RectangleShape2D" id=92]
 extents = Vector2( 242.14, 243.106 )
 
-[sub_resource type="RectangleShape2D" id=94]
+[sub_resource type="RectangleShape2D" id=93]
 extents = Vector2( 499.319, 321.095 )
 
-[sub_resource type="RectangleShape2D" id=95]
+[sub_resource type="RectangleShape2D" id=94]
 extents = Vector2( 2563.23, 18.2095 )
 
-[sub_resource type="RectangleShape2D" id=96]
+[sub_resource type="RectangleShape2D" id=95]
 extents = Vector2( 381.044, 28.8508 )
 
-[sub_resource type="RectangleShape2D" id=97]
+[sub_resource type="RectangleShape2D" id=96]
 extents = Vector2( 39.064, 4194.11 )
 
-[sub_resource type="RectangleShape2D" id=98]
+[sub_resource type="RectangleShape2D" id=97]
 extents = Vector2( 870.239, 52.3378 )
 
-[sub_resource type="RectangleShape2D" id=99]
+[sub_resource type="RectangleShape2D" id=98]
 extents = Vector2( 98.2205, 1189.79 )
 
-[sub_resource type="RectangleShape2D" id=100]
+[sub_resource type="RectangleShape2D" id=99]
 extents = Vector2( 23.7021, 3.58755 )
 
-[sub_resource type="RectangleShape2D" id=101]
+[sub_resource type="RectangleShape2D" id=100]
 extents = Vector2( 73.0269, 9.60815 )
 
-[sub_resource type="RectangleShape2D" id=102]
+[sub_resource type="RectangleShape2D" id=101]
 extents = Vector2( 67.7119, 7.96069 )
 
-[sub_resource type="RectangleShape2D" id=103]
+[sub_resource type="RectangleShape2D" id=102]
 extents = Vector2( 75.5891, 10 )
 
-[sub_resource type="RectangleShape2D" id=104]
+[sub_resource type="RectangleShape2D" id=103]
 extents = Vector2( 70.3945, 7.90015 )
 
-[sub_resource type="RectangleShape2D" id=105]
+[sub_resource type="RectangleShape2D" id=104]
 extents = Vector2( 72.5127, 10 )
 
 [node name="Game" type="Node2D"]
@@ -1546,10 +1545,11 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Rojo/Palanca Ascensor"]
 use_parent_material = true
-position = Vector2( 8.17899, 2.38641 )
-scale = Vector2( 0.155869, 0.153547 )
+position = Vector2( -1.88052, -12.9728 )
+scale = Vector2( 4, 4 )
 z_index = 1
 texture = ExtResource( 55 )
+hframes = 4
 
 [node name="Ascensor" parent="Rojo" instance=ExtResource( 71 )]
 position = Vector2( 27.0347, 7.17249 )
@@ -1702,7 +1702,7 @@ tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 104859
 "Persist",
 ]]
 material = SubResource( 56 )
-position = Vector2( 362.284, 481.632 )
+position = Vector2( 720.969, 481.102 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -1710,8 +1710,8 @@ __meta__ = {
 
 [node name="CollisionSprite" type="CollisionShape2D" parent="Robot"]
 use_parent_material = true
-position = Vector2( 0.033, 0 )
-shape = SubResource( 57 )
+position = Vector2( 37.033, 0 )
+shape = SubResource( 105 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Robot/CollisionSprite"]
 use_parent_material = true
@@ -1859,7 +1859,7 @@ shape = SubResource( 92 )
 
 [node name="Secreto3" type="CollisionShape2D" parent="Zonas Secretas"]
 position = Vector2( 1504.11, 1447.24 )
-shape = SubResource( 94 )
+shape = SubResource( 93 )
 
 [node name="Controles" type="CanvasLayer" parent="."]
 layer = 10
@@ -1873,7 +1873,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftButton" type="TouchScreenButton" parent="Controles/Control"]
+[node name="Movimiento" type="Control" parent="Controles/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftButton" type="TouchScreenButton" parent="Controles/Control/Movimiento"]
 position = Vector2( 111.102, 375.584 )
 rotation = 3.14159
 scale = Vector2( 0.4, 0.4 )
@@ -1881,22 +1888,28 @@ z_index = 8
 z_as_relative = false
 normal = ExtResource( 62 )
 
-[node name="RightButton" type="TouchScreenButton" parent="Controles/Control"]
+[node name="RightButton" type="TouchScreenButton" parent="Controles/Control/Movimiento"]
 position = Vector2( 177.726, 283 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 8
 z_as_relative = false
 normal = ExtResource( 62 )
 
-[node name="UpButton" type="TouchScreenButton" parent="Controles/Control"]
+[node name="UpButton" type="TouchScreenButton" parent="Controles/Control/Movimiento"]
 position = Vector2( 914.942, 377 )
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 62 )
 
-[node name="InventoryButton" type="TouchScreenButton" parent="Controles/Control"]
-position = Vector2( 1058.67, 281.246 )
-scale = Vector2( 0.35, 0.35 )
+[node name="Inventario" type="Control" parent="Controles/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryButton" type="TouchScreenButton" parent="Controles/Control/Inventario"]
+position = Vector2( 1060, 271 )
 normal = ExtResource( 68 )
 
 [node name="Game Over" type="Area2D" parent="."]
@@ -1904,28 +1917,28 @@ position = Vector2( -37.3755, -8.00903 )
 
 [node name="Fin Inferior" type="CollisionShape2D" parent="Game Over"]
 position = Vector2( -3179.55, 3316.14 )
-shape = SubResource( 95 )
+shape = SubResource( 94 )
 
 [node name="Fin Inferior2" type="CollisionShape2D" parent="Game Over"]
 position = Vector2( 2335.26, 4770.32 )
-shape = SubResource( 95 )
+shape = SubResource( 94 )
 
 [node name="Fin Inferior3" type="CollisionShape2D" parent="Game Over"]
 position = Vector2( 8209.83, 4751 )
-shape = SubResource( 95 )
+shape = SubResource( 94 )
 
 [node name="Fin Inferior4" type="CollisionShape2D" parent="Game Over"]
 position = Vector2( -717.392, 1333.09 )
-shape = SubResource( 96 )
+shape = SubResource( 95 )
 
 [node name="Fin Izquierda" type="CollisionShape2D" parent="Game Over"]
 position = Vector2( -4562.09, -920.788 )
 z_index = 1
-shape = SubResource( 97 )
+shape = SubResource( 96 )
 
 [node name="Fin Pozo" type="CollisionShape2D" parent="Game Over"]
 position = Vector2( 3244.13, 1091.65 )
-shape = SubResource( 98 )
+shape = SubResource( 97 )
 
 [node name="Disco1" parent="." instance=ExtResource( 54 )]
 position = Vector2( 1771.04, 516.59 )
@@ -1958,12 +1971,12 @@ mode = 1
 
 [node name="Fin Derecha" type="CollisionShape2D" parent="Fin Sin Game Over"]
 position = Vector2( 8590.11, -624.719 )
-shape = SubResource( 99 )
+shape = SubResource( 98 )
 
 [node name="Fin Segundo LVL" type="CollisionShape2D" parent="Fin Sin Game Over"]
 position = Vector2( 144.793, 588.627 )
 scale = Vector2( 3, 3 )
-shape = SubResource( 100 )
+shape = SubResource( 99 )
 disabled = true
 
 [node name="Trampolines" type="Area2D" parent="."]
@@ -1971,35 +1984,35 @@ script = ExtResource( 74 )
 
 [node name="Trampolin 1" type="CollisionShape2D" parent="Trampolines"]
 position = Vector2( 1217.1, 2645.55 )
-shape = SubResource( 101 )
+shape = SubResource( 100 )
 
 [node name="Trampolin2" parent="Trampolines" instance=ExtResource( 73 )]
 position = Vector2( 7214.4, 2249.77 )
 
 [node name="Trampolin 2" type="CollisionShape2D" parent="Trampolines"]
 position = Vector2( 7210.91, 2230.82 )
-shape = SubResource( 102 )
+shape = SubResource( 101 )
 
 [node name="Trampolin3" parent="Trampolines" instance=ExtResource( 73 )]
 position = Vector2( 2865.37, 2656.56 )
 
 [node name="Trampolin 3" type="CollisionShape2D" parent="Trampolines"]
 position = Vector2( 2868.27, 2631.04 )
-shape = SubResource( 103 )
+shape = SubResource( 102 )
 
 [node name="Trampolin4" parent="Trampolines" instance=ExtResource( 73 )]
 position = Vector2( 1730.66, 2661.77 )
 
 [node name="Trampolin 4" type="CollisionShape2D" parent="Trampolines"]
 position = Vector2( 1728.54, 2633.19 )
-shape = SubResource( 104 )
+shape = SubResource( 103 )
 
 [node name="Trampolin5" parent="Trampolines" instance=ExtResource( 73 )]
 position = Vector2( 5686.34, 2364.02 )
 
 [node name="Trampolin 5" type="CollisionShape2D" parent="Trampolines"]
 position = Vector2( 5686.34, 2342.61 )
-shape = SubResource( 105 )
+shape = SubResource( 104 )
 
 [node name="Trampolin1" parent="Trampolines" instance=ExtResource( 73 )]
 position = Vector2( 1216.67, 2669.13 )
@@ -2032,13 +2045,13 @@ flip = true
 [connection signal="body_shape_entered" from="Rojo" to="Rojo" method="_on_Rojo_body_shape_entered"]
 [connection signal="body_shape_entered" from="Zonas Secretas" to="Zonas Secretas" method="_on_Zonas_Secretas_body_shape_entered"]
 [connection signal="body_shape_exited" from="Zonas Secretas" to="Zonas Secretas" method="_on_Zonas_Secretas_body_shape_exited"]
-[connection signal="pressed" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_pressed"]
-[connection signal="released" from="Controles/Control/LeftButton" to="Robot" method="_on_LeftButton_released"]
-[connection signal="pressed" from="Controles/Control/RightButton" to="Robot" method="_on_RightButton_pressed"]
-[connection signal="released" from="Controles/Control/RightButton" to="Robot" method="_on_RightButton_released"]
-[connection signal="pressed" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_pressed"]
-[connection signal="released" from="Controles/Control/UpButton" to="Robot" method="_on_UpButton_released"]
-[connection signal="pressed" from="Controles/Control/InventoryButton" to="Canvas_inventario/Inventario" method="_on_InventoryButton_pressed"]
+[connection signal="pressed" from="Controles/Control/Movimiento/LeftButton" to="Robot" method="_on_LeftButton_pressed"]
+[connection signal="released" from="Controles/Control/Movimiento/LeftButton" to="Robot" method="_on_LeftButton_released"]
+[connection signal="pressed" from="Controles/Control/Movimiento/RightButton" to="Robot" method="_on_RightButton_pressed"]
+[connection signal="released" from="Controles/Control/Movimiento/RightButton" to="Robot" method="_on_RightButton_released"]
+[connection signal="pressed" from="Controles/Control/Movimiento/UpButton" to="Robot" method="_on_UpButton_pressed"]
+[connection signal="released" from="Controles/Control/Movimiento/UpButton" to="Robot" method="_on_UpButton_released"]
+[connection signal="pressed" from="Controles/Control/Inventario/InventoryButton" to="Canvas_inventario/Inventario" method="_on_InventoryButton_pressed"]
 [connection signal="body_entered" from="Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
 [connection signal="body_entered" from="Trampolines" to="Robot" method="_on_Trampolines_body_entered"]
 [connection signal="body_exited" from="Trampolines" to="Robot" method="_on_Trampolines_body_exited"]
