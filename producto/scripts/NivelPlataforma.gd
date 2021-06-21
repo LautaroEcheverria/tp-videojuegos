@@ -75,9 +75,9 @@ func _in_state_idle_process():
 		$CollisionSprite/Sprite.play("idle")
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right") or touch_left or touch_right:
 		mystate = State.WALK
-	elif Input.is_action_just_pressed("ui_up") or touch_up:
+	elif ((Input.is_action_just_pressed("ui_up") or touch_up) and (contadorDiscos >= 1)):
 		mystate = State.JUMP
-	
+		
 	var snap = 24
 	if velocity.y != 0:
 		snap = Vector2(0,0)
@@ -99,7 +99,7 @@ func _in_state_walk_process(delta):
 		elif Input.is_action_pressed("ui_left")  or touch_left:
 			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
-		if Input.is_action_just_pressed("ui_up") or touch_up:
+		if ((Input.is_action_just_pressed("ui_up") or touch_up) and (contadorDiscos>=1)):
 			mystate = State.JUMP
 		if velocity.x == 0:
 			mystate = State.IDLE
@@ -199,7 +199,6 @@ func color():
 	if contadorDiscos >= 3: #activo colores verdes
 		print("verde")
 		get_parent().get_node("Verde/arbustos").material.set_shader_param ("byn",1)
-		get_parent().get_node("Verde/plataformas").visible = true
 		get_parent().get_node("Verde/plataformas").material.set_shader_param ("byn",1)
 		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/4_cielo.jpg")
 		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/4_mont.png")
