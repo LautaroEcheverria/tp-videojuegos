@@ -7,6 +7,8 @@ var scoreNivelRitmico_1 = 0
 var scoreNivelRitmico_2 = 0
 var scoreNivelRitmico_3 = 0
 var scoreNivelRitmico_4 = 0
+var replayNivelRitmico = false
+var nivelRitmico
 
 var diccionario_coleccionables = {
 	0: ["Bandoneon","«Lo trajo envuelto en una caja, y yo me alegré: creía que eran los patines que le había pedido tantas veces. Fue una decepción, porque en lugar de los patines me encontré con un aparato que no había visto en mi vida» - Piazzolla"],
@@ -63,6 +65,7 @@ func getDisco():
 
 func nuevaPartida():
 	contadorDiscos = 0
+	coleccionables = [false,false,false,false]
 	save_game()
 	
 func set_speed_nivel_ritmico(value):
@@ -92,6 +95,17 @@ func get_score_nivel_ritmico(nivel):
 	elif nivel == 4:
 		score = player_data.scoreNivelRitmico_4
 	return score
+
+func get_nivel_ritmico():
+	var nivel
+	if replayNivelRitmico:
+		nivel = nivelRitmico	
+	else:
+		nivel = getDisco()
+	return nivel
+
+func set_nivel_ritmico(nivel):
+	nivelRitmico = nivel
 
 func save_game_data():
 	var pos_x

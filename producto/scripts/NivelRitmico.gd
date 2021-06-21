@@ -39,7 +39,7 @@ func _ready():
 	
 	randomize()
 	#nivel = 1
-	nivel = GameHandler.getDisco()
+	nivel = GameHandler.get_nivel_ritmico()
 	speed = GameHandler.get_speed_nivel_ritmico()
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
@@ -63,6 +63,7 @@ func _ready():
 func _input(event):
 	if event.is_action("ui_cancel"):
 		PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
+		GameHandler.replayNivelRitmico = false
 	if event.is_action("mouse") and gameOverScreen:
 		PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
 		
@@ -288,6 +289,7 @@ func _on_Timer_timeout():
 	change_screen_game_over()
 	GameHandler.set_score_nivel_ritmico(score,nivel)
 	GameHandler.save_game()
+	GameHandler.replayNivelRitmico = false
 	print("Nivel " + str(nivel) + ": guardado")
 	$Timer2.start()
 

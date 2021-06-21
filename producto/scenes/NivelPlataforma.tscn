@@ -1337,52 +1337,52 @@ atlas = ExtResource( 59 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=70]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=71]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=72]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=73]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=74]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 61 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=75]
 atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=76]
 atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=77]
-atlas = ExtResource( 61 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=78]
-atlas = ExtResource( 61 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=79]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=81]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 60 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 60 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=82]
 animations = [ {
@@ -1396,15 +1396,15 @@ animations = [ {
 "name": "walk",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
+"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ) ],
 "loop": false,
 "name": "jump",
 "speed": 8.0
+}, {
+"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 } ]
 
 [sub_resource type="GDScript" id=83]
@@ -1910,7 +1910,7 @@ position = Vector2( 1771.04, 516.59 )
 z_as_relative = false
 
 [node name="Disco2" parent="." instance=ExtResource( 54 )]
-position = Vector2( 8134.08, 47.9407 )
+position = Vector2( 5251.6, 523.865 )
 nroDisco = 1
 
 [node name="Disco3" parent="." instance=ExtResource( 54 )]

@@ -25,9 +25,6 @@ var touch_up = false # jump
 var contadorDiscos = 0
 var changedScene = false
 
-# PERSISTENCIA
-var saveGame = false # Arranco en true pero se hizo asi para probar
-
 func _ready():
 	
 	# Posicion ventana reproduccion
@@ -64,10 +61,10 @@ func _physics_process(delta):
 	if contadorDiscos >= 1:
 		WALK_SPEED = 300
 	
-	# Guardar y cargar partida con checkpoints
-	if saveGame == false and contadorDiscos >= 1: # solo va saveGame ya que lo otro se cambia por funcion new_checkpoint() cuando encuentra disco nuevo
+	# Guardar partida con checkpoints segun disco
+	if GameHandler.saveGame == false and contadorDiscos >= 1: 
 		GameHandler.save_game()
-		saveGame = true
+		GameHandler.saveGame = true
 		print("Partida guardada")
 	
 func _in_state_idle_process():
