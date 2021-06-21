@@ -3,10 +3,11 @@ extends Area2D
 var activo = [false]
 
 func _ready():
-	pass # Replace with function body.
+	activo = GameHandler.get_palancas()
 
 func _on_Rojo_body_shape_entered(body_id, body, body_shape, local_shape):
 	activo[local_shape] = !activo[local_shape]
+	GameHandler.actualizaPalancas(local_shape,activo[local_shape])
 	self._actualizaEstados()
 
 func _actualizaEstados():

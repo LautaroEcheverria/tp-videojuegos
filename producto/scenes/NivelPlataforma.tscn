@@ -1540,6 +1540,7 @@ position = Vector2( 118.646, 577.782 )
 script = ExtResource( 75 )
 
 [node name="Palanca Ascensor" type="CollisionShape2D" parent="Rojo"]
+use_parent_material = true
 position = Vector2( 136.588, -35.9745 )
 shape = SubResource( 2 )
 
@@ -1551,7 +1552,8 @@ z_index = 1
 texture = ExtResource( 55 )
 
 [node name="Ascensor" parent="Rojo" instance=ExtResource( 71 )]
-position = Vector2( 25.147, 56.254 )
+use_parent_material = true
+position = Vector2( 27.0347, 7.17249 )
 idle_duration = 5.0
 move_a = Vector2( 0, 88 )
 

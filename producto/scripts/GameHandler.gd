@@ -1,6 +1,6 @@
 extends Node
 
-var contadorDiscos = 2
+var contadorDiscos = 0
 
 var speedNivelRitmico
 var scoreNivelRitmico_1 = 0
@@ -18,7 +18,7 @@ var diccionario_coleccionables = {
 }
 
 var coleccionables = [false,false,false,false]
-
+var palancas = [false]
 
 const SAVE_DIR = "user://saves/"
 var save_path = "save.txt"
@@ -48,6 +48,7 @@ func load_game():
 			file.close()
 			contadorDiscos = player_data.contadorDiscos
 			coleccionables = player_data.coleccionables
+			palancas = player_data.palancas
 
 func _on_Area2D_Game_Over_body_entered(body):
 	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
@@ -62,6 +63,7 @@ func getDisco():
 func nuevaPartida():
 	contadorDiscos = 0
 	coleccionables = [false,false,false,false]
+	palancas = [false]
 	save_game()
 	
 func set_speed_nivel_ritmico(value):
@@ -120,7 +122,8 @@ func save_game_data():
 		"scoreNivelRitmico_2" : scoreNivelRitmico_2,
 		"scoreNivelRitmico_3" : scoreNivelRitmico_3,
 		"scoreNivelRitmico_4" : scoreNivelRitmico_4,
-		"coleccionables" : coleccionables
+		"coleccionables" : coleccionables,
+		"palancas" : palancas
 	}
 	return data
 
@@ -139,3 +142,10 @@ func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
 
 func _on_Trampolines_body_shape_exited(body_id, body, body_shape, local_shape):
 	$Trampolines._up(local_shape)
+
+func actualizaPalancas(id,valor):
+	palancas[id] = valor
+	save_game()
+
+func get_palancas():
+	return palancas

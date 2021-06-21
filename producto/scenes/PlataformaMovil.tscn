@@ -44,14 +44,17 @@ animations = [ {
 } ]
 
 [node name="PlataformaMovil" type="Node2D"]
+use_parent_material = true
 script = ExtResource( 2 )
 
 [node name="Plataforma" type="KinematicBody2D" parent="."]
+use_parent_material = true
 
 [node name="ColisionPlataforma" type="CollisionShape2D" parent="Plataforma"]
 shape = SubResource( 1 )
 
 [node name="SpritePlataforma" type="AnimatedSprite" parent="Plataforma"]
+use_parent_material = true
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
 animation = "Idle"
