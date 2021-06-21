@@ -11,7 +11,7 @@ enum State {
 
 const GRAVITY = 800
 var WALK_SPEED = 150
-var JUMP_SPEED = -600
+var JUMP_SPEED = -450
 
 var mystate = State.IDLE
 var velocity = Vector2()
@@ -75,10 +75,11 @@ func _in_state_idle_process():
 	elif ((Input.is_action_just_pressed("ui_up") or touch_up) and (contadorDiscos>=1)):
 		mystate = State.JUMP
 	
-	var snap = 24
-	if velocity.y != 0:
-		snap = Vector2(0,0)
-	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
+	if is_on_floor():
+		var snap = 24
+		if velocity.y != 0:
+			snap = Vector2(0,0)
+		move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
 		
 func _in_state_walk_process(delta):
@@ -104,11 +105,7 @@ func _in_state_walk_process(delta):
 	else:
 		velocity.y += delta * GRAVITY
 		$CollisionSprite/Sprite.play("jump",true)
-	
-	var snap = 24
-	if velocity.y != 0:
-		snap = Vector2(0,0)
-	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
+	move_and_slide(velocity,Vector2(0,-1))
 	
 func _in_state_jump_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
@@ -126,11 +123,11 @@ func _in_state_jump_process(delta):
 		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
 			mystate = State.FLY
 	
-	var snap = 24
+	var snap = 12
 	if velocity.y != 0:
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
-	
+	move_and_slide(velocity,Vector2(0,-1))
 
 func _in_state_fly_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
@@ -141,17 +138,17 @@ func _in_state_fly_process(delta):
 	else:
 		velocity.y += delta * GRAVITY
 		if Input.is_action_pressed("ui_right") or touch_right:
-			velocity.x =  WALK_SPEED
+			velocity.x =  WALK_SPEED * 0.75
 			$CollisionSprite/Sprite.flip_h = false
 		elif Input.is_action_pressed("ui_left") or touch_left:
-			velocity.x = -WALK_SPEED
+			velocity.x = -WALK_SPEED * 0.75
 			$CollisionSprite/Sprite.flip_h = true
 	
-	var snap = 24
+	var snap = 12
 	if velocity.y != 0:
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
-	
+	move_and_slide(velocity,Vector2(0,-1))
 
 func _on_LeftButton_pressed():
 	touch_left = true
