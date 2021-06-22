@@ -16,9 +16,10 @@ var state = State.IdleClose
 var habilitado = true
 
 func _ready():
-	var array_coleccionables = GameHandler.get_coleccionables()
-	if array_coleccionables[id]:
-		deshabilitar()
+	if GameHandler.contadorDiscos >= 1:
+		var array_coleccionables = GameHandler.get_coleccionables()
+		if array_coleccionables[id]:
+			deshabilitar()
 	$cartel/nombre.text = nombre
 	if flip:
 		$ColeccionableArea/Coleccionable.flip_h = true
