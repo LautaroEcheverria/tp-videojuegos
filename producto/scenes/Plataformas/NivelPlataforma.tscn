@@ -1383,56 +1383,56 @@ atlas = ExtResource( 61 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=78]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=79]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=81]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=82]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=83]
-atlas = ExtResource( 60 )
+atlas = ExtResource( 59 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=84]
 atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=85]
-atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=86]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 60 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=87]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=88]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=89]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=90]
-atlas = ExtResource( 59 )
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 60 )
 region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 60 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=91]
 animations = [ {
@@ -1446,15 +1446,15 @@ animations = [ {
 "name": "jump",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ) ],
+"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
 "loop": true,
 "name": "walk",
 "speed": 6.0
+}, {
+"frames": [ SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 } ]
 
 [sub_resource type="GDScript" id=92]
@@ -1788,7 +1788,7 @@ tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 104859
 "Persist",
 ]]
 material = SubResource( 65 )
-position = Vector2( 460.661, 478.247 )
+position = Vector2( 460.661, 481 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
