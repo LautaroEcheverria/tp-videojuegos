@@ -132,6 +132,9 @@ func addColeccionable(id):
 	print(diccionario_coleccionables[id])
 	save_game()
 	
+func get_coleccionables():
+	return player_data.coleccionables
+	
 func get_diccionario_coleccionables():
 	return diccionario_coleccionables
 

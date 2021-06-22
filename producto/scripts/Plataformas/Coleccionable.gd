@@ -11,15 +11,25 @@ enum State{
 	Open,
 	Close
 }
-
 var state = State.IdleClose
-# Called when the node enters the scene tree for the first time.
+
+var habilitado = true
+
 func _ready():
+	var array_coleccionables = GameHandler.get_coleccionables()
+	if array_coleccionables[id]:
+		deshabilitar()
 	$cartel/nombre.text = nombre
 	if flip:
 		$ColeccionableArea/Coleccionable.flip_h = true
 	else:
 		$ColeccionableArea/Coleccionable.flip_h = false
+
+func deshabilitar():
+	habilitado = false
+	$AnimationCartel.rename_animation("Hover","Hover_inv")
+	$AnimationCartel.play("Hover_inv",1,-2,true)	
+	state = State.IdleOpen
 
 func _physics_process(delta):
 	if (state == State.IdleOpen):
@@ -46,7 +56,7 @@ func _close():
 
 
 func _on_ColeccionableArea_body_entered(body):
-	if (body.name == "Robot"):
+	if (body.name == "Robot" and habilitado):
 		_open()
 		if $AnimationCartel.current_animation != "Hover":
 			$AnimationCartel.play("Hover")	
@@ -54,7 +64,7 @@ func _on_ColeccionableArea_body_entered(body):
 		$cartel/recoger.visible = true
 
 func _on_ColeccionableArea_body_exited(body):
-	if (body.name == "Robot"):
+	if (body.name == "Robot" and habilitado):
 		_close()
 		$AnimationCartel.rename_animation("Hover","Hover_inv")
 		$AnimationCartel.play("Hover_inv",1,-2,true)	
@@ -71,4 +81,5 @@ func _on_AnimationCartel_animation_finished(anim_name):
 
 func _on_ConseguirColeccionable_pressed():
 	GameHandler.addColeccionable(id)
+	deshabilitar()
 	get_parent().get_node("Canvas_inventario/Inventario").agregarColeccionable(id,nombre,texto)
