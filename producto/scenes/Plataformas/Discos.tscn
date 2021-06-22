@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/d_rojo.png" type="Texture" id=1]
 [ext_resource path="res://producto/scripts/Plataformas/Discos.gd" type="Script" id=2]
@@ -7,6 +7,15 @@
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/d1_text.png" type="Texture" id=5]
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/jugar.png" type="Texture" id=6]
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/discoHover.tres" type="Animation" id=7]
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://producto/assets/fonts/AmberTastePro-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 100
+use_filter = true
+extra_spacing_char = 2
+font_data = SubResource( 6 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "disco"
@@ -185,6 +194,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("cartel/texto:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("cartel/texto:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -327, -73.472 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Inactivo"
@@ -346,6 +379,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("cartel/texto:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 265.611, 254.848 )
@@ -366,9 +411,22 @@ position = Vector2( -35.5817, 71.9899 )
 texture = ExtResource( 4 )
 
 [node name="d1_text" type="Sprite" parent="cartel"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -35.5817, 107.704 )
 texture = ExtResource( 5 )
+
+[node name="texto" type="Label" parent="cartel"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -327.0
+margin_right = 253.0
+margin_bottom = 101.0
+custom_fonts/font = SubResource( 7 )
+text = "oblivion"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="fil_top" type="Sprite" parent="cartel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -384,7 +442,6 @@ texture = ExtResource( 6 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 3
 
 [node name="AnimationDisco" type="AnimationPlayer" parent="."]
 playback_speed = 2.0

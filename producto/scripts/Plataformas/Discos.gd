@@ -8,12 +8,13 @@ var disco3 = preload("res://producto/assets/img/Plataformas/Discos/d_verde.png")
 var disco4 = preload("res://producto/assets/img/Plataformas/Discos/d_final.png")
 
 var discos = [disco1,disco2,disco3,disco4]
+var nombre_discos = ["oblivion","violentango","libertango","adios nonino"]
 
 onready var disco_sprite = get_node("Sprite")
 
 func _ready():
 	disco_sprite.set_texture(discos[nroDisco])
-	#falta texto cartel
+	$cartel/texto.set_text(nombre_discos[nroDisco])
 	
 func _physics_process(delta):
 	$AnimationDisco.play("disco")	
