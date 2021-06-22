@@ -39,8 +39,8 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
-	#nivel = 3
-	nivel = GameHandler.get_nivel_ritmico()
+	nivel = 3
+	#nivel = GameHandler.get_nivel_ritmico()
 	speed = GameHandler.get_speed_nivel_ritmico()
 	bpm = GameHandler.get_BPM(nivel)
 	sec_per_beat = 60.0 / bpm
@@ -227,10 +227,10 @@ func set_initial_screen():
 			$Sprite3.position.x = 880
 			$Sprite4.position.x = 520
 			$Sprite5.position.x = 760
-			#$Score.position.x = 50
-			#$Score2.position.x = 992
-			#$ComboMultiplicador.position.x = 56
-			#$ComboLabel.position.x = 969
+			$Score.rect_position.x = 50
+			$Score2.rect_position.x = 992
+			$ComboMultiplicador.rect_position.x = 56
+			$ComboLabel.rect_position.x = 969
 
 func change_sprite_color(value):
 	if value == 1:
