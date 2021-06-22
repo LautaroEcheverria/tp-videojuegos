@@ -11,5 +11,5 @@ dest_files=[ "res://.import/3_libertango.mp3-6fb28b2f96b320748494052f75d63600.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

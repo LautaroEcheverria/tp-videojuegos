@@ -27,6 +27,7 @@ var rand = 0
 var instance
 var speed
 var nivel
+var totalLanes = 3
 
 var gameOverScreen = false
 
@@ -38,12 +39,15 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
-	#nivel = 2
+	#nivel = 3
 	nivel = GameHandler.get_nivel_ritmico()
 	speed = GameHandler.get_speed_nivel_ritmico()
 	bpm = GameHandler.get_BPM(nivel)
 	sec_per_beat = 60.0 / bpm
 	$Conductor.set_nivel(nivel)
+	set_total_lanes(speed)
+	set_initial_screen()
+	change_sprite_color(nivel)
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
@@ -61,7 +65,6 @@ func _ready():
 		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
 	$Conductor.play_with_beat_offset(2)
-	change_sprite_color(nivel)
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
@@ -142,11 +145,16 @@ func _on_Conductor_beat(position):
 
 func _spawn_notes(to_spawn):
 	if to_spawn > 0:
-		lane = randi() % 3 + 1
+		if totalLanes == 3:
+			lane = randi() % 3 + 1
+		elif totalLanes == 4:
+			lane = randi() % 4 + 1
+		elif totalLanes == 5:
+			lane = randi() % 5 + 1
 		instance = note.instance()
-		instance.initialize(lane) 
+		instance.initialize(lane,totalLanes) 
 		instance.set_speed(speed)
-		instance.set_color(nivel,lane)
+		instance.set_color(nivel,lane,totalLanes)
 		add_child(instance)
 
 func get_score():
@@ -176,7 +184,10 @@ func set_score(value):
 	if combo >= 10:
 		score += value*4
 		$Score.text = "Puntaje: " + str(score)
-		$ComboLabel.text = "Rey del Tango!"
+		if totalLanes < 5:
+			$ComboLabel.text = "Rey del Tango!"
+		else:
+			$ComboLabel.text = "Rey del\nTango!"
 		$ComboMultiplicador.text = "(x4)"
 	elif combo >= 5 and combo < 10:
 		score += value*2
@@ -185,7 +196,10 @@ func set_score(value):
 		$CPUParticles2D2.emitting = true
 		$CPUParticles2D3.emitting = true
 		$CPUParticles2D4.emitting = true
-		$ComboLabel.text = "Hora Combo!"
+		if totalLanes < 5:
+			$ComboLabel.text = "Hora Combo!"
+		else:
+			$ComboLabel.text = "Hora\nCombo!"
 		$ComboMultiplicador.text = "(x2)"
 	else:
 		score += value
@@ -200,35 +214,89 @@ func set_score(value):
 	if combo > maxCombo and combo >= 5:
 		maxCombo = combo
 
+func set_initial_screen():
+	if totalLanes > 3:
+		$Sprite4.visible = true
+		$Sprite5.visible = true
+		if totalLanes == 4:
+			$Sprite2.visible = false
+			$Sprite4.position.x = 573
+			$Sprite5.position.x = 707
+		elif totalLanes == 5:
+			$Sprite.position.x = 400
+			$Sprite3.position.x = 880
+			$Sprite4.position.x = 520
+			$Sprite5.position.x = 760
+			#$Score.position.x = 50
+			#$Score2.position.x = 992
+			#$ComboMultiplicador.position.x = 56
+			#$ComboLabel.position.x = 969
+
 func change_sprite_color(value):
 	if value == 1:
 		$Sprite.modulate = Color("#80ffffff")
-		$Sprite2.modulate = Color("#80ffffff")
 		$Sprite3.modulate = Color("#80ffffff")
+		if totalLanes == 3 or totalLanes == 5:
+			$Sprite2.modulate = Color("#80ffffff")
+		if totalLanes >= 4:
+			$Sprite4.modulate = Color("#80ffffff")
+			$Sprite5.modulate = Color("#80ffffff")
 	elif value == 2:
 		$Sprite.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
-		$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
 		$Sprite3.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
 		$Sprite.modulate = Color("#7bffffff")
-		$Sprite2.modulate = Color("#7bffffff")
 		$Sprite3.modulate = Color("#7bffffff")
 		$Sprite.scale.x = 0.198
 		$Sprite.scale.y = 0.208
-		$Sprite2.scale.x = 0.198
-		$Sprite2.scale.y = 0.208
 		$Sprite3.scale.x = 0.198
 		$Sprite3.scale.y = 0.208
+		if totalLanes == 3 or totalLanes == 5:
+			$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+			$Sprite2.modulate = Color("#7bffffff")
+			$Sprite2.scale.x = 0.198
+			$Sprite2.scale.y = 0.208
+		if totalLanes >= 4:
+			$Sprite4.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+			$Sprite4.modulate = Color("#7bffffff")
+			$Sprite4.scale.x = 0.198
+			$Sprite4.scale.y = 0.208
+			$Sprite5.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+			$Sprite5.modulate = Color("#7bffffff")
+			$Sprite5.scale.x = 0.198
+			$Sprite5.scale.y = 0.208
 	elif value == 3:
 		$Sprite.modulate = Color("#8600ff00")
-		$Sprite2.modulate = Color("#8600ff00")
 		$Sprite3.modulate = Color("#8600ff00")
+		if totalLanes == 3 or totalLanes == 5:
+			$Sprite2.modulate = Color("#8600ff00")
+		if totalLanes >= 4:
+			$Sprite4.modulate = Color("#8600ff00")
+			$Sprite5.modulate = Color("#8600ff00")
 	elif value == 4:
-		$Sprite.modulate = Color("#80ffffff")
-		$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
-		$Sprite2.modulate = Color("#7bffffff")
-		$Sprite2.scale.x = 0.198
-		$Sprite2.scale.y = 0.208
-		$Sprite3.modulate = Color("#8600ff00")
+		if totalLanes == 3:
+			$Sprite.modulate = Color("#80ffffff")
+			$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+			$Sprite2.modulate = Color("#7bffffff")
+			$Sprite2.scale.x = 0.198
+			$Sprite2.scale.y = 0.208
+			$Sprite3.modulate = Color("#8600ff00")	
+		elif totalLanes == 4:
+			$Sprite.modulate = Color("#80ffffff")
+			$Sprite3.modulate = Color("#80ffffff")
+			$Sprite4.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+			$Sprite4.modulate = Color("#7bffffff")
+			$Sprite4.scale.x = 0.198
+			$Sprite4.scale.y = 0.208
+			$Sprite5.modulate = Color("#8600ff00")
+		elif totalLanes == 5:
+			$Sprite.modulate = Color("#80ffffff")
+			$Sprite2.set_texture(load("res://producto/assets/img/Ritmo/Note2.png"))
+			$Sprite2.modulate = Color("#7bffffff")
+			$Sprite2.scale.x = 0.198
+			$Sprite2.scale.y = 0.208
+			$Sprite3.modulate = Color("#80ffffff")
+			$Sprite4.modulate = Color("#8600ff00")
+			$Sprite5.modulate = Color("#8600ff00")
 
 func change_screen_game_over():
 	$Score.visible = false
@@ -258,30 +326,91 @@ func change_screen_game_over():
 
 func _button_entered(value,pos_x):
 	if value:
-		if pos_x == 440:
-			if nivel == 1 or nivel == 2 or nivel == 4:
-				$Sprite.modulate = Color("#ffffff")
-			elif nivel == 3:
-				$Sprite.modulate = Color("#00ff0a") 
-		elif pos_x == 640:
-			if nivel == 1 or nivel == 2 or nivel == 4:
-				$Sprite2.modulate = Color("#ffffff")
-			elif nivel == 3:
-				$Sprite2.modulate = Color("#00ff0a") 
-		elif pos_x == 840:
-			if nivel == 1 or nivel == 2:
-				$Sprite3.modulate = Color("#ffffff")
-			elif nivel == 3 or nivel == 4:
-				$Sprite3.modulate = Color("#00ff0a")
+		if totalLanes == 3 or totalLanes == 4:
+			if pos_x == 440:
+				if nivel == 1 or nivel == 2 or nivel == 4:
+					$Sprite.modulate = Color("#ffffff")
+				elif nivel == 3:
+					$Sprite.modulate = Color("#00ff0a") 
+			elif pos_x == 840:
+				if nivel == 1 or nivel == 2:
+					$Sprite3.modulate = Color("#ffffff")
+				elif nivel == 3:
+					$Sprite3.modulate = Color("#00ff0a")
+				elif nivel == 4:
+					if totalLanes == 3:
+						$Sprite3.modulate = Color("#00ff0a")
+					else:
+						$Sprite3.modulate = Color("#ffffff")
+			if totalLanes == 3:
+				if pos_x == 640:
+					if nivel == 1 or nivel == 2 or nivel == 4:
+						$Sprite2.modulate = Color("#ffffff")
+					elif nivel == 3:
+						$Sprite2.modulate = Color("#00ff0a")
+			else:
+				if pos_x == 573:
+					if nivel == 1 or nivel == 2 or nivel == 4:
+						$Sprite4.modulate = Color("#ffffff")
+					elif nivel == 3:
+						$Sprite4.modulate = Color("#00ff0a") 
+				elif pos_x == 707:
+					if nivel == 1 or nivel == 2:
+						$Sprite5.modulate = Color("#ffffff")
+					elif nivel == 3 or nivel == 4:
+						$Sprite5.modulate = Color("#00ff0a") 
+		elif totalLanes == 5:
+			if pos_x == 400:
+				if nivel == 1 or nivel == 2 or nivel == 4:
+					$Sprite.modulate = Color("#ffffff")
+				elif nivel == 3:
+					$Sprite.modulate = Color("#00ff0a") 
+			elif pos_x == 520:
+				if nivel == 1 or nivel == 2:
+					$Sprite4.modulate = Color("#ffffff")
+				elif nivel == 3 or nivel == 4:
+					$Sprite4.modulate = Color("#00ff0a") 
+			elif pos_x == 640:
+				if nivel == 1 or nivel == 2 or nivel == 4:
+					$Sprite2.modulate = Color("#ffffff")
+				elif nivel == 3:
+					$Sprite2.modulate = Color("#00ff0a") 
+			elif pos_x == 760:
+				if nivel == 1 or nivel == 2:
+					$Sprite5.modulate = Color("#ffffff")
+				elif nivel == 3 or nivel == 4:
+					$Sprite5.modulate = Color("#00ff0a")
+			elif pos_x == 880:
+				if nivel == 1 or nivel == 2 or nivel == 4:
+					$Sprite3.modulate = Color("#ffffff")
+				elif nivel == 3:
+					$Sprite3.modulate = Color("#00ff0a") 
+
+func  set_total_lanes(value):
+	if value == 1:
+		totalLanes = 3
+	elif value == 2:
+		totalLanes = 4
+	elif value == 3:
+		totalLanes = 5
 
 func _on_Area2D_area_exited(area):
 	change_sprite_color(nivel)
 
 func _on_Area2D2_area_exited(area):
-	change_sprite_color(nivel)
+	if totalLanes != 4:
+		change_sprite_color(nivel)
 
 func _on_Area2D3_area_exited(area):
 	change_sprite_color(nivel)
+
+func _on_Area2D4_area_exited(area):
+	if totalLanes >= 4:
+		change_sprite_color(nivel)
+
+func _on_Area2D5_area_exited(area):
+	if totalLanes >= 4:
+		change_sprite_color(nivel)
 
 # Fin del nivel
 func _on_Conductor_finished():

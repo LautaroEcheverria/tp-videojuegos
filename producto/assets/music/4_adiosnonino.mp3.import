@@ -11,5 +11,5 @@ dest_files=[ "res://.import/4_adiosnonino.mp3-c3c787c3ab49375bb29529af8ddc2525.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

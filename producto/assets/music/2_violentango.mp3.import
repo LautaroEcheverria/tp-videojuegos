@@ -11,5 +11,5 @@ dest_files=[ "res://.import/2_violentango.mp3-e134eabcd5d7cd4624967ed85428947e.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

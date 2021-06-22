@@ -11,5 +11,5 @@ dest_files=[ "res://.import/1_oblivion.mp3-66ad213a5148ee7f47d01935847217e9.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
