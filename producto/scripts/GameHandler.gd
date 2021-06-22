@@ -17,7 +17,7 @@ var bpmNivelRitmico_4 = 80
 var diccionario_coleccionables = {
 	0: ["Bandoneon","«Lo trajo envuelto en una caja, y yo me alegré: creía que eran los patines que le había pedido tantas veces. Fue una decepción, porque en lugar de los patines me encontré con un aparato que no había visto en mi vida» - Piazzolla"],
 	1: ["Muñeco de Nonino","«Astor va a llegar lejos. Vale mucho. Sé que cuando se propone hacer una cosa, la hace y bien.» - Nonino"],
-	2: ["Avion roto","«¡Qué noche, Charlie! Allí fue mi bautismo con el tango. Primer tango de mi vida y ¡acompañando a Gardel! Jamás lo olvidaré. Al poco tiempo te fuiste con Lepera y tus guitarristas a Hollywood. ¿Te acordás que me mandaste dos telegramas para que me uniera a ustedes con mi bandoneón? Era la primavera del 35 y yo cumplía 14 años. Los viejos no me dieron permiso y el sindicato tampoco. Charlie, ¡me salvé! En vez de tocar el bandoneón estaría tocando el arpa.» - Piazzolla"],
+	2: ["Avion roto","«¡Qué noche, Charlie! Allí fue mi bautismo con el tango. Primer tango de mi vida y ¡acompañando a Gardel! Jamás lo olvidaré. ¿Te acordás que me mandaste dos telegramas para que me uniera a ustedes con mi bandoneón? Era la primavera del 35 y yo cumplía 14 años. Los viejos no me dieron permiso y el sindicato tampoco. Charlie, ¡me salvé! En vez de tocar el bandoneón estaría tocando el arpa.» \n- Piazzolla"],
 	3: ["Libro de Partituras Parisino","«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era tan mala como yo creía. Yo pensaba que era una basura porque tocaba tangos en un cabaré, y resulta que yo tenía una cosa que se llama estilo.» - Piazzolla"]
 }
 
