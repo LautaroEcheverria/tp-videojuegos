@@ -39,8 +39,8 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
-	nivel = 3
-	#nivel = GameHandler.get_nivel_ritmico()
+	#nivel = 1
+	nivel = GameHandler.get_nivel_ritmico()
 	speed = GameHandler.get_speed_nivel_ritmico()
 	bpm = GameHandler.get_BPM(nivel)
 	sec_per_beat = 60.0 / bpm
@@ -310,6 +310,8 @@ func change_screen_game_over():
 	$Sprite.visible = false
 	$Sprite2.visible = false
 	$Sprite3.visible = false
+	$Sprite4.visible = false
+	$Sprite5.visible = false
 	$GameOver/Ok.modulate = Color.yellow
 	$GameOver/Good.modulate = Color.orange
 	$GameOver/Perfect.modulate = Color.green
