@@ -495,8 +495,9 @@ position = Vector2( 26, 149.245 )
 normal = ExtResource( 6 )
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Contenido/Items"]
+margin_top = 42.0
 margin_right = 476.0
-margin_bottom = 252.0
+margin_bottom = 294.0
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
