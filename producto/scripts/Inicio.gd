@@ -11,8 +11,8 @@ func _ready():
 	if GameHandler.getDisco() == 0:
 		$CanvasLayer/VBoxContainer/Jugar.visible = false
 
-
 func _on_Jugar_pressed():
+	GameHandler.set_transicion("NivelPlataforma")
 	PantallaFade.change_scene("res://producto/scenes/FraseTransicion.tscn")
 
 func _on_NuevaPartida_pressed():

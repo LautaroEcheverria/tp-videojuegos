@@ -1,0 +1,339 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://producto/scripts/Ritmo/NivelRitmico.gd" type="Script" id=1]
+[ext_resource path="res://producto/scenes/Ritmo/Conductor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://producto/assets/img/Ritmo/Background.jpg" type="Texture" id=3]
+[ext_resource path="res://producto/assets/music/1_oblivion.mp3" type="AudioStream" id=4]
+[ext_resource path="res://producto/assets/img/Ritmo/Note.png" type="Texture" id=5]
+[ext_resource path="res://producto/assets/img/Ritmo/VintageEsquina.png" type="Texture" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 231.481
+height = 125.926
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 211.162
+height = 143.204
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 207.361
+height = 144.919
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 38
+font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 38
+font_data = SubResource( 6 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
+position = Vector2( 640.13, 360.112 )
+scale = Vector2( 0.249447, 0.210193 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 440, 608 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="Sprite"]
+visible = false
+scale = Vector2( 1.2, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+position = Vector2( 4.62976, 5.55566 )
+shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 640, 608 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 5 )
+
+[node name="Area2D2" type="Area2D" parent="Sprite2"]
+visible = false
+scale = Vector2( 1.2, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Area2D2"]
+shape = SubResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 840, 608 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 5 )
+
+[node name="Area2D3" type="Area2D" parent="Sprite3"]
+visible = false
+scale = Vector2( 1.2, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/Area2D3"]
+shape = SubResource( 3 )
+
+[node name="Conductor" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 4 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 92.0
+margin_top = 357.0
+margin_right = 263.0
+margin_bottom = 412.0
+custom_fonts/font = SubResource( 5 )
+text = "Puntaje:"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score2" type="Label" parent="."]
+margin_left = 962.0
+margin_top = 360.0
+margin_right = 1206.0
+margin_bottom = 407.0
+custom_fonts/font = SubResource( 7 )
+text = "Vamos!"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ComboMultiplicador" type="Label" parent="."]
+margin_left = 104.0
+margin_top = 400.0
+margin_right = 251.0
+margin_bottom = 455.0
+custom_fonts/font = SubResource( 5 )
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ComboLabel" type="Label" parent="."]
+margin_left = 938.0
+margin_top = 400.0
+margin_right = 1231.0
+margin_bottom = 447.0
+custom_fonts/font = SubResource( 7 )
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Detalle_Vintage1" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = -32.0
+margin_top = 16.0
+margin_right = 417.0
+margin_bottom = 404.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Detalle_Vintage2" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = 1264.0
+margin_top = -32.0
+margin_right = 1713.0
+margin_bottom = 356.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Detalle_Vintage3" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = 1312.0
+margin_top = 704.0
+margin_right = 1761.0
+margin_bottom = 1092.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Detalle_Vintage4" type="TextureRect" parent="."]
+anchor_right = 0.289
+margin_left = 16.0
+margin_top = 752.0
+margin_right = 465.0
+margin_bottom = 1140.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 160, 192 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 1120, 192 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2( 160, 576 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+position = Vector2( 1120, 576 )
+emitting = false
+amount = 1000
+lifetime = 1.2
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2( 0, -2 )
+initial_velocity = 120.0
+color = Color( 1, 0, 0.913725, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="GameOver" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 480.0
+margin_top = 233.0
+margin_right = 800.0
+margin_bottom = 535.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreTotal" type="Label" parent="GameOver"]
+margin_right = 320.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 5 )
+text = "Puntaje total:  "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ok" type="Label" parent="GameOver"]
+margin_top = 51.0
+margin_right = 320.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 5 )
+text = "bien:  "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Good" type="Label" parent="GameOver"]
+margin_top = 102.0
+margin_right = 320.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 5 )
+text = "muy bien:  "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Perfect" type="Label" parent="GameOver"]
+margin_top = 153.0
+margin_right = 320.0
+margin_bottom = 200.0
+custom_fonts/font = SubResource( 5 )
+text = "excelente:  "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Missed" type="Label" parent="GameOver"]
+margin_top = 204.0
+margin_right = 320.0
+margin_bottom = 251.0
+custom_fonts/font = SubResource( 5 )
+text = "fallada:  "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxCombo" type="Label" parent="GameOver"]
+margin_top = 255.0
+margin_right = 320.0
+margin_bottom = 302.0
+custom_fonts/font = SubResource( 5 )
+text = "Max combo:  "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NombreCancion" type="Label" parent="."]
+visible = false
+margin_left = 271.0
+margin_top = 110.0
+margin_right = 1010.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 5 )
+text = "Libertango - Astor Piazzolla (Nivel 3)"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="area_exited" from="Sprite/Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="area_exited" from="Sprite2/Area2D2" to="." method="_on_Area2D2_area_exited"]
+[connection signal="area_exited" from="Sprite3/Area2D3" to="." method="_on_Area2D3_area_exited"]
+[connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[connection signal="finished" from="Conductor" to="." method="_on_Conductor_finished"]
+[connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

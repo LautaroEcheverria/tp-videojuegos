@@ -9,6 +9,10 @@ var scoreNivelRitmico_3 = 0
 var scoreNivelRitmico_4 = 0
 var replayNivelRitmico = false
 var nivelRitmico
+var bpmNivelRitmico_1 = 164
+var bpmNivelRitmico_2 = 152
+var bpmNivelRitmico_3 = 74
+var bpmNivelRitmico_4 = 80
 
 var diccionario_coleccionables = {
 	0: ["Bandoneon","«Lo trajo envuelto en una caja, y yo me alegré: creía que eran los patines que le había pedido tantas veces. Fue una decepción, porque en lugar de los patines me encontré con un aparato que no había visto en mi vida» - Piazzolla"],
@@ -24,6 +28,8 @@ const SAVE_DIR = "user://saves/"
 var save_path = "save.txt"
 var saveGame = false
 var player_data
+
+var transicion
 
 func _ready():
 	pass
@@ -51,7 +57,7 @@ func load_game():
 			palancas = player_data.palancas
 
 func _on_Area2D_Game_Over_body_entered(body):
-	PantallaFade.change_scene("res://producto/scenes/NivelPlataforma.tscn")
+	PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 
 func addDisco():
 	contadorDiscos+=1
@@ -74,13 +80,17 @@ func get_speed_nivel_ritmico():
 
 func set_score_nivel_ritmico(score,nivel):
 	if nivel == 1:
-		scoreNivelRitmico_1 = score
+		if score > scoreNivelRitmico_1:
+			scoreNivelRitmico_1 = score
 	elif nivel == 2:
-		scoreNivelRitmico_2 = score
+		if score > scoreNivelRitmico_2:	
+			scoreNivelRitmico_2 = score
 	elif nivel == 3:
-		scoreNivelRitmico_3 = score
+		if score > scoreNivelRitmico_3:
+			scoreNivelRitmico_3 = score
 	elif nivel == 4:
-		scoreNivelRitmico_4 = score
+		if score > scoreNivelRitmico_4:
+			scoreNivelRitmico_4 = score
 		
 func get_score_nivel_ritmico(nivel):
 	var score
@@ -105,6 +115,48 @@ func get_nivel_ritmico():
 func set_nivel_ritmico(nivel):
 	nivelRitmico = nivel
 
+func get_BPM(nivel):
+	var bpm
+	if nivel == 1:
+		bpm = bpmNivelRitmico_1
+	elif nivel == 2:
+		bpm = bpmNivelRitmico_2
+	elif nivel == 3:
+		bpm = bpmNivelRitmico_3
+	elif nivel == 4:
+		bpm = bpmNivelRitmico_4
+	return bpm
+
+func addColeccionable(id):
+	coleccionables[id] = true
+	print(diccionario_coleccionables[id])
+	save_game()
+	
+func get_diccionario_coleccionables():
+	return diccionario_coleccionables
+
+func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
+	$Trampolines._down(local_shape)
+
+func _on_Trampolines_body_shape_exited(body_id, body, body_shape, local_shape):
+	$Trampolines._up(local_shape)
+
+func actualizaPalancas(id,valor):
+	palancas[id] = valor
+	save_game()
+
+func get_palancas():
+	return palancas
+
+func set_transicion(value):
+	if value == "NivelPlataforma":
+		transicion = "/Plataformas/NivelPlataforma.tscn"
+	elif value == "NivelRitmico":
+		transicion = "/Ritmo/NivelRitmico.tscn"
+		
+func get_transicion():
+	return transicion
+
 func save_game_data():
 	var pos_x
 	var pos_y 
@@ -126,26 +178,3 @@ func save_game_data():
 		"palancas" : palancas
 	}
 	return data
-
-func addColeccionable(id):
-	coleccionables[id] = true
-	print(diccionario_coleccionables[id])
-	save_game()
-	
-	
-func get_diccionario_coleccionables():
-	return diccionario_coleccionables
-
-func _on_Trampolines_body_shape_entered(body_id, body, body_shape, local_shape):
-	$Trampolines._down(local_shape)
-
-
-func _on_Trampolines_body_shape_exited(body_id, body, body_shape, local_shape):
-	$Trampolines._up(local_shape)
-
-func actualizaPalancas(id,valor):
-	palancas[id] = valor
-	save_game()
-
-func get_palancas():
-	return palancas
