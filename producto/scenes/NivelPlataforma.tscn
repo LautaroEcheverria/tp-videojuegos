@@ -1788,7 +1788,7 @@ tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 104859
 "Persist",
 ]]
 material = SubResource( 62 )
-position = Vector2( 329.287, 479.306 )
+position = Vector2( 460.661, 478.247 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -2002,7 +2002,7 @@ normal = ExtResource( 68 )
 position = Vector2( -37.3755, -8.00903 )
 
 [node name="Fin Inferior" type="CollisionShape2D" parent="Game Over"]
-position = Vector2( -3179.55, 3316.14 )
+position = Vector2( -3333.55, 3352.14 )
 shape = SubResource( 100 )
 
 [node name="Fin Inferior2" type="CollisionShape2D" parent="Game Over"]
@@ -2014,7 +2014,7 @@ position = Vector2( 8209.83, 4751 )
 shape = SubResource( 100 )
 
 [node name="Fin Inferior4" type="CollisionShape2D" parent="Game Over"]
-position = Vector2( -717.392, 1333.09 )
+position = Vector2( -715.392, 2089.09 )
 shape = SubResource( 101 )
 
 [node name="Fin Izquierda" type="CollisionShape2D" parent="Game Over"]
