@@ -49,8 +49,8 @@ func _ready():
 	set_initial_screen()
 	change_sprite_color(nivel)
 	if nivel == 1:
-		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
-		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
+		$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Oblivion - Astor Piazzolla (Nivel 1)"
 	elif nivel == 2:
 		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
@@ -70,7 +70,7 @@ func _input(event):
 	if event.is_action("ui_cancel"):
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 		GameHandler.replayNivelRitmico = false
-	if event.is_action("mouse") and gameOverScreen:
+	if (event.is_action("mouse") or event.is_action_pressed("mouse") or event is InputEventScreenTouch) and gameOverScreen:
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 		
 func _on_Conductor_measure(position):

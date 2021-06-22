@@ -10,7 +10,7 @@ func _ready():
 		$CanvasLayer/nombre.visible = false
 
 func _input(event):
-	if event.is_action("mouse"):
+	if event.is_action("mouse") or event.is_action_pressed("mouse") or event is InputEventScreenTouch:
 		PantallaFade.change_scene("res://producto/scenes"+str(transicion))	
 
 func _on_Timer_timeout():
