@@ -35,8 +35,8 @@ func _ready():
 	cambiarEstado()
 	if contadorDiscos >= 1:
 		GameHandler.load_game()
-		position.x = GameHandler.player_data.pos_x
-		position.y = GameHandler.player_data.pos_y
+		#position.x = GameHandler.player_data.pos_x
+		#position.y = GameHandler.player_data.pos_y
 		print("Partida cargada")
 
 func _physics_process(delta):
@@ -206,10 +206,10 @@ func color():
 
 func _on_Trampolines_body_entered(body):
 	if contadorDiscos >= 3:
-		JUMP_SPEED = -600 * 2
+		JUMP_SPEED = -450 * 1.5
 	else :
-		JUMP_SPEED = -600
+		JUMP_SPEED = -450
 
 func _on_Trampolines_body_exited(body):
-	JUMP_SPEED = -600
+	JUMP_SPEED = -450
 
