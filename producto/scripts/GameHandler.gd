@@ -164,8 +164,14 @@ func save_game_data():
 		pos_x = 1771
 		pos_y = 481
 	elif contadorDiscos == 2:
-		pos_x = 4927
-		pos_y = 481
+		pos_x = 8130
+		pos_y = 11.08
+	elif contadorDiscos == 3:
+		pos_x = 4605
+		pos_y = 3721
+	elif contadorDiscos == 4:
+		pos_x = 7894
+		pos_y = 1522
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
