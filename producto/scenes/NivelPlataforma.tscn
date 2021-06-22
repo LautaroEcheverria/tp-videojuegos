@@ -1788,7 +1788,7 @@ tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 104859
 "Persist",
 ]]
 material = SubResource( 62 )
-position = Vector2( 2285.97, 2538.43 )
+position = Vector2( 329.287, 479.306 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
