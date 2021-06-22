@@ -9,7 +9,7 @@ enum State {
 	PULL
 }
 
-const GRAVITY = 800
+const GRAVITY = 900
 var WALK_SPEED = 150
 var JUMP_SPEED = -450
 
@@ -119,9 +119,10 @@ func _in_state_jump_process(delta):
 			mystate = State.IDLE
 			return
 	else:
+		if !is_on_ceiling():
+			if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
+				mystate = State.FLY
 		velocity.y += delta * GRAVITY
-		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
-			mystate = State.FLY
 	
 	var snap = 12
 	if velocity.y != 0:
@@ -136,13 +137,14 @@ func _in_state_fly_process(delta):
 		velocity.x = 0
 		mystate = State.IDLE
 	else:
+		if !is_on_ceiling():
+			if Input.is_action_pressed("ui_right") or touch_right:
+				velocity.x =  WALK_SPEED * 0.75
+				$CollisionSprite/Sprite.flip_h = false
+			elif Input.is_action_pressed("ui_left") or touch_left:
+				velocity.x = -WALK_SPEED * 0.75
+				$CollisionSprite/Sprite.flip_h = true
 		velocity.y += delta * GRAVITY
-		if Input.is_action_pressed("ui_right") or touch_right:
-			velocity.x =  WALK_SPEED * 0.75
-			$CollisionSprite/Sprite.flip_h = false
-		elif Input.is_action_pressed("ui_left") or touch_left:
-			velocity.x = -WALK_SPEED * 0.75
-			$CollisionSprite/Sprite.flip_h = true
 	
 	var snap = 12
 	if velocity.y != 0:
