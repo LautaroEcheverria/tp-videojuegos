@@ -18,7 +18,7 @@ var diccionario_coleccionables = {
 }
 
 var coleccionables = [false,false,false,false]
-var palancas = [false]
+var palancas = [false,false,false,false]
 
 const SAVE_DIR = "user://saves/"
 var save_path = "save.txt"
@@ -63,7 +63,7 @@ func getDisco():
 func nuevaPartida():
 	contadorDiscos = 0
 	coleccionables = [false,false,false,false]
-	palancas = [false]
+	palancas = [false,false,false,false]
 	save_game()
 	
 func set_speed_nivel_ritmico(value):

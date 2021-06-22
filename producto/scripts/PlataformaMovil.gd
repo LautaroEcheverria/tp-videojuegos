@@ -67,7 +67,7 @@ func _physics_process(delta):
 	else:
 		if $Plataforma/SpritePlataforma.animation != "Idle":
 			$Plataforma/SpritePlataforma.play("Idle")
-		tween.stop(plataforma,"") 
+		tween.stop(plataforma,"")
 
 func _get(property):
 	match property:
