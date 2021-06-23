@@ -24,9 +24,10 @@ var diccionario_coleccionables = {
 var coleccionables = [false,false,false,false]
 var palancas = [false,false,false,false]
 
-const SAVE_DIR = "user://saves/"
-var save_path = "save.txt"
+const SAVE_DIR = "user://"
+var save_path = "saveFile.save"
 var saveGame = false
+var discosSave = true
 var player_data
 
 var transicion
@@ -62,6 +63,7 @@ func _on_Area2D_Game_Over_body_entered(body):
 func addDisco():
 	contadorDiscos+=1
 	saveGame = false
+	print("FUNCION ADD_DISCO: "+str(contadorDiscos))
 	
 func getDisco():
 	return contadorDiscos
@@ -162,19 +164,23 @@ func get_transicion():
 
 func save_game_data():
 	var pos_x
-	var pos_y 
-	if contadorDiscos == 1:
-		pos_x = 1771
+	var pos_y
+	if !discosSave:
+		pos_x = 460
 		pos_y = 481
-	elif contadorDiscos == 2:
-		pos_x = 8130
-		pos_y = 11.08
-	elif contadorDiscos == 3:
-		pos_x = 4605
-		pos_y = 3721
-	elif contadorDiscos == 4:
-		pos_x = 7894
-		pos_y = 1522
+	else: 
+		if contadorDiscos == 1:
+			pos_x = 1771
+			pos_y = 481
+		elif contadorDiscos == 2:
+			pos_x = 8130
+			pos_y = 11.08
+		elif contadorDiscos == 3:
+			pos_x = 4605
+			pos_y = 3721
+		elif contadorDiscos == 4:
+			pos_x = 7894
+			pos_y = 1522
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
@@ -187,3 +193,7 @@ func save_game_data():
 		"palancas" : palancas
 	}
 	return data
+
+func set_discosSave():
+	discosSave = false
+	save_game()

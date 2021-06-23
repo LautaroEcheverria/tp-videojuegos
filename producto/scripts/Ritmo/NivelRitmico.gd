@@ -39,7 +39,6 @@ func _ready():
 	OS.set_window_position(centered_pos)
 	
 	randomize()
-	#nivel = 1
 	nivel = GameHandler.get_nivel_ritmico()
 	speed = GameHandler.get_speed_nivel_ritmico()
 	bpm = GameHandler.get_BPM(nivel)
@@ -68,9 +67,11 @@ func _ready():
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
-		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+		GameHandler.save_game()
+		GameHandler.discosSave = true
 		GameHandler.replayNivelRitmico = false
-	if (event.is_action("mouse") or event.is_action_pressed("mouse") or event is InputEventScreenTouch) and gameOverScreen:
+		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+	if (event.is_action_pressed("mouse") or event is InputEventScreenTouch) and gameOverScreen:
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 		
 func _on_Conductor_measure(position):
@@ -423,6 +424,7 @@ func _on_Timer_timeout():
 	change_screen_game_over()
 	GameHandler.set_score_nivel_ritmico(score,nivel)
 	GameHandler.save_game()
+	GameHandler.discosSave = true
 	GameHandler.replayNivelRitmico = false
 	print("Nivel " + str(nivel) + ": guardado")
 	$Timer2.start()
