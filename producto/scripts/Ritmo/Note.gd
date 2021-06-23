@@ -1,7 +1,7 @@
 extends Node2D
 
 const TARGET_Y = 550
-const SPAWN_Y = -50
+const SPAWN_Y = 0
 const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
 
 const LANE1_SPAWN_SPEED1 = Vector2(440, SPAWN_Y)

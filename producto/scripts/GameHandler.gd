@@ -51,7 +51,7 @@ func load_game():
 		var error = file.open(save_path, File.READ)
 		if error == OK:
 			player_data = file.get_var()
-			print(player_data)
+			#print(player_data)
 			file.close()
 			contadorDiscos = player_data.contadorDiscos
 			coleccionables = player_data.coleccionables
@@ -63,7 +63,6 @@ func _on_Area2D_Game_Over_body_entered(body):
 func addDisco():
 	contadorDiscos+=1
 	saveGame = false
-	print("FUNCION ADD_DISCO: "+str(contadorDiscos))
 	
 func getDisco():
 	return contadorDiscos

@@ -16,8 +16,8 @@ var song_position_in_beats = 0
 var last_spawned_beat = 0
 var sec_per_beat
 
-var spawn_1_beat = 0
-var spawn_2_beat = 0
+var spawn_1_beat = 1
+var spawn_2_beat = 1
 var spawn_3_beat = 1
 var spawn_4_beat = 0
 
@@ -87,9 +87,9 @@ func _on_Conductor_measure(position):
 func _on_Conductor_beat(position):
 	song_position_in_beats = position
 	if song_position_in_beats > 36:
-		spawn_1_beat = 1
+		spawn_1_beat = 0
 		spawn_2_beat = 1
-		spawn_3_beat = 0
+		spawn_3_beat = 1
 		spawn_4_beat = 0
 	if song_position_in_beats > 98:
 		spawn_1_beat = 1
@@ -107,8 +107,8 @@ func _on_Conductor_beat(position):
 		spawn_3_beat = 0
 		spawn_4_beat = 1
 	if song_position_in_beats > 194:
-		spawn_1_beat = 0
-		spawn_2_beat = 0
+		spawn_1_beat = 1
+		spawn_2_beat = 1
 		spawn_3_beat = 1
 		spawn_4_beat = 1
 	if song_position_in_beats > 228:
@@ -122,20 +122,20 @@ func _on_Conductor_beat(position):
 		spawn_3_beat = 1
 		spawn_4_beat = 1
 	if song_position_in_beats > 288:
-		spawn_1_beat = 0
-		spawn_2_beat = 1
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 322:
 		spawn_1_beat = 1
 		spawn_2_beat = 1
 		spawn_3_beat = 1
 		spawn_4_beat = 1
+	if song_position_in_beats > 322:
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
 	if song_position_in_beats > 388:
 		spawn_1_beat = 1
 		spawn_2_beat = 0
 		spawn_3_beat = 0
-		spawn_4_beat = 0
+		spawn_4_beat = 1
 	if song_position_in_beats > 396:
 		spawn_1_beat = 0
 		spawn_2_beat = 0
