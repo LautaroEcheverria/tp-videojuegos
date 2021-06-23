@@ -1,6 +1,7 @@
 extends Node
 
 var contadorDiscos = 0
+var gameOver = false
 
 var speedNivelRitmico
 var scoreNivelRitmico_1 = 0
@@ -164,22 +165,26 @@ func get_transicion():
 func save_game_data():
 	var pos_x
 	var pos_y
-	if !discosSave:
+	if gameOver:
 		pos_x = 460
 		pos_y = 481
-	else: 
-		if contadorDiscos == 1:
-			pos_x = 1771
+	else:
+		if !discosSave:
+			pos_x = 460
 			pos_y = 481
-		elif contadorDiscos == 2:
-			pos_x = 8130
-			pos_y = 11.08
-		elif contadorDiscos == 3:
-			pos_x = 4605
-			pos_y = 3721
-		elif contadorDiscos == 4:
-			pos_x = 7894
-			pos_y = 1522
+		else: 
+			if contadorDiscos == 1:
+				pos_x = 1771
+				pos_y = 481
+			elif contadorDiscos == 2:
+				pos_x = 8130
+				pos_y = 11.08
+			elif contadorDiscos == 3:
+				pos_x = 4605
+				pos_y = 3721
+			elif contadorDiscos == 4:
+				pos_x = 7894
+				pos_y = 1522
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,

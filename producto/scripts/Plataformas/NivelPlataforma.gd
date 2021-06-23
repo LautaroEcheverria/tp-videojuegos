@@ -38,7 +38,6 @@ func _ready():
 		position.x = GameHandler.player_data.pos_x
 		position.y = GameHandler.player_data.pos_y
 		print("Partida cargada")
-	#print(GameHandler.discosSave)
 
 func _physics_process(delta):
 	
@@ -216,5 +215,5 @@ func _on_Trampolines_body_exited(body):
 	JUMP_SPEED = -450
 
 func _on_Area_Save_Game_body_entered(body):
-	if contadorDiscos >= 1:
+	if contadorDiscos >= 1 and GameHandler.discosSave == true:
 		GameHandler.set_discosSave()

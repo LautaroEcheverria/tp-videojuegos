@@ -48,8 +48,8 @@ func _ready():
 	set_initial_screen()
 	change_sprite_color(nivel)
 	if nivel == 1:
-		#$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
-		$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
+		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Oblivion - Astor Piazzolla (Nivel 1)"
 	elif nivel == 2:
 		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
@@ -72,7 +72,10 @@ func _input(event):
 		GameHandler.replayNivelRitmico = false
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 	if (event.is_action_pressed("mouse") or event is InputEventScreenTouch) and gameOverScreen:
-		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+		if nivel < 4:
+			PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+		else:
+			PantallaFade.change_scene("res://producto/scenes/Final.tscn")
 		
 func _on_Conductor_measure(position):
 	if position == 1:
@@ -429,6 +432,9 @@ func _on_Timer_timeout():
 	print("Nivel " + str(nivel) + ": guardado")
 	$Timer2.start()
 
-# Muestra pantalla de puntos durante 6 seg y vuelve a plataforma
+# Muestra pantalla de puntos durante 6 seg y vuelve a plataforma, sino Game Over
 func _on_Timer2_timeout():
-	PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+	if nivel < 4:
+		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+	else:
+		PantallaFade.change_scene("res://producto/scenes/Final.tscn")

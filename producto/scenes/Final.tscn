@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://producto/scripts/Final.gd" type="Script" id=1]
+[ext_resource path="res://producto/assets/img/UI_portada/Oblivion.jpg" type="Texture" id=2]
+[ext_resource path="res://producto/assets/music/las_4_estaciones final.mp3" type="AudioStream" id=3]
+[ext_resource path="res://producto/assets/fonts/CENTURY.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 38
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 5
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.203922 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="frase" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -577.512
+margin_top = 98.9899
+margin_right = 579.488
+margin_bottom = 247.99
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_constants/line_spacing = 4
+text = "Robot finalmente se siente en paz y satisfecho. 
+Su misión en este mundo ha terminado. 
+El legado de Astor Piazzolla será siempre recordado."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Musica de fondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
