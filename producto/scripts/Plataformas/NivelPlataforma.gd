@@ -9,9 +9,9 @@ enum State {
 	PULL
 }
 
-const GRAVITY = 800
+const GRAVITY = 820
 var WALK_SPEED = 150
-var JUMP_SPEED = -450
+var JUMP_SPEED = -650
 
 var mystate = State.IDLE
 var velocity = Vector2()
@@ -76,7 +76,7 @@ func _in_state_idle_process():
 		mystate = State.JUMP
 	
 	if is_on_floor():
-		var snap = 24
+		var snap = 12
 		if velocity.y != 0:
 			snap = Vector2(0,0)
 		move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
@@ -103,10 +103,9 @@ func _in_state_walk_process(delta):
 			mystate = State.IDLE
 			return
 	else:
-		velocity.y += delta * GRAVITY
-		$CollisionSprite/Sprite.play("jump",true)
-	move_and_slide(velocity,Vector2(0,-1))
-	
+		mystate = State.FLY
+	move_and_slide(velocity,Vector2(0, -1))
+
 func _in_state_jump_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
 		$CollisionSprite/Sprite.play("jump")
@@ -122,13 +121,14 @@ func _in_state_jump_process(delta):
 		velocity.y += delta * GRAVITY
 		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
 			mystate = State.FLY
-	
+	if get_floor_velocity().y < 0:
+		position.y += get_floor_velocity().y * get_physics_process_delta_time() - GRAVITY * get_physics_process_delta_time() - 1
 	var snap = 12
 	if velocity.y != 0:
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
-	move_and_slide(velocity,Vector2(0,-1))
-
+	
+		
 func _in_state_fly_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
 		$CollisionSprite/Sprite.play("jump")
@@ -138,17 +138,20 @@ func _in_state_fly_process(delta):
 	else:
 		velocity.y += delta * GRAVITY
 		if Input.is_action_pressed("ui_right") or touch_right:
-			velocity.x =  WALK_SPEED * 0.75
+			velocity.x = WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = false
 		elif Input.is_action_pressed("ui_left") or touch_left:
-			velocity.x = -WALK_SPEED * 0.75
+			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
 	
+	if get_floor_velocity().y < 0:
+		position.y += get_floor_velocity().y * get_physics_process_delta_time() - GRAVITY * get_physics_process_delta_time() - 1
 	var snap = 12
 	if velocity.y != 0:
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
-	move_and_slide(velocity,Vector2(0,-1))
+	
+
 
 func _on_LeftButton_pressed():
 	touch_left = true
@@ -206,10 +209,10 @@ func color():
 
 func _on_Trampolines_body_entered(body):
 	if contadorDiscos >= 3:
-		JUMP_SPEED = -450 * 1.5
+		JUMP_SPEED = JUMP_SPEED * 1.5
 	else :
-		JUMP_SPEED = -450
+		JUMP_SPEED = -650
 
 func _on_Trampolines_body_exited(body):
-	JUMP_SPEED = -450
+	JUMP_SPEED = -650
 

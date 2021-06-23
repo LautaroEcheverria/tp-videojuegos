@@ -14,6 +14,8 @@ var previous_follow = Vector2.ZERO
 #Guarda la posicion de la plataforma y del nodo Tween
 onready var plataforma = $Plataforma
 onready var tween = $Tween
+#Timer interno del tween
+var time
 
 func _ready():
 	_iniciar_tween()
@@ -34,10 +36,11 @@ func _iniciar_tween():
 	tween.start()
 	
 func _physics_process(delta):
-	
 	if activo:
-		if (tween.pause_mode):
-			tween.start()
+		if (!tween.is_active()):
+			#hago funcionar todos los procesos y les reseteo el tiempo 
+			tween.resume_all()
+			tween.seek(time)
 		#para el flip
 		if ascensor == true:
 			previous_follow.y = plataforma.position.y
@@ -67,7 +70,9 @@ func _physics_process(delta):
 	else:
 		if $Plataforma/SpritePlataforma.animation != "Idle":
 			$Plataforma/SpritePlataforma.play("Idle")
-		tween.stop(plataforma,"")
+		#pido el tiempo y paro todos los procesos
+		time = tween.tell()
+		tween.stop_all()
 
 func _get(property):
 	match property:

@@ -4,7 +4,7 @@ extends Node2D
 export var idle_duration = 0
 export var cell_size = Vector2(48,48)
 
-var move_a = Vector2(0,0.75)
+var move_a = Vector2(0,1.20)
 var velocidad  = 64.0
 
 #"Propiedad" de seguimiento
@@ -23,20 +23,15 @@ enum State {
 	Move_up
 }
 func _ready():
-	move_a = move_a * cell_size
+	_iniciar_tween()
 
 func _iniciar_tween():
+	move_a = move_a * cell_size
 	var duracion = move_a.length()/velocidad
 	#IDA
-	if (state == State.Move_down):
-		tween.interpolate_property(self, "follow", Vector2.ZERO, 
-								   move_a, duracion, Tween.TRANS_LINEAR,
-								   Tween.EASE_IN_OUT, idle_duration)
-	#VUELTA
-	if (state == State.Move_up):
-		tween.interpolate_property(self, "follow", move_a, Vector2.ZERO,
-								   duracion, Tween.TRANS_LINEAR,
-								   Tween.EASE_IN_OUT, idle_duration)
+	tween.interpolate_property(self, "follow", Vector2.ZERO, 
+								move_a, duracion, Tween.TRANS_LINEAR,
+								Tween.EASE_IN_OUT, idle_duration)
 	tween.start()
 	
 func _physics_process(delta):
@@ -48,11 +43,11 @@ func _physics_process(delta):
 	if (state == State.Idle_up):
 		if $TrampolinBody/SpriteTrampolin.animation != "Idle_up":
 			$TrampolinBody/SpriteTrampolin.play("Idle_up")
-		tween.remove(trampolin,"")
+			tween.stop_all()
 	if (state == State.Idle_down):
 		if $TrampolinBody/SpriteTrampolin.animation != "Idle_down":
 			$TrampolinBody/SpriteTrampolin.play("Idle_down")
-		tween.remove(trampolin,"")
+			tween.stop_all()
 	if (state == State.Move_down):
 		if $TrampolinBody/SpriteTrampolin.animation != "Move_down":
 			$TrampolinBody/SpriteTrampolin.play("Move_down")
@@ -66,8 +61,9 @@ func _physics_process(delta):
 
 func _down():
 	state = State.Move_down
-	_iniciar_tween()
+	tween.resume_all()
 
 func _up():
+	tween.reset_all()
 	state = State.Move_up
-	_iniciar_tween()
+	

@@ -17,7 +17,7 @@ func _on_Rojo_body_shape_entered(body_id, body, body_shape, local_shape):
 func _actualizaEstados(id):
 	var estadoPlataforma: bool
 	var animacion
-	var contadorDiscos = GameHandler.getDisco()
+	var contadorDiscos = GameHandler.contadorDiscos
 	if contadorDiscos >= 2:
 		match id:
 			0:
@@ -57,7 +57,7 @@ func _actualizaEstados(id):
 			2:
 				animacion = get_parent().get_node("Rojo/PalancaPlataformaMovil1/Palanca").animation
 				estadoPlataforma = get_parent().get_node("Rojo/PlataformaMovil1")._get("activo")
-				if  activo[1]:
+				if  activo[2]:
 					if animacion != "activate":
 						get_parent().get_node("Rojo/PalancaPlataformaMovil1/Palanca").play("activate")
 					if estadoPlataforma == false:
@@ -70,7 +70,7 @@ func _actualizaEstados(id):
 			3:
 				animacion = get_parent().get_node("Rojo/PalancaPlataformaMovil2y3/Palanca").animation
 				estadoPlataforma = get_parent().get_node("Rojo/PlataformaMovil2")._get("activo")
-				if  activo[1]:
+				if  activo[3]:
 					if animacion != "activate":
 						get_parent().get_node("Rojo/PalancaPlataformaMovil2y3/Palanca").play("activate")
 					if estadoPlataforma == false:
