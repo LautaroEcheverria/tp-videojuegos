@@ -1204,76 +1204,76 @@ atlas = ExtResource( 58 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 59 )
+atlas = ExtResource( 61 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 59 )
+atlas = ExtResource( 61 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 59 )
+atlas = ExtResource( 61 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 59 )
+atlas = ExtResource( 61 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 59 )
+atlas = ExtResource( 61 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 59 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 60 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 60 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 60 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 60 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 60 )
-region = Rect2( 256, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 60 )
 region = Rect2( 384, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 61 )
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 59 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=62]
 animations = [ {
@@ -1282,20 +1282,20 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
-"loop": true,
-"name": "walk",
-"speed": 6.0
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
 }, {
-"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
+"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"loop": true,
+"name": "walk",
+"speed": 6.0
 } ]
 
 [sub_resource type="GDScript" id=63]
@@ -1679,7 +1679,7 @@ z_index = 2
 tile_set = SubResource( 35 )
 cell_size = Vector2( 24, 24 )
 format = 1
-tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 1048591, -1610612734, 0, 1048592, -1610612734, 0, 1048593, -1610612734, 0, 1048594, -1610612734, 0, 1048595, -1610612734, 0, 1048596, -1610612734, 0, 1048597, -1610612734, 0, 1048598, -1610612734, 0, 1048599, -1610612734, 0, 1114126, -536870910, 0, 1114127, -1610612734, 0, 1114128, -1610612734, 0, 1114129, -1610612734, 0, 1114130, -536870910, 0, 1114131, -536870910, 0, 1114132, -536870910, 0, 1114133, -536870910, 0, 1114134, -536870910, 0, 1114135, -536870910, 0, 1179662, -536870910, 0, 1179663, -1610612733, 0, 1179664, -536870910, 0, 1179665, -536870910, 0, 1179666, -536870910, 0, 1179667, -536870910, 0, 1179668, -536870910, 0, 1179669, -536870910, 0, 1179670, -536870910, 0, 1179671, 2, 0, 1179672, 2, 0, 1179673, 2, 0, 1245197, 2, 0, 1245198, 2, 0, 1245199, 2, 0, 1245200, 2, 0, 1245201, 2, 0, 1245202, 2, 0, 1245203, -536870909, 0, 1245204, 2, 0, 1245205, 2, 0, 1245206, 2, 0, 1245207, 2, 0, 1245208, 2, 0, 1245209, 2, 0, 1245210, 2, 0, 1310733, 2, 0, 1310734, 2, 0, 1310735, 2, 0, 1310736, 2, 0, 1310737, 2, 0, 1310738, 2, 0, 1310739, 2, 0, 1310740, 2, 0, 1310741, 2, 0, 1310742, 2, 0, 1310743, 2, 0, 1310744, 2, 0, 1310745, 2, 0, 1310746, 2, 0, 1310747, 2, 0, 1376260, 0, 0, 1376269, 2, 0, 1376270, 2, 0, 1376271, 2, 0, 1376272, 2, 0, 1376273, 2, 0, 1376274, 2, 0, 1376275, 2, 0, 1376276, 2, 0, 1376277, 2, 0, 1376278, 2, 0, 1376279, 2, 0, 1376280, 2, 0, 1376281, 2, 0, 1376282, 2, 0, 1376283, 2, 0, 1441805, 2, 0, 1441806, 2, 0, 1441807, 2, 0, 1441808, 2, 0, 1441809, 2, 0, 1441810, 2, 0, 1441811, 2, 0, 1441812, -1610612734, 0, 1441813, -1610612734, 0, 1441814, 2, 0, 1441815, 2, 0, 1441816, 2, 0, 1441817, 2, 0, 1441818, 2, 0, 1441819, 2, 0, 1507341, 2, 0, 1507342, 2, 0, 1507343, 1610612739, 0, 1507344, 2, 0, 1507345, 2, 0, 1507346, 2, 0, 1507347, -1610612734, 0, 1507348, 2, 0, 1507349, 2, 0, 1507350, 2, 0, 1507351, 2, 0, 1507352, 2, 0, 1507353, 2, 0, 1507354, 2, 0, 1507355, 2, 0, 1572877, 2, 0, 1572878, 2, 0, 1572879, 2, 0, 1572880, 2, 0, 1572881, 2, 0, 1572882, 2, 0, 1572883, 2, 0, 1572884, 2, 0, 1572885, 2, 0, 1572886, 2, 0, 1572887, 2, 0, 1572888, 2, 0, 1572889, 2, 0, 1572890, 2, 0, 1572891, 2, 0, 1638413, 2, 0 )
+tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 1048591, -1610612734, 0, 1048592, -1610612734, 0, 1048593, -1610612734, 0, 1048594, -1610612734, 0, 1048595, -1610612734, 0, 1048596, -1610612734, 0, 1048597, -1610612734, 0, 1048598, -1610612734, 0, 1048599, -1610612734, 0, 1114126, -536870910, 0, 1114127, -1610612734, 0, 1114128, -1610612734, 0, 1114129, -1610612734, 0, 1114130, -536870910, 0, 1114131, -536870910, 0, 1114132, -536870910, 0, 1114133, -536870910, 0, 1114134, -536870910, 0, 1114135, -536870910, 0, 1179662, -536870910, 0, 1179663, -1610612733, 0, 1179664, -536870910, 0, 1179665, -536870910, 0, 1179666, -536870910, 0, 1179667, -536870910, 0, 1179668, -536870910, 0, 1179669, -536870910, 0, 1179670, -536870910, 0, 1179671, -536870910, 0, 1179672, -536870910, 0, 1245197, 2, 0, 1245198, 2, 0, 1245199, 2, 0, 1245200, 2, 0, 1245201, 2, 0, 1245202, 2, 0, 1245203, -536870909, 0, 1245204, 2, 0, 1245205, 2, 0, 1245206, 2, 0, 1245207, 2, 0, 1245208, 2, 0, 1310733, 2, 0, 1310734, 2, 0, 1310735, 2, 0, 1310736, 2, 0, 1310737, 2, 0, 1310738, 2, 0, 1310739, 2, 0, 1310740, 2, 0, 1310741, 2, 0, 1310742, 2, 0, 1310743, 2, 0, 1310744, 1073741827, 0, 1376260, 0, 0, 1376269, 2, 0, 1376270, 2, 0, 1376271, 2, 0, 1376272, 2, 0, 1376273, 2, 0, 1376274, 2, 0, 1376275, 2, 0, 1376276, 2, 0, 1376277, 2, 0, 1376278, 2, 0, 1376279, 2, 0, 1376280, 2, 0, 1441805, 2, 0, 1441806, 2, 0, 1441807, 2, 0, 1441808, 2, 0, 1441809, 2, 0, 1441810, 2, 0, 1441811, 2, 0, 1441812, -1610612734, 0, 1441813, -1610612734, 0, 1441814, -1610612734, 0, 1441815, -1610612734, 0, 1441816, -1610612734, 0, 1441817, -1610612734, 0, 1507341, 2, 0, 1507342, 2, 0, 1507343, 1610612739, 0, 1507344, 2, 0, 1507345, 2, 0, 1507346, 2, 0, 1507347, 2, 0, 1507348, 2, 0, 1507349, 2, 0, 1572877, 2, 0, 1572878, 2, 0, 1572879, 2, 0, 1572880, 2, 0, 1572881, 2, 0, 1572882, 2, 0, 1572883, 2, 0, 1572884, 2, 0, 1572885, 2, 0, 1572886, 2, 0, 1638413, 2, 0 )
 
 [node name="AnimacionSombra" type="AnimationPlayer" parent="Sombra Secretos"]
 
@@ -1835,6 +1835,7 @@ volume_db = -20.0
 autoplay = true
 
 [node name="Zonas Secretas" type="Area2D" parent="."]
+visible = false
 script = ExtResource( 3 )
 
 [node name="Secreto1" type="CollisionShape2D" parent="Zonas Secretas"]
