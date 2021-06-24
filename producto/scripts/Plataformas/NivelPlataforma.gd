@@ -123,7 +123,7 @@ func _in_state_jump_process(delta):
 		velocity.y += delta * GRAVITY
 		if (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or touch_left or touch_right) and not (Input.is_action_pressed("ui_accept")):
 			mystate = State.FLY
-	if get_floor_velocity().y < 0:
+	if get_floor_velocity().y < 0 and (mystate == State.FLY or mystate == State.JUMP):
 		position.y += get_floor_velocity().y * get_physics_process_delta_time() - GRAVITY * get_physics_process_delta_time() - 1
 	var snap = 12
 	if velocity.y != 0:
@@ -146,7 +146,7 @@ func _in_state_fly_process(delta):
 			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
 	
-	if get_floor_velocity().y < 0:
+	if get_floor_velocity().y < 0 and (mystate == State.FLY or mystate == State.JUMP):
 		position.y += get_floor_velocity().y * get_physics_process_delta_time() - GRAVITY * get_physics_process_delta_time() - 1
 	var snap = 12
 	if velocity.y != 0:
