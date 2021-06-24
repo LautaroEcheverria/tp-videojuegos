@@ -25,8 +25,7 @@ var diccionario_coleccionables = {
 var coleccionables = [false,false,false,false]
 var palancas = [false,false,false,false]
 
-const SAVE_DIR = "user://"
-var save_path = "saveFile.save"
+var save_path = "user://saveFile.save"
 var saveGame = false
 var discosSave = true
 var player_data
@@ -37,9 +36,6 @@ func _ready():
 	pass
 
 func save_game():
-	var dir = Directory.new()
-	if !dir.dir_exists(SAVE_DIR):
-		dir.make_dir_recursive(SAVE_DIR)
 	var file = File.new()
 	var error = file.open(save_path, File.WRITE)
 	if error == OK:
@@ -173,17 +169,17 @@ func save_game_data():
 			pos_y = 481
 		else: 
 			if contadorDiscos == 1:
-				pos_x = 1771
+				pos_x = 1733
 				pos_y = 481
 			elif contadorDiscos == 2:
-				pos_x = 8130
-				pos_y = 11.08
+				pos_x = 8095
+				pos_y = -10.97
 			elif contadorDiscos == 3:
 				pos_x = 4605
 				pos_y = 3721
 			elif contadorDiscos == 4:
 				pos_x = 7894
-				pos_y = 1522
+				pos_y = 1573.03
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,

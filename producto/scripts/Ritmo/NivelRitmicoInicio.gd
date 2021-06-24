@@ -5,27 +5,27 @@ func _ready():
 
 func _on_BotonFacil_pressed():
 	GameHandler.set_speed_nivel_ritmico(1) # speed = 1
-	$Botones/Control/VBoxContainer/BotonFacil.modulate = Color("#888888")
+	$CanvasLayer/VBoxContainer/BotonFacil.modulate = Color("c3ffffff")
 	transicion()
 
 func _on_BotonIntermedio_pressed():
 	GameHandler.set_speed_nivel_ritmico(2) # speed = 2
-	$Botones/Control/VBoxContainer/BotonIntermedio.modulate = Color("#888888")
+	$CanvasLayer/VBoxContainer/BotonIntermedio.modulate = Color("c3ffffff")
 	transicion()
 
 func _on_BotonDificil_pressed():
 	GameHandler.set_speed_nivel_ritmico(3) # speed = 3
-	$Botones/Control/VBoxContainer/BotonDificil.modulate = Color("#888888")
+	$CanvasLayer/VBoxContainer/BotonDificil.modulate = Color("c3ffffff")
 	transicion()
 
-func _on_BotonFacil_released():
-	$Botones/Control/VBoxContainer/BotonFacil.modulate = Color("#ffffff")
+func _on_BotonFacil_button_up():
+	$CanvasLayer/VBoxContainer/BotonFacil.modulate = Color("ffffff")
+	
+func _on_BotonIntermedio_button_up():
+	$CanvasLayer/VBoxContainer/BotonIntermedio.modulate = Color("ffffff")
 
-func _on_BotonIntermedio_released():
-	$Botones/Control/VBoxContainer/BotonIntermedio.modulate = Color("#ffffff")
-
-func _on_BotonDificil_released():
-	$Botones/Control/VBoxContainer/BotonDificil.modulate = Color("#ffffff")
+func _on_BotonDificil_button_up():
+	$CanvasLayer/VBoxContainer/BotonDificil.modulate = Color("ffffff")
 
 func transicion():
 	GameHandler.set_transicion("NivelRitmico")
