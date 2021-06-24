@@ -4,8 +4,8 @@ extends Node2D
 export var idle_duration = 0
 export var cell_size = Vector2(48,48)
 
-var move_a = Vector2(0,1.20)
-var velocidad  = 64.0
+var move_a = Vector2(0,1.61)
+var velocidad  = 90
 
 #"Propiedad" de seguimiento
 var follow = Vector2.ZERO
@@ -51,19 +51,21 @@ func _physics_process(delta):
 	if (state == State.Move_down):
 		if $TrampolinBody/SpriteTrampolin.animation != "Move_down":
 			$TrampolinBody/SpriteTrampolin.play("Move_down")
-		if ($TrampolinBody/SpriteTrampolin.frame == 4):
+		if ($TrampolinBody/SpriteTrampolin.frame == 3):
 			state = State.Idle_down
 	if (state == State.Move_up):
 		if $TrampolinBody/SpriteTrampolin.animation != "Move_up":
 			$TrampolinBody/SpriteTrampolin.play("Move_up")
-		if ($TrampolinBody/SpriteTrampolin.frame == 4):
+		if ($TrampolinBody/SpriteTrampolin.frame == 3):
 			state = State.Idle_up
 
 func _down():
 	state = State.Move_down
 	tween.resume_all()
+	
 
 func _up():
 	tween.reset_all()
+	tween.seek(0)
 	state = State.Move_up
 	

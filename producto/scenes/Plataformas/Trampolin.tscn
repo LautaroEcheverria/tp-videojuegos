@@ -4,15 +4,15 @@
 [ext_resource path="res://producto/scripts/Plataformas/Trampolin.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 72.5498, 6.46399 )
+extents = Vector2( 64.7596, 6.46399 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
@@ -20,15 +20,15 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
@@ -36,29 +36,29 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Idle_down",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": false,
-"name": "Move_down",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
 "name": "Idle_up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "Move_up",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "Idle_down",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": false,
+"name": "Move_down",
+"speed": 4.0
 } ]
 
 [node name="Trampolin" type="Node2D"]
@@ -69,6 +69,7 @@ script = ExtResource( 2 )
 use_parent_material = true
 
 [node name="ColisionTrampolin" type="CollisionShape2D" parent="TrampolinBody"]
+position = Vector2( 0, -1.90735e-06 )
 shape = SubResource( 1 )
 
 [node name="SpriteTrampolin" type="AnimatedSprite" parent="TrampolinBody"]
