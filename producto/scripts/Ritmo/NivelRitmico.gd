@@ -49,19 +49,15 @@ func _ready():
 	change_sprite_color(nivel)
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
-		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Oblivion - Astor Piazzolla (Nivel 1)"
 	elif nivel == 2:
 		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
-		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Violentango - Astor Piazzolla (Nivel 2)"
 	elif nivel == 3:
 		$Conductor.stream = load("res://producto/assets/music/3_libertango.mp3")
-		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Libertango - Astor Piazzolla (Nivel 3)"
 	elif nivel == 4:
 		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
-		#$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
 	$Conductor.play_with_beat_offset(2)
 	

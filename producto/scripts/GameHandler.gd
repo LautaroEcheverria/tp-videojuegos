@@ -52,7 +52,6 @@ func load_game():
 		var error = file.open(save_path, File.READ)
 		if error == OK:
 			player_data = file.get_var()
-			#print(player_data)
 			file.close()
 			contadorDiscos = player_data.contadorDiscos
 			coleccionables = player_data.coleccionables
