@@ -27,9 +27,9 @@ func _ready():
 		$ColeccionableArea/Coleccionable.flip_h = false
 
 func deshabilitar():
-	habilitado = false
 	$AnimationCartel.rename_animation("Hover","Hover_inv")
 	$AnimationCartel.play("Hover_inv",1,-2,true)	
+	habilitado = false
 	state = State.IdleOpen
 
 func _physics_process(delta):
@@ -81,8 +81,7 @@ func _on_AnimationCartel_animation_finished(anim_name):
 
 
 func _on_ConseguirColeccionable_pressed():
-	if (habilitado):
+	if habilitado:
 		GameHandler.addColeccionable(id)
 		deshabilitar()
 		get_parent().get_node("Canvas_inventario/Inventario").agregarColeccionable(id,nombre,texto)
-	

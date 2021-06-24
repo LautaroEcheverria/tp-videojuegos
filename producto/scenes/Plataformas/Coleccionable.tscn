@@ -9,7 +9,7 @@
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/fil_bot.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 250.371, 98.7573 )
+extents = Vector2( 284.797, 112.384 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -44,12 +44,12 @@ atlas = ExtResource( 3 )
 region = Rect2( 24, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 3 )
-region = Rect2( 24, 24, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 24, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -65,12 +65,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 10 ) ],
 "loop": false,
-"name": "Idle_Open",
+"name": "Idle_Close",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ) ],
 "loop": false,
-"name": "Idle_Close",
+"name": "Idle_Open",
 "speed": 5.0
 } ]
 
