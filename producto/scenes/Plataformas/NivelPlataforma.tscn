@@ -1204,76 +1204,76 @@ atlas = ExtResource( 58 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 59 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 59 )
-region = Rect2( 64, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 59 )
-region = Rect2( 128, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 59 )
-region = Rect2( 192, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 59 )
-region = Rect2( 256, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 59 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 60 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 60 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 60 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 60 )
-region = Rect2( 128, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 60 )
-region = Rect2( 192, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 60 )
-region = Rect2( 256, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=62]
 animations = [ {
@@ -1282,20 +1282,20 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
 "loop": true,
 "name": "walk",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
 } ]
 
 [sub_resource type="GDScript" id=63]
@@ -1794,7 +1794,7 @@ transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 
 [node name="camino" type="ParallaxLayer" parent="Parallax camino"]
 material = SubResource( 68 )
-position = Vector2( 0, 1200 )
+position = Vector2( 0, 800 )
 motion_scale = Vector2( 2, 2 )
 motion_offset = Vector2( 1, 1 )
 motion_mirroring = Vector2( 2359, 0 )
@@ -2009,12 +2009,6 @@ texto = "«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era
 position = Vector2( 754, 464 )
 shape = SubResource( 81 )
 
-[node name="Area Save Game2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game2"]
-position = Vector2( -105.266, 2694.03 )
-shape = SubResource( 81 )
-
 [connection signal="body_shape_entered" from="Rojo" to="Rojo" method="_on_Rojo_body_shape_entered"]
 [connection signal="body_entered" from="Verde/Trampolines" to="Robot" method="_on_Trampolines_body_entered"]
 [connection signal="body_exited" from="Verde/Trampolines" to="Robot" method="_on_Trampolines_body_exited"]
@@ -2031,4 +2025,3 @@ shape = SubResource( 81 )
 [connection signal="pressed" from="Controles/Control/LayerInventario/Inventario/InventoryButton" to="Canvas_inventario/Inventario" method="_on_InventoryButton_pressed"]
 [connection signal="body_entered" from="Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
 [connection signal="body_entered" from="Area Save Game" to="Robot" method="_on_Area_Save_Game_body_entered"]
-[connection signal="body_entered" from="Area Save Game2" to="Robot" method="_on_Area_Save_Game2_body_entered"]
