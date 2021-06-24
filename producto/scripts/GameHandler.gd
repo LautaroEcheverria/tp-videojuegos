@@ -28,6 +28,7 @@ var palancas = [false,false,false,false]
 var save_path = "user://saveFile.save"
 var saveGame = false
 var discosSave = true
+var areaSave
 var player_data
 
 var transicion
@@ -165,8 +166,12 @@ func save_game_data():
 		pos_y = 481
 	else:
 		if !discosSave:
-			pos_x = 460
-			pos_y = 481
+			if areaSave == 1:
+				pos_x = 460
+				pos_y = 481
+			elif areaSave == 2:
+				pos_x = -170
+				pos_y = 2712.81
 		else: 
 			if contadorDiscos == 1:
 				pos_x = 1733
@@ -193,6 +198,10 @@ func save_game_data():
 	}
 	return data
 
-func set_discosSave():
+func set_discosSave(area):
 	discosSave = false
+	if area == 1:
+		areaSave = 1
+	elif area == 2:
+		areaSave = 2
 	save_game()

@@ -220,4 +220,8 @@ func _on_Trampolines_body_exited(body):
 
 func _on_Area_Save_Game_body_entered(body):
 	if contadorDiscos >= 1 and GameHandler.discosSave == true:
-		GameHandler.set_discosSave()
+		GameHandler.set_discosSave(1)
+
+func _on_Area_Save_Game2_body_entered(body):
+	if contadorDiscos >= 1 and GameHandler.discosSave == true:
+		GameHandler.set_discosSave(2)
