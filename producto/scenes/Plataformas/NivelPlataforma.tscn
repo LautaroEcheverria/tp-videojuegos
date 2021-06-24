@@ -1204,76 +1204,76 @@ atlas = ExtResource( 58 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 60 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 60 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 60 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 60 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 60 )
-region = Rect2( 256, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 60 )
 region = Rect2( 384, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=56]
+[sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=57]
+[sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=58]
+[sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=59]
+[sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=60]
+[sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=61]
+[sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 59 )
 region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 61 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 61 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 61 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 61 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 61 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=62]
 animations = [ {
@@ -1282,20 +1282,20 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "walk",
 "speed": 6.0
+}, {
+"frames": [ SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
 } ]
 
 [sub_resource type="GDScript" id=63]
@@ -1447,7 +1447,7 @@ frames = SubResource( 8 )
 animation = "start"
 
 [node name="Ascensor" parent="Rojo" instance=ExtResource( 71 )]
-position = Vector2( 25.353, 8.5 )
+position = Vector2( 26.353, 7.5 )
 idle_duration = 5.0
 move_a = Vector2( 0, 88 )
 
@@ -1687,7 +1687,7 @@ tile_data = PoolIntArray( 983056, -1610612734, 0, 983062, -1610612733, 0, 104859
 "Persist",
 ]]
 material = SubResource( 36 )
-position = Vector2( 460.661, 480 )
+position = Vector2( 460.661, 481 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -1721,6 +1721,7 @@ shadow_filter_smooth = 15.8
 
 [node name="Camara" type="Camera2D" parent="Robot"]
 current = true
+limit_left = -4320
 limit_top = -630
 limit_right = 8500
 limit_bottom = 4500
@@ -1974,7 +1975,7 @@ shape = SubResource( 79 )
 disabled = true
 
 [node name="Fin Izquierda" type="CollisionShape2D" parent="Fin Sin Game Over"]
-position = Vector2( -4402.25, -912.779 )
+position = Vector2( -4350.25, -912.779 )
 z_index = 1
 shape = SubResource( 80 )
 
@@ -2008,6 +2009,12 @@ texto = "«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era
 position = Vector2( 754, 464 )
 shape = SubResource( 81 )
 
+[node name="Area Save Game2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game2"]
+position = Vector2( -121.655, 2693.88 )
+shape = SubResource( 81 )
+
 [connection signal="body_shape_entered" from="Rojo" to="Rojo" method="_on_Rojo_body_shape_entered"]
 [connection signal="body_entered" from="Verde/Trampolines" to="Robot" method="_on_Trampolines_body_entered"]
 [connection signal="body_exited" from="Verde/Trampolines" to="Robot" method="_on_Trampolines_body_exited"]
@@ -2024,3 +2031,4 @@ shape = SubResource( 81 )
 [connection signal="pressed" from="Controles/Control/LayerInventario/Inventario/InventoryButton" to="Canvas_inventario/Inventario" method="_on_InventoryButton_pressed"]
 [connection signal="body_entered" from="Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
 [connection signal="body_entered" from="Area Save Game" to="Robot" method="_on_Area_Save_Game_body_entered"]
+[connection signal="body_entered" from="Area Save Game2" to="Robot" method="_on_Area_Save_Game2_body_entered"]
