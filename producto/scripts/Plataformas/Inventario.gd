@@ -74,7 +74,7 @@ func mostrarInfo(i):
 		info.get_node("NombreItem").set_text("Libertango")
 	elif nivel == 4:
 		info.get_node("NombreItem").set_text("Adios Nonino")
-	info.get_node("TextoItem").set_text("puntos: " + str(score))
+	info.get_node("TextoItem").set_text("Puntos: " + str(score))
 
 func _on_ItemList_item_selected(index):
 	if !$Control/Contenido/Items/PanelContainer/ItemList.is_item_disabled(index):

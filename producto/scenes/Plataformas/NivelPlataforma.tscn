@@ -1228,52 +1228,52 @@ atlas = ExtResource( 59 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 60 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 60 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 60 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 60 )
-region = Rect2( 128, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 60 )
-region = Rect2( 192, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 60 )
-region = Rect2( 256, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 60 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 60 )
-region = Rect2( 384, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=62]
 animations = [ {
@@ -1287,15 +1287,15 @@ animations = [ {
 "name": "walk",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
 } ]
 
 [sub_resource type="GDScript" id=63]

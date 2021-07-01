@@ -20,17 +20,17 @@ radius = 207.361
 height = 144.919
 
 [sub_resource type="DynamicFontData" id=4]
-font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
+font_path = "res://producto/assets/fonts/AmberTastePro-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=5]
-size = 38
+size = 42
 font_data = SubResource( 4 )
 
 [sub_resource type="DynamicFontData" id=6]
-font_path = "res://producto/assets/fonts/Lato-BlackItalic.ttf"
+font_path = "res://producto/assets/fonts/AmberTastePro-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=7]
-size = 38
+size = 42
 font_data = SubResource( 6 )
 
 [node name="Game" type="Node2D"]
@@ -117,51 +117,47 @@ shape = SubResource( 3 )
 stream = ExtResource( 4 )
 
 [node name="Score" type="Label" parent="."]
-margin_left = 92.0
+margin_left = 50.0
 margin_top = 357.0
-margin_right = 263.0
+margin_right = 221.0
 margin_bottom = 412.0
 custom_fonts/font = SubResource( 5 )
 text = "Puntaje:"
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score2" type="Label" parent="."]
-margin_left = 962.0
+margin_left = 992.0
 margin_top = 360.0
-margin_right = 1206.0
+margin_right = 1236.0
 margin_bottom = 407.0
 custom_fonts/font = SubResource( 7 )
 text = "Vamos!"
 align = 1
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ComboMultiplicador" type="Label" parent="."]
-margin_left = 104.0
+margin_left = 56.0
 margin_top = 400.0
-margin_right = 251.0
+margin_right = 203.0
 margin_bottom = 455.0
 custom_fonts/font = SubResource( 5 )
 align = 1
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ComboLabel" type="Label" parent="."]
-margin_left = 938.0
+margin_left = 969.0
 margin_top = 400.0
-margin_right = 1231.0
+margin_right = 1262.0
 margin_bottom = 447.0
 custom_fonts/font = SubResource( 7 )
 align = 1
 valign = 1
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -285,7 +281,6 @@ margin_right = 320.0
 margin_bottom = 47.0
 custom_fonts/font = SubResource( 5 )
 text = "Puntaje total:  "
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -295,8 +290,7 @@ margin_top = 51.0
 margin_right = 320.0
 margin_bottom = 98.0
 custom_fonts/font = SubResource( 5 )
-text = "bien:  "
-uppercase = true
+text = "Bien:  "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -306,8 +300,7 @@ margin_top = 102.0
 margin_right = 320.0
 margin_bottom = 149.0
 custom_fonts/font = SubResource( 5 )
-text = "muy bien:  "
-uppercase = true
+text = "Muy bien:  "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -317,8 +310,7 @@ margin_top = 153.0
 margin_right = 320.0
 margin_bottom = 200.0
 custom_fonts/font = SubResource( 5 )
-text = "excelente:  "
-uppercase = true
+text = "Excelente:  "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -328,8 +320,7 @@ margin_top = 204.0
 margin_right = 320.0
 margin_bottom = 251.0
 custom_fonts/font = SubResource( 5 )
-text = "fallada:  "
-uppercase = true
+text = "Fallada:  "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -340,7 +331,6 @@ margin_right = 320.0
 margin_bottom = 302.0
 custom_fonts/font = SubResource( 5 )
 text = "Max combo:  "
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -355,7 +345,6 @@ custom_fonts/font = SubResource( 5 )
 text = "Libertango - Astor Piazzolla (Nivel 3)"
 align = 1
 valign = 1
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

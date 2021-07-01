@@ -163,43 +163,37 @@ func get_score():
 func set_score(value):
 	if value == 0:
 		fallada += 1
-		$Score2.text = "..FALLADA.."
+		$Score2.text = "..Fallada.."
 		$Score2.modulate = Color.red
 		combo = 0
 	if value == 1:
 		bien += 1
-		$Score2.text = "..BIEN.."
+		$Score2.text = "..Bien.."
 		$Score2.modulate = Color.yellow
 		combo = 0
 	elif value == 2:
 		muyBien += 1
-		$Score2.text = "..MUY BIEN.."
+		$Score2.text = "..Muy bien.."
 		$Score2.modulate = Color.orange
 		combo = 0
 	elif value == 3:
 		excelente += 1
-		$Score2.text = "..EXCELENTE!.."
+		$Score2.text = "..Excelente!.."
 		$Score2.modulate = Color.green
 		combo += 1
-	if combo >= 10:
+	if combo >= 6:
 		score += value*4
 		$Score.text = "Puntaje: " + str(score)
-		if totalLanes < 5:
-			$ComboLabel.text = "Rey del Tango!"
-		else:
-			$ComboLabel.text = "Rey del\nTango!"
+		$ComboLabel.text = "Rey del Tango!"
 		$ComboMultiplicador.text = "(x4)"
-	elif combo >= 5 and combo < 10:
+	elif combo >= 3 and combo < 6:
 		score += value*2
 		$Score.text = "Puntaje: " + str(score)
 		$CPUParticles2D.emitting = true
 		$CPUParticles2D2.emitting = true
 		$CPUParticles2D3.emitting = true
 		$CPUParticles2D4.emitting = true
-		if totalLanes < 5:
-			$ComboLabel.text = "Hora Combo!"
-		else:
-			$ComboLabel.text = "Hora\nCombo!"
+		$ComboLabel.text = "Hora Combo!"
 		$ComboMultiplicador.text = "(x2)"
 	else:
 		score += value
@@ -227,10 +221,6 @@ func set_initial_screen():
 			$Sprite3.position.x = 880
 			$Sprite4.position.x = 520
 			$Sprite5.position.x = 760
-			$Score.rect_position.x = 50
-			$Score2.rect_position.x = 992
-			$ComboMultiplicador.rect_position.x = 56
-			$ComboLabel.rect_position.x = 969
 
 func change_sprite_color(value):
 	if value == 1:
@@ -422,6 +412,7 @@ func _on_Conductor_finished():
 func _on_Timer_timeout():
 	change_screen_game_over()
 	GameHandler.set_score_nivel_ritmico(score,nivel)
+	GameHandler.saveGame = true
 	GameHandler.discosSave = true
 	GameHandler.replayNivelRitmico = false
 	GameHandler.save_game()

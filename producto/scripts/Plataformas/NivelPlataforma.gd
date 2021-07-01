@@ -54,17 +54,9 @@ func _physics_process(delta):
 			_in_state_fly_process(delta)
 		else:
 			_in_state_idle_process()
-	
 	# Movimientos desbloqueados
 	if contadorDiscos >= 1:
 		WALK_SPEED = 300
-	
-	# Guardar partida con checkpoints segun disco
-	if GameHandler.saveGame == false and contadorDiscos >= 1: 
-		GameHandler.save_game()
-		GameHandler.saveGame = true
-		GameHandler.discosSave = true
-		print("Partida guardada")
 	
 func _in_state_idle_process():
 	if $CollisionSprite/Sprite.animation != "idle":
@@ -73,7 +65,6 @@ func _in_state_idle_process():
 		mystate = State.WALK
 	elif ((Input.is_action_just_pressed("ui_up") or touch_up) and (contadorDiscos>=1)):
 		mystate = State.JUMP
-	
 	if is_on_floor():
 		var snap = 12
 		if velocity.y != 0:
@@ -105,7 +96,8 @@ func _in_state_walk_process(delta):
 		if contadorDiscos >= 1:
 			mystate = State.FLY
 		else:
-			velocity.y = delta * GRAVITY
+			$CollisionSprite/Sprite.play("jump",true)
+			velocity.y += delta * GRAVITY
 	move_and_slide(velocity,Vector2(0, -1))
 
 func _in_state_jump_process(delta):
@@ -153,8 +145,6 @@ func _in_state_fly_process(delta):
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
-
-
 func _on_LeftButton_pressed():
 	touch_left = true
 	

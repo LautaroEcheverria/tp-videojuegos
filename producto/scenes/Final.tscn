@@ -2,19 +2,19 @@
 
 [ext_resource path="res://producto/scripts/Final.gd" type="Script" id=1]
 [ext_resource path="res://producto/assets/img/UI_portada/Oblivion.jpg" type="Texture" id=2]
-[ext_resource path="res://producto/assets/music/las_4_estaciones final.mp3" type="AudioStream" id=3]
+[ext_resource path="res://producto/assets/music/libertango plataformas.mp3" type="AudioStream" id=3]
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://producto/assets/fonts/AmberTastePro-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 38
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -1
 extra_spacing_bottom = -1
 extra_spacing_space = 5
-font_data = SubResource( 2 )
+font_data = SubResource( 1 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -45,7 +45,7 @@ margin_left = -577.512
 margin_top = 45.9899
 margin_right = 579.488
 margin_bottom = 296.99
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_constants/line_spacing = 4
@@ -59,13 +59,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="Musica de fondo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+volume_db = -20.0
 autoplay = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 40.0
-one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -40,5 +40,4 @@ func _on_AnimationCartel_animation_finished(anim_name):
 
 func _on_TouchScreenButton_pressed():
 	GameHandler.addDisco()
-	get_parent().get_node("Robot").cambiarEstado()
 	PantallaFade.change_scene("res://producto/scenes/Ritmo/NivelRitmicoInicio.tscn")
