@@ -398,8 +398,6 @@ modulate = Color( 1, 1, 1, 0 )
 light_mask = 31
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.840881
-margin_right = 0.84082
 color = Color( 0, 0, 0, 0.819608 )
 __meta__ = {
 "_edit_use_anchors_": false
