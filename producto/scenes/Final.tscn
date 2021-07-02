@@ -1,20 +1,551 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://producto/scripts/Final.gd" type="Script" id=1]
-[ext_resource path="res://producto/assets/img/UI_portada/Oblivion.jpg" type="Texture" id=2]
-[ext_resource path="res://producto/assets/music/libertango plataformas.mp3" type="AudioStream" id=3]
+[ext_resource path="res://producto/assets/img/backgrounds/cred_1.jpg" type="Texture" id=2]
+[ext_resource path="res://producto/assets/music/fin_juego.mp3" type="AudioStream" id=3]
+[ext_resource path="res://producto/assets/img/sprites/robot_run.png" type="Texture" id=4]
+[ext_resource path="res://producto/assets/img/sprites/robot_idle.png" type="Texture" id=5]
+[ext_resource path="res://producto/assets/img/backgrounds/cred_2.jpg" type="Texture" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://producto/assets/img/backgrounds/cred_3.jpg" type="Texture" id=8]
+[ext_resource path="res://producto/assets/img/backgrounds/cred_4.jpg" type="Texture" id=9]
+[ext_resource path="res://producto/assets/img/backgrounds/cred_final.jpg" type="Texture" id=10]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://producto/assets/fonts/AmberTastePro-Bold.ttf"
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
 
-[sub_resource type="DynamicFont" id=2]
-size = 38
+// Gonkee's fog shader for Godot 3 - full tutorial https://youtu.be/QEaTsz_0o44
+// If you use this shader, I would prefer it if you gave credit to me and my channel
+
+uniform vec3 color = vec3(0.357,0.431,0.514);
+uniform int OCTAVES = 4;
+
+float rand(vec2 coord){
+	return fract(sin(dot(coord, vec2(56, 78)) * 1000.0) * 1000.0);
+}
+
+float noise(vec2 coord){
+	vec2 i = floor(coord);
+	vec2 f = fract(coord);
+
+	// 4 corners of a rectangle surrounding our point
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+
+	vec2 cubic = f * f * (3.0 - 2.0 * f);
+
+	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+}
+
+float fbm(vec2 coord){
+	float value = 0.0;
+	float scale = 0.5;
+
+	for(int i = 0; i < OCTAVES; i++){
+		value += noise(coord) * scale;
+		coord *= 2.0;
+		scale *= 0.5;
+	}
+	return value;
+}
+
+void fragment() {
+	vec2 coord = UV * 20.0;
+
+	vec2 motion = vec2( fbm(coord + vec2(TIME * -0.5, TIME * 0.5)) );
+
+	float final = fbm(coord + motion);
+
+	COLOR = vec4(color, final * 0.05);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/color = Vector3( 0.357, 0.431, 0.514 )
+shader_param/OCTAVES = 4
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://producto/assets/fonts/CENTURY.ttf"
+
+[sub_resource type="DynamicFont" id=26]
+size = 20
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -1
+extra_spacing_bottom = 17
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -1
+extra_spacing_bottom = 17
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+outline_color = Color( 0.0705882, 0.0745098, 0.0745098, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -1
+extra_spacing_bottom = 17
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 26
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -1
+extra_spacing_bottom = 17
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 23
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 4
+extra_spacing_bottom = 15
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -1
+extra_spacing_bottom = 17
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://producto/assets/fonts/CENTURY.ttf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 35
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -1
 extra_spacing_bottom = -1
 extra_spacing_space = 5
-font_data = SubResource( 1 )
+font_data = SubResource( 9 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "caminar",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=25]
+length = 50.0
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Robot/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.5, 9, 13.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "caminar", "idle", "caminar", "caminar" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Robot/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.5, 9, 13.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -60, 603.348 ), Vector2( 602.53, 603.348 ), Vector2( 602.53, 603.348 ), Vector2( 1400, 603.348 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Robot/Sprite:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Texto/fin_juego:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.5, 12.3, 13.35 ),
+"transitions": PoolRealArray( 0.153893, 1, 1, 0.153893 ),
+"update": 0,
+"values": [ Vector2( 0, 325.9 ), Vector2( 0, 250 ), Vector2( 0, 250 ), Vector2( 0, 325.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Texto/fin_juego:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.5, 12.3, 13.3663 ),
+"transitions": PoolRealArray( 0.0693481, 1, 1, 0.0693481 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bg/Bg_1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4.53994, 13.5, 15.2791 ),
+"transitions": PoolRealArray( 0.148651, 1, 1, 0.148651 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bg/Bg_2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 13.5, 17.8371, 21.4132, 23.386 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Texto/creditos_1:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 15.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 365 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Texto/creditos_1:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 15.9, 17.85, 21.352, 23.3709 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Texto/creditos_1:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 15.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Bg/Bg_3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 23.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Bg/Bg_3:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 23.4, 26.3076, 29.3178, 31.5233 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Texto/creditos_2:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 23.4, 26.2825, 29.3178, 30.8809 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Texto/creditos_2:rect_position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 23.4, 26.25, 29.3178 ),
+"transitions": PoolRealArray( 0.258817, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 380 ), Vector2( 0, 300 ), Vector2( 0, 300 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Texto/creditos_2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 23.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Bg/Bg_4:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 30.7555 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Texto/creditos_3:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 31.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Bg/Bg_4:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 30.75, 33.631, 38.1, 40.6926 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.086835, 0.086835, 0.086835, 0.086835 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.086835, 0.086835, 0.086835, 0.086835 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Texto/creditos_3:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 31.1967, 32.173, 33.8983, 38.1, 40.1183 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.615572, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Bg/Bg_1:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Bg/Bg_2:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 13.5515 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Bg/Bg_final:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 41.0926 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Bg/Bg_final:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 41.0314, 44.0293 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Texto/creditos_4:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 41.1, 42.1746, 44.4995 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Texto/creditos_4:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 41.3852 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Texto/creditos_4:rect_position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 41.1242, 41.7811, 45.1925 ),
+"transitions": PoolRealArray( 0.138696, 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 320 ), Vector2( 0, 320 ), Vector2( 0, 305 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Texto/creditos_3:rect_position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 32.0131, 33.9098, 38.1, 39.8068 ),
+"transitions": PoolRealArray( 0.0947323, 1, 0.659754, 0.435275 ),
+"update": 0,
+"values": [ Vector2( 0, 330 ), Vector2( 0, 300 ), Vector2( 0, 300 ), Vector2( 0, 315 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Texto/bottom:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 25.05, 40.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Texto/bottom:modulate")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 25.05, 26.4, 37.35, 40.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -24,8 +555,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.203922 )
+[node name="Bg" type="CanvasLayer" parent="."]
+
+[node name="fog" type="Sprite" parent="Bg"]
+material = SubResource( 2 )
+position = Vector2( 400, 200 )
+scale = Vector2( 50, 50 )
+z_index = 1
+z_as_relative = false
+texture = ExtResource( 7 )
+
+[node name="Bg_2" type="TextureRect" parent="Bg"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg_1" type="TextureRect" parent="Bg"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
@@ -34,21 +586,298 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Bg_3" type="TextureRect" parent="Bg"]
+visible = false
+modulate = Color( 0, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="frase" type="Label" parent="CanvasLayer"]
+[node name="Bg_4" type="TextureRect" parent="Bg"]
+visible = false
+modulate = Color( 0.086835, 0.086835, 0.086835, 0.086835 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg_final" type="TextureRect" parent="Bg"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texto" type="CanvasLayer" parent="."]
+
+[node name="bottom" type="Label" parent="Texto"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -577.512
-margin_top = 45.9899
-margin_right = 579.488
-margin_bottom = 296.99
-custom_fonts/font = SubResource( 2 )
+margin_left = -640.0
+margin_top = -68.712
+margin_right = 640.0
+margin_bottom = 336.288
+custom_fonts/font = SubResource( 26 )
+custom_colors/font_color = Color( 0.694118, 0.694118, 0.694118, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "juego homenaje sin fines de lucro"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_4" type="Label" parent="Texto"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -55.0
+margin_right = 640.0
+margin_bottom = 196.0
+rect_pivot_offset = Vector2( -544.705, 125.5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
-custom_constants/line_spacing = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "Gracias por jugar"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_3" type="Label" parent="Texto"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -45.0
+margin_right = 415.0
+margin_bottom = 206.004
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 0
+text = "Complementos           
+conductor node - Legion Games
+platformer assets - Wishforge"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_2" type="Label" parent="Texto"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -60.0
+margin_right = 640.0
+margin_bottom = 345.005
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "Música
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_2" type="Label" parent="Texto/creditos_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -152.5
+margin_right = 680.0
+margin_bottom = 252.5
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "Oblivion		
+Libertango		
+Libertango		
+Violentango		
+Adios Nonino		
+Invierno Porteño	
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_4" type="Label" parent="Texto/creditos_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -152.501
+margin_right = 640.0
+margin_bottom = 252.499
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "Astor Piazzolla
+Astor Piazzolla
+Astor Piazzolla
+Astor Piazzolla
+Astor Piazzolla
+Astor Piazzolla · G.Kremer · K.Baltica
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_3" type="Label" parent="Texto/creditos_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -152.5
+margin_right = 600.0
+margin_bottom = 252.5
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "Trova Industrias Musicales (2003)
+Carosello Records (1974)
+Style Project - Tango chill sessions (2005)
+Carosello Records (1974)
+Carosello Records (1974)
+Nonesuch Records (2000)
+"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_1" type="Label" parent="Texto"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = 5.0
+margin_right = 640.0
+margin_bottom = 256.0
+rect_pivot_offset = Vector2( -333.218, -65 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 0
+text = "
+- Marcos Agüero - Lautaro Echeverria  - Agustina Pieroni -"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditos_1" type="Label" parent="Texto/creditos_1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -735.0
+margin_top = -145.5
+margin_right = 545.0
+margin_bottom = 105.5
+rect_pivot_offset = Vector2( -544.705, 125.5 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 0
+text = "Un juego de"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fin_juego" type="Label" parent="Texto"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -34.1
+margin_right = 640.0
+margin_bottom = 216.895
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -5
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
 text = "Robot finalmente se siente en paz y satisfecho. 
 
 Su misión en este mundo ha terminado. 
@@ -59,13 +888,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Robot" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="Robot"]
+position = Vector2( -60, 603.348 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+animation = "caminar"
+playing = true
+
+[node name="Sprite" type="AnimatedSprite" parent="Robot/Sprite"]
+position = Vector2( -60, 603.348 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 24 )
+animation = "caminar"
+frame = 1
+playing = true
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 50.0
 one_shot = true
 
 [node name="Musica de fondo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -20.0
 autoplay = true
+
+[node name="Animacion" type="AnimationPlayer" parent="."]
+anims/movimiento = SubResource( 25 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

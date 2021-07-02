@@ -18,3 +18,7 @@ func _on_Jugar_pressed():
 func _on_NuevaPartida_pressed():
 	GameHandler.nuevaPartida()
 	_on_Jugar_pressed()
+
+
+func _on_creditos_pressed():
+	PantallaFade.change_scene("res://producto/scenes/Final.tscn")
