@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/las_4_estaciones final.mp3-268e8c32bc4d169588999e481005dcbe.mp3str"
+
+[deps]
+
+source_file="res://producto/assets/music/las_4_estaciones final.mp3"
+dest_files=[ "res://.import/las_4_estaciones final.mp3-268e8c32bc4d169588999e481005dcbe.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

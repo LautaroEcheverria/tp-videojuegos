@@ -59,7 +59,7 @@ func _ready():
 	elif nivel == 4:
 		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
 		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
-	$Conductor.play_with_beat_offset(2)
+	$Conductor.play_with_beat_offset(0)
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
@@ -89,59 +89,91 @@ func _on_Conductor_beat(position):
 		spawn_1_beat = 0
 		spawn_2_beat = 1
 		spawn_3_beat = 1
-		spawn_4_beat = 0
+		spawn_4_beat = 1
 	if song_position_in_beats > 98:
 		spawn_1_beat = 1
-		spawn_2_beat = 0
+		spawn_2_beat = 1
 		spawn_3_beat = 1
 		spawn_4_beat = 0
 	if song_position_in_beats > 132:
-		spawn_1_beat = 0
+		spawn_1_beat = 1
 		spawn_2_beat = 1
 		spawn_3_beat = 0
 		spawn_4_beat = 1
 	if song_position_in_beats > 162:
 		spawn_1_beat = 1
 		spawn_2_beat = 0
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 194:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
 		spawn_3_beat = 1
 		spawn_4_beat = 1
-	if song_position_in_beats > 228:
-		spawn_1_beat = 0
-		spawn_2_beat = 1
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 258:
-		spawn_1_beat = 1
-		spawn_2_beat = 0
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 288:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 322:
-		spawn_1_beat = 1
-		spawn_2_beat = 0
-		spawn_3_beat = 1
-		spawn_4_beat = 0
-	if song_position_in_beats > 388:
-		spawn_1_beat = 1
-		spawn_2_beat = 0
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 396:
-		spawn_1_beat = 0
-		spawn_2_beat = 0
-		spawn_3_beat = 0
-		spawn_4_beat = 0
-	if song_position_in_beats > 404:
-		pass
+	if nivel == 1:
+		if song_position_in_beats > 194:
+			spawn_1_beat = 1
+			spawn_2_beat = 1
+			spawn_3_beat = 1
+			spawn_4_beat = 1
+		if song_position_in_beats > 228:
+			spawn_1_beat = 1
+			spawn_2_beat = 1
+			spawn_3_beat = 0
+			spawn_4_beat = 1
+		if song_position_in_beats > 258:
+			spawn_1_beat = 1
+			spawn_2_beat = 0
+			spawn_3_beat = 1
+			spawn_4_beat = 1
+		if song_position_in_beats > 288:
+			spawn_1_beat = 1
+			spawn_2_beat = 1
+			spawn_3_beat = 1
+			spawn_4_beat = 1
+		if song_position_in_beats > 315:
+			spawn_1_beat = 0
+			spawn_2_beat = 0
+			spawn_3_beat = 0
+			spawn_4_beat = 0
+	elif nivel == 2:
+		if song_position_in_beats > 194:
+			spawn_1_beat = 1
+			spawn_2_beat = 1
+			spawn_3_beat = 1
+			spawn_4_beat = 1
+		if song_position_in_beats > 228:
+			spawn_1_beat = 0
+			spawn_2_beat = 1
+			spawn_3_beat = 0
+			spawn_4_beat = 1
+		if song_position_in_beats > 258:
+			spawn_1_beat = 1
+			spawn_2_beat = 0
+			spawn_3_beat = 1
+			spawn_4_beat = 1
+		if song_position_in_beats > 288:
+			spawn_1_beat = 1
+			spawn_2_beat = 1
+			spawn_3_beat = 1
+			spawn_4_beat = 1
+		if song_position_in_beats > 322:
+			spawn_1_beat = 1
+			spawn_2_beat = 0
+			spawn_3_beat = 1
+			spawn_4_beat = 0
+		if song_position_in_beats > 334:
+			spawn_1_beat = 0
+			spawn_2_beat = 0
+			spawn_3_beat = 0
+			spawn_4_beat = 0
+	elif nivel == 3:
+		if song_position_in_beats > 194:
+			spawn_1_beat = 0
+			spawn_2_beat = 0
+			spawn_3_beat = 0
+			spawn_4_beat = 0
+	elif nivel == 4:
+		if song_position_in_beats > 198:
+			spawn_1_beat = 0
+			spawn_2_beat = 0
+			spawn_3_beat = 0
+			spawn_4_beat = 0
 
 func _spawn_notes(to_spawn):
 	if to_spawn > 0:

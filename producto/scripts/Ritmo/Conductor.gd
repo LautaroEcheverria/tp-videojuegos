@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-var nivel = 1
+var nivel
 var bpm
 export var measures := 4
 
@@ -21,10 +21,8 @@ signal measure(position)
 
 
 func _ready():
-	bpm = GameHandler.get_BPM(nivel)
-	sec_per_beat = 60.0 / bpm
-
-
+	pass
+	
 func _physics_process(_delta):
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
@@ -77,3 +75,5 @@ func _on_StartTimer_timeout():
 
 func set_nivel(value):
 	nivel = value
+	bpm = GameHandler.get_BPM(nivel)
+	sec_per_beat = 60.0 / bpm
