@@ -50,15 +50,19 @@ func _ready():
 	if nivel == 1:
 		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
 		$NombreCancion.text = "Oblivion - Astor Piazzolla (Nivel 1)"
+		$Background.modulate = Color(0.49,0.49,0.82,1.0)
 	elif nivel == 2:
 		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
 		$NombreCancion.text = "Violentango - Astor Piazzolla (Nivel 2)"
+		$Background.modulate = Color(0.64,0.38,0.38,1)
 	elif nivel == 3:
 		$Conductor.stream = load("res://producto/assets/music/3_libertango.mp3")
 		$NombreCancion.text = "Libertango - Astor Piazzolla (Nivel 3)"
+		$Background.modulate = Color(0.63,0.83,0.68,1)
 	elif nivel == 4:
 		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
 		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
+		$Background.modulate = Color(1.0,1.0,1.0,1.0)
 	$Conductor.play_with_beat_offset(0)
 	
 func _input(event):
