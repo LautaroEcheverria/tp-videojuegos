@@ -42,7 +42,7 @@ func _physics_process(delta):
 	# Reseteo de velocidad
 	
 	if is_on_floor() and get_floor_velocity().y == 0:
-		velocity.y = 10
+		velocity.y = 100
 	# Estados Robot
 	if mystate == State.IDLE:
 		_in_state_idle_process(delta)
