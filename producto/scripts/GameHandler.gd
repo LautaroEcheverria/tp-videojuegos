@@ -163,28 +163,28 @@ func save_game_data():
 	var pos_y
 	if gameOver:
 		pos_x = 460
-		pos_y = 480.121399
+		pos_y = 480.12141
 	else:
 		if !discosSave:
 			if areaSave == 1:
 				pos_x = 460
-				pos_y = 480.121399
+				pos_y = 480.12141
 			elif areaSave == 2:
 				pos_x = -170
-				pos_y = 2712.81
+				pos_y = 2712.811
 		else: 
 			if contadorDiscos == 1:
-				pos_x = 1733
-				pos_y = 480.121399
+				pos_x = 1734
+				pos_y = 480.1215
 			elif contadorDiscos == 2:
 				pos_x = 8095
-				pos_y = -10.97
+				pos_y = -10.971
 			elif contadorDiscos == 3:
 				pos_x = 4605
-				pos_y = 3721
+				pos_y = 37211
 			elif contadorDiscos == 4:
 				pos_x = 7894
-				pos_y = 1573.03
+				pos_y = 1573.031
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
