@@ -8,15 +8,15 @@
 [ext_resource path="res://producto/assets/fonts/CENTURY.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://producto/assets/fonts/IFC LOS BANDITOS.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="DynamicFont" id=7]
-size = 31
+[sub_resource type="DynamicFont" id=1]
+size = 34
 font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 size = 50
 outline_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 use_mipmaps = true
@@ -24,15 +24,15 @@ use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=5]
 size = 70
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
-
 [sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,7 +47,7 @@ texture = ExtResource( 3 )
 margin_top = 160.0
 margin_right = 1280.0
 margin_bottom = 227.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
 text = "Selecciona una dificultad"
 align = 1
 __meta__ = {
@@ -114,9 +114,9 @@ __meta__ = {
 [node name="BotonFacil" type="Button" parent="CanvasLayer/VBoxContainer"]
 margin_right = 460.0
 margin_bottom = 60.0
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.0509804, 0.0705882, 0.105882, 1 )
@@ -130,7 +130,7 @@ __meta__ = {
 [node name="texto" type="Label" parent="CanvasLayer/VBoxContainer/BotonFacil"]
 margin_right = 460.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
@@ -140,7 +140,7 @@ align = 1
 [node name="texto2" type="Label" parent="CanvasLayer/VBoxContainer/BotonFacil"]
 margin_right = 460.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.25098, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -152,8 +152,8 @@ align = 1
 margin_top = 117.0
 margin_right = 460.0
 margin_bottom = 174.0
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -168,7 +168,7 @@ __meta__ = {
 [node name="texto" type="Label" parent="CanvasLayer/VBoxContainer/BotonIntermedio"]
 margin_right = 460.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
@@ -178,7 +178,7 @@ align = 1
 [node name="texto2" type="Label" parent="CanvasLayer/VBoxContainer/BotonIntermedio"]
 margin_right = 460.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.25098, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -190,8 +190,8 @@ align = 1
 margin_top = 245.0
 margin_right = 460.0
 margin_bottom = 309.0
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.0509804, 0.0705882, 0.105882, 1 )
@@ -205,7 +205,7 @@ __meta__ = {
 [node name="texto" type="Label" parent="CanvasLayer/VBoxContainer/BotonDificil"]
 margin_right = 460.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
@@ -215,7 +215,7 @@ align = 1
 [node name="texto2" type="Label" parent="CanvasLayer/VBoxContainer/BotonDificil"]
 margin_right = 460.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.25098, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1

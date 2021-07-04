@@ -9,7 +9,7 @@
 [ext_resource path="res://producto/assets/img/Plataformas/Discos/fil_bot.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 284.797, 112.384 )
+extents = Vector2( 284.797, 181.287 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -44,12 +44,12 @@ atlas = ExtResource( 3 )
 region = Rect2( 24, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
 region = Rect2( 24, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -65,12 +65,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 10 ) ],
 "loop": false,
-"name": "Idle_Close",
+"name": "Idle_Open",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ) ],
 "loop": false,
-"name": "Idle_Open",
+"name": "Idle_Close",
 "speed": 5.0
 } ]
 
@@ -426,7 +426,7 @@ script = ExtResource( 1 )
 [node name="ColeccionableArea" type="Area2D" parent="."]
 
 [node name="ColeccionableOpen" type="CollisionShape2D" parent="ColeccionableArea"]
-position = Vector2( 5.61218, -66.2256 )
+position = Vector2( 5.61218, -133.226 )
 shape = SubResource( 1 )
 
 [node name="Coleccionable" type="AnimatedSprite" parent="ColeccionableArea"]

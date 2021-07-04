@@ -26,13 +26,13 @@ func _actualizaEstados(id):
 				if  activo[0]:
 					if animacion != "activate":
 						get_parent().get_node("Rojo/PalancaAscensor/Palanca").play("activate")
-					get_parent().get_node("Sombra Secretos/Sombra de descubrimiento Interior").visible = false
+					get_parent().get_node("Azul/Sombra Secretos/Sombra de descubrimiento Interior/AnimacionSombra").play("fade out")
 					if estadoPlataforma == false:
 						get_parent().get_node("Rojo/Ascensor")._set("activo",true)
 				else:
 					if ((animacion != "desactivate") or (animacion != "start")):
 						get_parent().get_node("Rojo/PalancaAscensor/Palanca").play("desactivate")
-					get_parent().get_node("Sombra Secretos/Sombra de descubrimiento Interior").visible = true
+					get_parent().get_node("Azul/Sombra Secretos/Sombra de descubrimiento Interior/AnimacionSombra").play("fade in")
 					if estadoPlataforma:
 						get_parent().get_node("Rojo/Ascensor")._set("activo",false)
 			1:
