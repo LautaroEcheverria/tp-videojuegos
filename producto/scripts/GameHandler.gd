@@ -127,7 +127,6 @@ func get_BPM(nivel):
 
 func addColeccionable(id):
 	coleccionables[id] = true
-	print(diccionario_coleccionables[id])
 	save_game()
 	
 func get_coleccionables():

@@ -26,14 +26,12 @@ func _ready():
 
 func habilitarItems():
 	for i in range(GameHandler.getDisco()):
-		print(i)
 		$Control/Contenido/Items/PanelContainer/ItemList.set_item_disabled(i,false)
 		$Control/Contenido/Items/PanelContainer/ItemList.set_item_icon(i,array_discos[i])
 	if GameHandler.contadorDiscos >= 1:
 		var idColeccionables = GameHandler.player_data.coleccionables
 		for i in range(len(idColeccionables)):
 			if idColeccionables[i] == true:
-				print(diccionario_coleccionables[i])
 				agregarColeccionable(i,diccionario_coleccionables[i][0],diccionario_coleccionables[i][1])
 
 func agregarColeccionable(i,nombre,texto):

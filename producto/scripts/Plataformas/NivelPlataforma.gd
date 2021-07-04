@@ -35,7 +35,6 @@ func _ready():
 		GameHandler.load_game()
 		position.x = GameHandler.player_data.pos_x
 		position.y = GameHandler.player_data.pos_y
-		print("Partida cargada")
 
 func _physics_process(delta):
 	
@@ -141,7 +140,6 @@ func _in_state_fly_process(delta):
 		elif Input.is_action_pressed("ui_left") or touch_left:
 			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
-	print(velocity.y)
 	if get_floor_velocity().y < 0 and (mystate == State.FLY or mystate == State.JUMP):
 		position.y += get_floor_velocity().y * get_physics_process_delta_time() - GRAVITY * get_physics_process_delta_time() - 1
 	var snap = 12
@@ -174,7 +172,6 @@ func cambiarEstado():
 # Funcion para cambiar los colores
 func color():
 	if contadorDiscos >= 1: # activo colores azules
-		print("azul")
 		get_parent().get_node("Azul").material.set_shader_param ("byn",1)
 		get_parent().get_node("Azul/Sombra Secretos").material.set_shader_param ("byn",1)
 		get_parent().get_node("Parallax frente/frente").material.set_shader_param ("byn",1)
@@ -184,13 +181,11 @@ func color():
 		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/2_mont.png")
 		$Camara/filtro/ColorRect.color = Color("145865ad")
 	if contadorDiscos >= 2: #activo colores rojos
-		print("rojo")
 		get_parent().get_node("Rojo").material.set_shader_param ("byn",1)
 		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/3_cielo.jpg")
 		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/3_mont.png")
 		$Camara/filtro/ColorRect.color = Color("14ad5858")
 	if contadorDiscos >= 3: #activo colores verdes
-		print("verde")
 		get_parent().get_node("Verde/arbustos").material.set_shader_param ("byn",1)
 		get_parent().get_node("Verde/plataformas").visible = true
 		get_parent().get_node("Verde/plataformas").material.set_shader_param ("byn",1)
@@ -198,7 +193,6 @@ func color():
 		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/4_mont.png")
 		$Camara/filtro/ColorRect.color = Color("1458ad83")
 	if contadorDiscos >= 4: #full color
-		print("full color")	
 		get_parent().get_node("Parallax fondo/fondo ciudad/z-2").texture = load("res://producto/assets/img/Plataformas/fondo/4_cielo.jpg")
 		get_parent().get_node("Parallax fondo/fondo montañas/z-1").texture = load("res://producto/assets/img/Plataformas/fondo/4_mont.png")
 		$Camara/filtro/ColorRect.color = Color("00ffffff")
