@@ -30,7 +30,7 @@ var nivel
 var totalLanes = 3
 
 var gameOverScreen = false
-var timerColor = 1
+var timerColor = 0
 
 func _ready():
 	# Posicion ventana reproduccion
@@ -63,7 +63,6 @@ func _ready():
 	elif nivel == 4:
 		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
 		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
-		set_color_nivel()
 		$Timer3.start()
 	$Conductor.play_with_beat_offset(0)
 	
@@ -474,8 +473,8 @@ func _on_Timer3_timeout():
 # Cambia color cuando termina timer
 func set_color_nivel():
 	if timerColor == 1:
-		$Background.modulate = Color(0.49,0.49,0.82,1.0)
+		$Background/AnimationPlayer.play("cambio_color_1")
 	elif timerColor == 2:
-		$Background.modulate = Color(0.64,0.38,0.38,1)
+		$Background/AnimationPlayer.play("cambio_color_2")
 	elif timerColor == 3:
-		$Background.modulate = Color(0.63,0.83,0.68,1)
+		$Background/AnimationPlayer.play("cambio_color_3")
