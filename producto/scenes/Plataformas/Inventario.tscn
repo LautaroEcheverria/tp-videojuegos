@@ -514,6 +514,7 @@ custom_colors/guide_color = Color( 0, 0, 0, 0 )
 custom_constants/vseparation = 0
 custom_constants/hseparation = 30
 items = [ "", ExtResource( 8 ), true, "", ExtResource( 8 ), true, "", ExtResource( 8 ), true, "", ExtResource( 8 ), true, "", SubResource( 12 ), true, "", SubResource( 12 ), true, "", SubResource( 12 ), true, "", SubResource( 12 ), true ]
+allow_reselect = true
 max_columns = 4
 same_column_width = true
 fixed_icon_size = Vector2( 80, 80 )
