@@ -260,6 +260,9 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 15.0
+
 [node name="GameOver" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 480.0
@@ -354,3 +357,4 @@ __meta__ = {
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
