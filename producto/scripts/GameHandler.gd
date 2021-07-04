@@ -163,28 +163,28 @@ func save_game_data():
 	var pos_y
 	if gameOver:
 		pos_x = 460
-		pos_y = 480.12141
+		pos_y = 480
 	else:
 		if !discosSave:
-			if areaSave == 1:
+			if areaSave == 1:	# spawn refugio
 				pos_x = 460
-				pos_y = 480.12141
+				pos_y = 480
 			elif areaSave == 2:
 				pos_x = -170
-				pos_y = 2712.811
+				pos_y = 2712
 		else: 
-			if contadorDiscos == 1:
-				pos_x = 1734
-				pos_y = 480.1215
-			elif contadorDiscos == 2:
+			if contadorDiscos == 1: # disco azul
+				pos_x = 1733
+				pos_y = 480
+			elif contadorDiscos == 2: # disco rojo
 				pos_x = 8095
-				pos_y = -10.971
-			elif contadorDiscos == 3:
+				pos_y = -12
+			elif contadorDiscos == 3: # disco verde
 				pos_x = 4605
-				pos_y = 37211
-			elif contadorDiscos == 4:
+				pos_y = 3720
+			elif contadorDiscos == 4:	# disco final
 				pos_x = 7894
-				pos_y = 1573.031
+				pos_y = 1572
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
