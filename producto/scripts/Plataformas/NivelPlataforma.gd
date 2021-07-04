@@ -39,26 +39,30 @@ func _ready():
 
 func _physics_process(delta):
 	
+	# Reseteo de velocidad
+	
+	if is_on_floor() and get_floor_velocity().y == 0:
+		velocity.y = 10
 	# Estados Robot
 	if mystate == State.IDLE:
-		_in_state_idle_process()
+		_in_state_idle_process(delta)
 	elif mystate == State.WALK:
 		_in_state_walk_process(delta)
 	elif mystate == State.JUMP:
 		if contadorDiscos >= 1:
 			_in_state_jump_process(delta)
 		else:
-			_in_state_idle_process()
+			_in_state_idle_process(delta)
 	elif mystate == State.FLY:
 		if contadorDiscos >= 1:
 			_in_state_fly_process(delta)
 		else:
-			_in_state_idle_process()
+			_in_state_idle_process(delta)
 	# Movimientos desbloqueados
 	if contadorDiscos >= 1:
 		WALK_SPEED = 300
 	
-func _in_state_idle_process():
+func _in_state_idle_process(delta):
 	if $CollisionSprite/Sprite.animation != "idle":
 		$CollisionSprite/Sprite.play("idle")
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right") or touch_left or touch_right:
@@ -137,7 +141,7 @@ func _in_state_fly_process(delta):
 		elif Input.is_action_pressed("ui_left") or touch_left:
 			velocity.x = -WALK_SPEED
 			$CollisionSprite/Sprite.flip_h = true
-	
+	print(velocity.y)
 	if get_floor_velocity().y < 0 and (mystate == State.FLY or mystate == State.JUMP):
 		position.y += get_floor_velocity().y * get_physics_process_delta_time() - GRAVITY * get_physics_process_delta_time() - 1
 	var snap = 12
