@@ -32,11 +32,11 @@ func _ready():
 	cambiarEstado()
 	if contadorDiscos >= 1:
 		GameHandler.load_game()
+		get_parent().get_node("Controles/Control/Movimiento/UpButton").modulate = Color("ffffff")
 		position.x = GameHandler.player_data.pos_x
 		position.y = GameHandler.player_data.pos_y
 
 func _physics_process(delta):
-	
 	# Reseteo de velocidad
 	if is_on_floor(): 
 		if get_floor_velocity().y == 0:
@@ -76,7 +76,6 @@ func _in_state_idle_process(delta):
 			snap = Vector2(0,0)
 		move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
-		
 func _in_state_walk_process(delta):
 	if contadorDiscos < 1 :
 		if $CollisionSprite/Sprite.animation !="walk":
@@ -127,7 +126,6 @@ func _in_state_jump_process(delta):
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
-		
 func _in_state_fly_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
 		$CollisionSprite/Sprite.play("jump")
@@ -210,9 +208,20 @@ func _on_Trampolines_body_exited(body):
 	JUMP_SPEED = -650
 
 func _on_Area_Save_Game_body_entered(body):
-	if contadorDiscos >= 1:
-		GameHandler.set_discosSave(1)
+	GameHandler.set_checkpointSave(1)
 
 func _on_Area_Save_Game2_body_entered(body):
-	if contadorDiscos >= 1:
-		GameHandler.set_discosSave(2)
+	if body.name == "Robot":
+		GameHandler.set_checkpointSave(2)
+
+func _on_Area_Save_Game3_body_entered(body):
+	GameHandler.set_checkpointSave(3)
+
+func _on_Area_Save_Game4_body_entered(body):
+	GameHandler.set_checkpointSave(4)
+
+func _on_Area_Save_Game5_body_entered(body):
+	GameHandler.set_checkpointSave(5)
+
+func _on_Area_Save_Game6_body_entered(body):
+	GameHandler.set_checkpointSave(6)

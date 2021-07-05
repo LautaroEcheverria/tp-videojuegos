@@ -2580,48 +2580,48 @@ atlas = ExtResource( 60 )
 region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=105]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=106]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=107]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=108]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=109]
-atlas = ExtResource( 61 )
+atlas = ExtResource( 59 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=110]
 atlas = ExtResource( 59 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=111]
-atlas = ExtResource( 59 )
-region = Rect2( 64, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=112]
-atlas = ExtResource( 59 )
-region = Rect2( 128, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=113]
-atlas = ExtResource( 59 )
-region = Rect2( 192, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=114]
-atlas = ExtResource( 59 )
-region = Rect2( 256, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=115]
-atlas = ExtResource( 59 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 61 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=116]
 animations = [ {
@@ -2635,15 +2635,15 @@ animations = [ {
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ) ],
+"frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ],
 "loop": true,
 "name": "walk",
 "speed": 6.0
+}, {
+"frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
 } ]
 
 [sub_resource type="GDScript" id=117]
@@ -2775,7 +2775,7 @@ extents = Vector2( 31.5347, 4194.11 )
 extents = Vector2( 23.6962, 0.367096 )
 
 [sub_resource type="RectangleShape2D" id=136]
-extents = Vector2( 383.771, 174.236 )
+extents = Vector2( 364.339, 174.236 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -3254,6 +3254,7 @@ z_as_relative = false
 normal = ExtResource( 62 )
 
 [node name="UpButton" type="TouchScreenButton" parent="Controles/Control/Movimiento"]
+modulate = Color( 1, 1, 1, 0.109804 )
 position = Vector2( 914.942, 377 )
 rotation = -1.5708
 scale = Vector2( 0.4, 0.4 )
@@ -3383,15 +3384,41 @@ nombre = "Libro de Partituras Parisino"
 texto = "«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era tan mala como yo creía. Yo pensaba que era una basura porque tocaba tangos en un cabaré, y resulta que yo tenía una cosa que se llama estilo.» - Piazzolla"
 
 [node name="Area Save Game" type="Area2D" parent="."]
+position = Vector2( 0, -32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game"]
-position = Vector2( 460.661, 426 )
+position = Vector2( 438.661, 426 )
 shape = SubResource( 136 )
 
 [node name="Area Save Game2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game2"]
 position = Vector2( 118.646, 2498.77 )
+shape = SubResource( 136 )
+
+[node name="Area Save Game3" type="Area2D" parent="."]
+position = Vector2( 0, -32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game3"]
+position = Vector2( 1768, 426 )
+shape = SubResource( 136 )
+
+[node name="Area Save Game4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game4"]
+position = Vector2( 8088, -104 )
+shape = SubResource( 136 )
+
+[node name="Area Save Game5" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game5"]
+position = Vector2( 4525, 3632 )
+shape = SubResource( 136 )
+
+[node name="Area Save Game6" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game6"]
+position = Vector2( 7920, 1480 )
 shape = SubResource( 136 )
 
 [connection signal="body_shape_entered" from="Rojo" to="Rojo" method="_on_Rojo_body_shape_entered"]
@@ -3411,3 +3438,7 @@ shape = SubResource( 136 )
 [connection signal="body_entered" from="Game Over" to="." method="_on_Area2D_Game_Over_body_entered"]
 [connection signal="body_entered" from="Area Save Game" to="Robot" method="_on_Area_Save_Game_body_entered"]
 [connection signal="body_entered" from="Area Save Game2" to="Robot" method="_on_Area_Save_Game2_body_entered"]
+[connection signal="body_entered" from="Area Save Game3" to="Robot" method="_on_Area_Save_Game3_body_entered"]
+[connection signal="body_entered" from="Area Save Game4" to="Robot" method="_on_Area_Save_Game4_body_entered"]
+[connection signal="body_entered" from="Area Save Game5" to="Robot" method="_on_Area_Save_Game5_body_entered"]
+[connection signal="body_entered" from="Area Save Game6" to="Robot" method="_on_Area_Save_Game6_body_entered"]

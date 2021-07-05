@@ -27,8 +27,7 @@ var palancas = [false,false,false,false]
 
 var save_path = "user://saveFile.save"
 var saveGame = false
-var discosSave = true
-var areaSave
+var checkpointSave
 var player_data
 
 var transicion
@@ -164,28 +163,26 @@ func save_game_data():
 		pos_x = 460
 		pos_y = 480
 	else:
-		if !discosSave:
-			if areaSave == 1:	# spawn refugio
-				pos_x = 460
-				pos_y = 480
-			elif areaSave == 2:
-				pos_x = -170
-				pos_y = 2712
-		else: 
-			if contadorDiscos == 1: # disco azul
-				pos_x = 1733
-				pos_y = 480
-			elif contadorDiscos == 2: # disco rojo
-				pos_x = 8095
-				pos_y = -12
-			elif contadorDiscos == 3: # disco verde
-				pos_x = 4605
-				pos_y = 3720
-				#activar palancas
-				palancas = [true,false,false,true]
-			elif contadorDiscos == 4:	# disco final
-				pos_x = 460
-				pos_y = 480
+		if checkpointSave == 1:
+			pos_x = 460
+			pos_y = 480
+		elif checkpointSave == 2:
+			pos_x = -170
+			pos_y = 2712
+		elif checkpointSave == 3: # disco azul
+			pos_x = 1733
+			pos_y = 480
+		elif checkpointSave == 4: # disco rojo
+			pos_x = 8095
+			pos_y = -12
+		elif checkpointSave == 5: # disco verde
+			pos_x = 4605
+			pos_y = 3720
+			#activar palancas
+			palancas = [true,false,false,true]
+		elif checkpointSave == 6:	# disco final
+			pos_x = 460
+			pos_y = 480
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
@@ -199,12 +196,17 @@ func save_game_data():
 	}
 	return data
 
-# discosSave = false --> guarda posicion del checkpoint
-# discosSave = true --> guarda posicion del disco
-func set_discosSave(area):
-	discosSave = false
-	if area == 1:
-		areaSave = 1
-	elif area == 2:
-		areaSave = 2
+func set_checkpointSave(checkpoint):
+	if checkpoint == 1:
+		checkpointSave = 1
+	elif checkpoint == 2:
+		checkpointSave = 2
+	elif checkpoint == 3:
+		checkpointSave = 3
+	elif checkpoint == 4:
+		checkpointSave = 4
+	elif checkpoint == 5:
+		checkpointSave = 5
+	elif checkpoint == 6:
+		checkpointSave = 6
 	save_game()

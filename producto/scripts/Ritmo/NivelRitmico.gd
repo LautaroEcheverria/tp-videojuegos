@@ -68,7 +68,6 @@ func _ready():
 	
 func _input(event):
 	if event.is_action("ui_cancel"):
-		GameHandler.discosSave = true
 		GameHandler.replayNivelRitmico = false
 		GameHandler.save_game()
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
@@ -450,11 +449,8 @@ func _on_Timer_timeout():
 	change_screen_game_over()
 	GameHandler.set_score_nivel_ritmico(score,nivel)
 	GameHandler.saveGame = true
-	if !GameHandler.replayNivelRitmico:
-		GameHandler.discosSave = true
 	GameHandler.replayNivelRitmico = false
 	GameHandler.save_game()
-	print("Nivel " + str(nivel) + ": guardado")
 	$Timer2.start()
 
 # Muestra pantalla de puntos durante 6 seg y vuelve a plataforma, sino Game Over
