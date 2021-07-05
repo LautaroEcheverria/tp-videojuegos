@@ -1,10 +1,10 @@
 extends Node2D
 
 #Variables de movimiento
-export var idle_duration = 0
+var idle_duration = 0
 export var cell_size = Vector2(48,48)
 
-var move_a = Vector2(0,1.61)
+var move_a = Vector2(0,2)
 var velocidad  = 90
 
 #"Propiedad" de seguimiento
@@ -15,7 +15,7 @@ var previo_follow
 onready var trampolin = $TrampolinBody/ColisionTrampolin
 onready var tween = $Tween
 var state
-
+var first_time
 enum State {
 	Idle_down,
 	Idle_up,
@@ -23,7 +23,7 @@ enum State {
 	Move_up
 }
 func _ready():
-	_iniciar_tween()
+	first_time = true
 
 func _iniciar_tween():
 	move_a = move_a * cell_size
@@ -35,6 +35,11 @@ func _iniciar_tween():
 	tween.start()
 	
 func _physics_process(delta):
+	if first_time:
+		_iniciar_tween()
+		first_time = false
+	
+	
 	#seguimiento de posicion
 	previo_follow = follow
 	trampolin.position = trampolin.position.linear_interpolate(follow, 0.075)
@@ -43,29 +48,29 @@ func _physics_process(delta):
 	if (state == State.Idle_up):
 		if $TrampolinBody/SpriteTrampolin.animation != "Idle_up":
 			$TrampolinBody/SpriteTrampolin.play("Idle_up")
-			tween.stop_all()
 	if (state == State.Idle_down):
 		if $TrampolinBody/SpriteTrampolin.animation != "Idle_down":
 			$TrampolinBody/SpriteTrampolin.play("Idle_down")
-			tween.stop_all()
 	if (state == State.Move_down):
 		if $TrampolinBody/SpriteTrampolin.animation != "Move_down":
 			$TrampolinBody/SpriteTrampolin.play("Move_down")
-		if ($TrampolinBody/SpriteTrampolin.frame == 3):
+		if ($TrampolinBody/SpriteTrampolin.frame == 2):
+			tween.stop_all()
 			state = State.Idle_down
 	if (state == State.Move_up):
 		if $TrampolinBody/SpriteTrampolin.animation != "Move_up":
 			$TrampolinBody/SpriteTrampolin.play("Move_up")
-		if ($TrampolinBody/SpriteTrampolin.frame == 3):
+		if ($TrampolinBody/SpriteTrampolin.frame == 2):
+			tween.stop_all()
 			state = State.Idle_up
 
 func _down():
-	state = State.Move_down
+	tween.seek(0)
 	tween.resume_all()
+	state = State.Move_down
 	
 
 func _up():
-	tween.reset_all()
 	tween.seek(0)
 	state = State.Move_up
 	
