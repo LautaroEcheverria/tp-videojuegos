@@ -14,7 +14,7 @@ func _on_Timer_timeout():
 func cambio_Escena():
 	if GameHandler.contadorDiscos :
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
-		GameHandler.gameOver = true
+		GameHandler.set_checkpointSave(1)
 		GameHandler.save_game()
 	else:
 		PantallaFade.change_scene("res://producto/scenes/Inicio.tscn")

@@ -1,7 +1,6 @@
 extends Node
 
 var contadorDiscos = 0
-var gameOver = false
 
 var speedNivelRitmico
 var scoreNivelRitmico_1 = 0
@@ -159,30 +158,26 @@ func get_transicion():
 func save_game_data():
 	var pos_x
 	var pos_y
-	if gameOver:
+	if checkpointSave == 1:
 		pos_x = 460
 		pos_y = 480
-	else:
-		if checkpointSave == 1:
-			pos_x = 460
-			pos_y = 480
-		elif checkpointSave == 2:
-			pos_x = -170
-			pos_y = 2712
-		elif checkpointSave == 3: # disco azul
-			pos_x = 1733
-			pos_y = 480
-		elif checkpointSave == 4: # disco rojo
-			pos_x = 8095
-			pos_y = -12
-		elif checkpointSave == 5: # disco verde
-			pos_x = 4605
-			pos_y = 3720
-			#activar palancas
-			palancas = [true,false,false,true]
-		elif checkpointSave == 6:	# disco final
-			pos_x = 460
-			pos_y = 480
+	elif checkpointSave == 2:
+		pos_x = -170
+		pos_y = 2712
+	elif checkpointSave == 3: # disco azul
+		pos_x = 1733
+		pos_y = 480
+	elif checkpointSave == 4: # disco rojo
+		pos_x = 8095
+		pos_y = -12
+	elif checkpointSave == 5: # disco verde
+		pos_x = 4605
+		pos_y = 3720
+		#activar palancas
+		palancas = [true,false,false,true]
+	elif checkpointSave == 6:	# disco final
+		pos_x = 460
+		pos_y = 480
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
