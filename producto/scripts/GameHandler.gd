@@ -171,10 +171,10 @@ func save_game_data():
 	elif checkpointSave == 4: # disco rojo
 		pos_x = 8095
 		pos_y = -12
+		palancas = [false,false,false,false]
 	elif checkpointSave == 5: # disco verde
 		pos_x = 4605
 		pos_y = 3720
-		#activar palancas
 		palancas = [true,false,false,true]
 	elif checkpointSave == 6:	# disco final
 		pos_x = 460
