@@ -181,9 +181,11 @@ func save_game_data():
 			elif contadorDiscos == 3: # disco verde
 				pos_x = 4605
 				pos_y = 3720
+				#activar palancas
+				palancas = [true,false,false,true]
 			elif contadorDiscos == 4:	# disco final
-				pos_x = 7894
-				pos_y = 1572
+				pos_x = 460
+				pos_y = 480
 	var data = {
 		"contadorDiscos" : contadorDiscos,
 		"pos_x" : pos_x,
@@ -197,6 +199,8 @@ func save_game_data():
 	}
 	return data
 
+# discosSave = false --> guarda posicion del checkpoint
+# discosSave = true --> guarda posicion del disco
 func set_discosSave(area):
 	discosSave = false
 	if area == 1:

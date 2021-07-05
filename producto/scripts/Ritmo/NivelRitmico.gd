@@ -450,7 +450,8 @@ func _on_Timer_timeout():
 	change_screen_game_over()
 	GameHandler.set_score_nivel_ritmico(score,nivel)
 	GameHandler.saveGame = true
-	GameHandler.discosSave = true
+	if !GameHandler.replayNivelRitmico:
+		GameHandler.discosSave = true
 	GameHandler.replayNivelRitmico = false
 	GameHandler.save_game()
 	print("Nivel " + str(nivel) + ": guardado")
