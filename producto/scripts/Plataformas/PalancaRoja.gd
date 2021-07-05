@@ -5,7 +5,6 @@ var activo = [false,false,false,false]
 var bloquear_accion = false
 
 func _ready():
-	yield(get_tree().create_timer(2.0), "timeout")
 	activo = GameHandler.get_palancas()
 	_actualizaEstados(0)
 	_actualizaEstados(1)
