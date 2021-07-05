@@ -394,7 +394,6 @@ __meta__ = {
 }
 
 [node name="opacidad" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 light_mask = 31
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -413,7 +412,6 @@ __meta__ = {
 }
 
 [node name="blanco y negro" type="ColorRect" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -426,19 +424,18 @@ __meta__ = {
 }
 
 [node name="bot" type="Sprite" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, 167 )
 texture = ExtResource( 3 )
 
 [node name="top" type="Sprite" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -200 )
 texture = ExtResource( 2 )
 
 [node name="Contenido" type="Control" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = -320.0
-margin_top = -100.0
+margin_top = -162.0
 margin_right = -280.0
-margin_bottom = -60.0
+margin_bottom = -122.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

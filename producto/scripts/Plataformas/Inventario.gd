@@ -76,8 +76,9 @@ func mostrarInfo(i):
 
 func _on_ItemList_item_selected(index):
 	if !$Control/Contenido/Items/PanelContainer/ItemList.is_item_disabled(index):
-		if index <4:
-			$Control/Contenido/Items/InfoDisco.visible = true
+		if index <4 :
+			if GameHandler.contadorDiscos > 0:
+				$Control/Contenido/Items/InfoDisco.visible = true
 			mostrarInfo(index)
 			nivelSelect = index+1
 			discoSelect = true

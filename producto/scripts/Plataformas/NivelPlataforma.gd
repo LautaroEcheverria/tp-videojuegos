@@ -24,7 +24,6 @@ var contadorDiscos = 0
 var changedScene = false
 
 func _ready():
-	
 	# Posicion ventana reproduccion
 	var screen_size = OS.get_screen_size(OS.get_current_screen())
 	var window_size = OS.get_window_size()
