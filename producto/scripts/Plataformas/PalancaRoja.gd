@@ -27,12 +27,16 @@ func _actualizaEstados(id):
 					if animacion != "activate":
 						get_parent().get_node("Rojo/PalancaAscensor/Palanca").play("activate")
 					get_parent().get_node("Azul/Sombra Secretos/Sombra de descubrimiento Interior/AnimacionSombra").play("fade out")
+					get_parent().get_node("ZonaColision").set_deferred("disabled",true)
+					get_parent().get_node("ZonaColision/Colision").set_deferred("disabled",true)
 					if estadoPlataforma == false:
 						get_parent().get_node("Rojo/Ascensor")._set("activo",true)
 				else:
 					if ((animacion != "desactivate") or (animacion != "start")):
 						get_parent().get_node("Rojo/PalancaAscensor/Palanca").play("desactivate")
 					get_parent().get_node("Azul/Sombra Secretos/Sombra de descubrimiento Interior/AnimacionSombra").play("fade in")
+					get_parent().get_node("ZonaColision").set_deferred("disabled",false)
+					get_parent().get_node("ZonaColision/Colision").set_deferred("disabled",false)
 					if estadoPlataforma:
 						get_parent().get_node("Rojo/Ascensor")._set("activo",false)
 			1:
