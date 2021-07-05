@@ -2,6 +2,8 @@ extends Area2D
 
 var activo = [false,false,false,false]
 
+var bloquear_accion = false
+
 func _ready():
 	activo = GameHandler.get_palancas()
 	_actualizaEstados(0)
@@ -10,9 +12,13 @@ func _ready():
 	_actualizaEstados(3)
 
 func _on_Rojo_body_shape_entered(body_id, body, body_shape, local_shape):
-	activo[local_shape] = !activo[local_shape]
-	GameHandler.actualizaPalancas(local_shape,activo[local_shape])
-	self._actualizaEstados(local_shape)
+	if !bloquear_accion:
+		activo[local_shape] = !activo[local_shape]
+		GameHandler.actualizaPalancas(local_shape,activo[local_shape])
+		self._actualizaEstados(local_shape)
+		bloquear_accion = true
+		yield(get_tree().create_timer(2.0), "timeout")
+		bloquear_accion = false
 
 func _actualizaEstados(id):
 	var estadoPlataforma: bool
