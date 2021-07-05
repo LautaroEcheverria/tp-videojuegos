@@ -24,7 +24,6 @@ var contadorDiscos = 0
 var changedScene = false
 
 func _ready():
-	
 	# Posicion ventana reproduccion
 	var screen_size = OS.get_screen_size(OS.get_current_screen())
 	var window_size = OS.get_window_size()
@@ -37,9 +36,7 @@ func _ready():
 		position.y = GameHandler.player_data.pos_y
 
 func _physics_process(delta):
-	
 	# Reseteo de velocidad
-	
 	if is_on_floor() and get_floor_velocity().y == 0:
 		velocity.y = 100
 	# Estados Robot
@@ -74,7 +71,6 @@ func _in_state_idle_process(delta):
 			snap = Vector2(0,0)
 		move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
-		
 func _in_state_walk_process(delta):
 	if contadorDiscos < 1 :
 		if $CollisionSprite/Sprite.animation !="walk":
@@ -125,7 +121,6 @@ func _in_state_jump_process(delta):
 		snap = Vector2(0,0)
 	move_and_slide_with_snap(velocity,Vector2.DOWN * snap,Vector2(0, -1),false)
 	
-		
 func _in_state_fly_process(delta):
 	if $CollisionSprite/Sprite.animation !="jump":
 		$CollisionSprite/Sprite.play("jump")
