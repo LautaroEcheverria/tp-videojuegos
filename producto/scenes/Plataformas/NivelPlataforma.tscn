@@ -2775,7 +2775,7 @@ extents = Vector2( 31.5347, 4194.11 )
 extents = Vector2( 23.6962, 0.367096 )
 
 [sub_resource type="RectangleShape2D" id=136]
-extents = Vector2( 65.0242, 108.643 )
+extents = Vector2( 383.771, 174.236 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -3385,13 +3385,13 @@ texto = "«Ella me enseñó a creer en Astor Piazzolla, en que mi música no era
 [node name="Area Save Game" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game"]
-position = Vector2( 754, 464 )
+position = Vector2( 460.661, 426 )
 shape = SubResource( 136 )
 
 [node name="Area Save Game2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Save Game2"]
-position = Vector2( -121.655, 2693.88 )
+position = Vector2( 118.646, 2498.77 )
 shape = SubResource( 136 )
 
 [connection signal="body_shape_entered" from="Rojo" to="Rojo" method="_on_Rojo_body_shape_entered"]
