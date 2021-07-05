@@ -3,8 +3,6 @@ extends Control
 func _ready():
 	$Timer.start()
 	$Animacion.play("movimiento")
-	GameHandler.gameOver = true
-	GameHandler.save_game()
 
 func _input(event):
 	if event.is_action_pressed("mouse") or event is InputEventScreenTouch:
@@ -16,6 +14,8 @@ func _on_Timer_timeout():
 func cambio_Escena():
 	if GameHandler.contadorDiscos :
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
+		GameHandler.gameOver = true
+		GameHandler.save_game()
 	else:
 		PantallaFade.change_scene("res://producto/scenes/Inicio.tscn")
 		
