@@ -30,6 +30,7 @@ var checkpointSave
 var player_data
 
 var transicion
+var creditosMenu = true
 
 func _ready():
 	pass
@@ -205,3 +206,6 @@ func set_checkpointSave(checkpoint):
 	elif checkpoint == 6:
 		checkpointSave = 6
 	save_game()
+
+func get_creditosMenu():
+	return creditosMenu

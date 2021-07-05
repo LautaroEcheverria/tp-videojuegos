@@ -459,6 +459,7 @@ func _on_Timer2_timeout():
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 	else:
 		PantallaFade.change_scene("res://producto/scenes/Final.tscn")
+		GameHandler.creditosMenu = false
 
 func _on_Timer3_timeout():
 	timerColor += 1

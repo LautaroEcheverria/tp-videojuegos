@@ -12,9 +12,11 @@ func _on_Timer_timeout():
 	cambio_Escena()
 	
 func cambio_Escena():
-	if GameHandler.contadorDiscos :
+	var creditosMenu = GameHandler.get_creditosMenu()
+	if !creditosMenu:
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 		GameHandler.set_checkpointSave(1)
+		GameHandler.creditosMenu = true
 		GameHandler.save_game()
 	else:
 		PantallaFade.change_scene("res://producto/scenes/Inicio.tscn")
