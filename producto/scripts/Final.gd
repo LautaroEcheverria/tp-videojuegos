@@ -1,5 +1,7 @@
 extends Control
 
+var creditosMenu = GameHandler.get_creditosMenu()
+
 func _ready():
 	$Timer.start()
 	$Animacion.play("movimiento")
@@ -12,11 +14,10 @@ func _on_Timer_timeout():
 	cambio_Escena()
 	
 func cambio_Escena():
-	var creditosMenu = GameHandler.get_creditosMenu()
 	if !creditosMenu:
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 		GameHandler.set_checkpointSave(1)
-		GameHandler.creditosMenu = true
+		GameHandler.set_creditosMenu(false)
 		GameHandler.save_game()
 	else:
 		PantallaFade.change_scene("res://producto/scenes/Inicio.tscn")

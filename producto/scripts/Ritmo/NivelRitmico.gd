@@ -49,19 +49,23 @@ func _ready():
 	set_initial_screen()
 	change_sprite_color(nivel)
 	if nivel == 1:
-		$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/1_oblivion.mp3")
+		$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Oblivion - Astor Piazzolla (Nivel 1)"
 		$Background.modulate = Color(0.49,0.49,0.82,1.0)
 	elif nivel == 2:
-		$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/2_violentango.mp3")
+		$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Violentango - Astor Piazzolla (Nivel 2)"
 		$Background.modulate = Color(0.64,0.38,0.38,1)
 	elif nivel == 3:
-		$Conductor.stream = load("res://producto/assets/music/3_libertango.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/3_libertango.mp3")
+		$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Libertango - Astor Piazzolla (Nivel 3)"
 		$Background.modulate = Color(0.63,0.83,0.68,1)
 	elif nivel == 4:
-		$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
+		#$Conductor.stream = load("res://producto/assets/music/4_adiosnonino.mp3")
+		$Conductor.stream = load("res://producto/assets/music/prueba.mp3")
 		$NombreCancion.text = "Adios Nonino - Astor Piazzolla (Nivel 4)"
 		$Timer3.start()
 	$Conductor.play_with_beat_offset(0)
@@ -72,9 +76,14 @@ func _input(event):
 		GameHandler.save_game()
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 	if (event.is_action_pressed("mouse") or event is InputEventScreenTouch) and gameOverScreen:
+		GameHandler.set_score_nivel_ritmico(score,nivel)
+		GameHandler.saveGame = true
+		GameHandler.replayNivelRitmico = false
+		GameHandler.save_game()
 		if nivel < 4:
 			PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 		else:
+			GameHandler.set_creditosMenu(false)
 			PantallaFade.change_scene("res://producto/scenes/Final.tscn")
 		
 func _on_Conductor_measure(position):
@@ -458,8 +467,8 @@ func _on_Timer2_timeout():
 	if nivel < 4:
 		PantallaFade.change_scene("res://producto/scenes/Plataformas/NivelPlataforma.tscn")
 	else:
+		GameHandler.set_creditosMenu(false)
 		PantallaFade.change_scene("res://producto/scenes/Final.tscn")
-		GameHandler.creditosMenu = false
 
 func _on_Timer3_timeout():
 	timerColor += 1

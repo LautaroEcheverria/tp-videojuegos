@@ -32,6 +32,7 @@ func _ready():
 	cambiarEstado()
 	if contadorDiscos >= 1:
 		GameHandler.load_game()
+		GameHandler.initialize_score_nivel_ritmico()
 		get_parent().get_node("Controles/Control/Movimiento/UpButton").modulate = Color("ffffff")
 		position.x = GameHandler.player_data.pos_x
 		position.y = GameHandler.player_data.pos_y

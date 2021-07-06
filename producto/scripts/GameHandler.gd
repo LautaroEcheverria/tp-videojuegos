@@ -75,6 +75,16 @@ func set_speed_nivel_ritmico(value):
 func get_speed_nivel_ritmico():
 	return speedNivelRitmico
 
+func initialize_score_nivel_ritmico():
+	if player_data.scoreNivelRitmico_1 > 0:
+		scoreNivelRitmico_1 = player_data.scoreNivelRitmico_1
+	if player_data.scoreNivelRitmico_2 > 0:
+		scoreNivelRitmico_2 = player_data.scoreNivelRitmico_2
+	if player_data.scoreNivelRitmico_3 > 0:
+		scoreNivelRitmico_3 = player_data.scoreNivelRitmico_3
+	if player_data.scoreNivelRitmico_1 > 0:
+		scoreNivelRitmico_4 = player_data.scoreNivelRitmico_4
+
 func set_score_nivel_ritmico(score,nivel):
 	if nivel == 1:
 		if score > scoreNivelRitmico_1:
@@ -208,3 +218,6 @@ func set_checkpointSave(checkpoint):
 
 func get_creditosMenu():
 	return creditosMenu
+
+func set_creditosMenu(value):
+	creditosMenu = value
